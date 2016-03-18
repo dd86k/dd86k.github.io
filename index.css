@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+body
+{
+    color: white;
+    background-color: #222;
+    font-family: monospace;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.container
+{
+    width: 70%;
+    margin: auto;
+}
+
+h1 span
+{
+    font-size: 1.8em;
+}
+
+h2
+{
+    font-size: 1.4em;
+    margin: 0 0 12% 0;
+}
+
+h3
+{
+    font-size: 1.35em;
+    margin: 0 0 2%;
+}
+
+.hello
+{
+    font-size: 2.5em;
+}
+
+p
+{
+    text-align: justify;
+}
+
+ul, ol, li
+{
+    text-align: left
+}
+
+table
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 1.5%;
+}
+
+a, a:visited
+{
+    color: coral;
+    text-decoration: none;
+}
+
+a:hover, a:focus
+{
+    text-decoration: underline;
+}
+
+footer
+{
+    margin: 12% 0;
+    font-size: 0.8em;
+}
