@@ -42,13 +42,20 @@ p
     text-align: justify;
 }
 
-ul, ol, li
+ul, ol
 {
-    text-align: left
+    text-align: left;
+    font-size: 1.09em;
+}
+
+li
+{
+    margin: 1% 0 0 0;
 }
 
 table
 {
+    margin: 4% 0 0 0;
     width: 100%;
 }
 
