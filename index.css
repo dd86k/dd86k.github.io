@@ -6,12 +6,12 @@ body
     background-color: #222;
     font-family: monospace;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.25em;
 }
 
 .container
 {
-    width: 70%;
+    width: 80%;
     margin: auto;
 }
 
@@ -23,18 +23,13 @@ h1 span
 h2
 {
     font-size: 1.4em;
-    margin: 0 0 12% 0;
+    margin: 0 0 10% 0;
 }
 
 h3
 {
     font-size: 1.35em;
     margin: 0 0 2%;
-}
-
-.hello
-{
-    font-size: 2.5em;
 }
 
 p
@@ -59,21 +54,36 @@ table
     width: 100%;
 }
 
-td
-{
-    padding: 1.5%;
-}
-
-a, a:visited
+/* lazyness */
+p>a, li>a, footer>a,
+p>a:visited, li>a:visited, footer>a:visited
 {
     color: coral;
     text-decoration: none;
 }
 
-a:hover, a:focus
+p>a:hover, li>a:hover, footer>a:hover,
+p>a:focus, li>a:focus, footer>a:focus
 {
     text-decoration: underline;
 }
+
+table a, table a:visited
+{
+    padding: 1.5%;
+    color: coral;
+    text-decoration: none;
+    border: 2px solid #222;
+    display: inline-block;
+}
+
+table a:hover, table a:focus
+{
+    border-color: gray;
+    border-radius: 12px;
+}
+
+p { color: white; }
 
 footer
 {
