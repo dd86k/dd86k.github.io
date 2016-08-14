@@ -3,9 +3,7 @@
 
 onload = start;
 
-//var _MIN = 128;
 var _MIN = 192;
-//var _MIN = 224;
 
 /* Transformation methods */
 

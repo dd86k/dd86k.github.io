@@ -73,7 +73,7 @@ table
 {
     margin: 5px 0;
     width: 100%;
-    border: 1px solid gray;
+    border: 2px solid gray;
     border-radius: 0 0 12px 12px;
 }
 
@@ -101,7 +101,7 @@ td
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    border: 1px solid gray;
+    border: 2px solid gray;
 }
 
 td:hover
@@ -132,10 +132,8 @@ noscript
 
 footer
 {
+    margin: 2% 0;
     width: 100%;
-    display: block;
-    position: fixed;
-    bottom: 15px;
     text-align: center;
     font-size: 0.72em;
 }
