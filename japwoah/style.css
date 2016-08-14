@@ -3,9 +3,9 @@
 body
 {
     font-size: 1.3em;
-    color: white;
-    background-color: black;
-    font-family: "Segoi UI";
+    color: #eee;
+    background-color: #111;
+    font-family: "fantasy";
 }
 
 h1, h3, div
@@ -14,29 +14,22 @@ h1, h3, div
     text-align: center;
 }
 
-a#home
+#home
 {
-    border: 2px solid gray;
-    border-radius: 12px;
+    border: 3px solid gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     position: fixed;
+    display: block;
+    background: url(back_arrow.png) center center no-repeat #222;
     top: 5px;
     left: 5px;
-    font-size: 1em;
-    padding: 8px;
-    color: white;
-    text-decoration: none;
-    text-align: center;
 }
 
-a#home:visited
+#home:hover
 {
-    color: white;
-}
-
-a#home:hover
-{
-    color: black;
-    background-color: white;
+    background-color: #444;
 }
 
 button
@@ -71,7 +64,7 @@ button:active
 
 table
 {
-    margin: 5px 0;
+    margin: 1% 0;
     width: 100%;
     border: 2px solid gray;
     border-radius: 0 0 12px 12px;
@@ -80,9 +73,9 @@ table
 caption
 {
     font-size: 0.9em;
-    border-top: 1px solid gray;
-    border-right: 1px solid gray;
-    border-left: 1px solid gray;
+    border-top: 2px solid gray;
+    border-right: 2px solid gray;
+    border-left: 2px solid gray;
     border-radius: 12px 12px 0 0;
 }
 
@@ -90,7 +83,7 @@ th
 {
     text-align: right;
     font-size: 0.83em;
-    width: 19%;
+    /*width: 19%;*/
 }
 
 td
