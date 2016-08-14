@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+body
+{
+    font-size: 1.3em;
+    color: white;
+    background-color: black;
+    font-family: "Segoi UI";
+}
+
+h1, h3, div
+{
+    margin: 0;
+    text-align: center;
+}
+
+a#home
+{
+    border: 2px solid gray;
+    border-radius: 12px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    font-size: 1em;
+    padding: 8px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+a#home:visited
+{
+    color: white;
+}
+
+a#home:hover
+{
+    color: black;
+    background-color: white;
+}
+
+button
+{
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 12px;
+    font-size: 0.75em;
+    color: white;
+    background-color: #222;
+    border: 0;
+    border-bottom: 3px solid black;
+    display: inline-block;
+}
+
+button:hover, button:focus
+{
+    cursor: pointer;
+    border-bottom: 3px solid red;
+}
+
+button:active
+{
+    border: 0;
+    position: relative;
+    top: 3px;
+}
+
+table
+{
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 0 0 12px 12px;
+}
+
+caption
+{
+    font-size: 0.9em;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    border-radius: 12px 12px 0 0;
+}
+
+th
+{
+    text-align: right;
+    font-size: 0.83em;
+    width: 19%;
+}
+
+td
+{
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: 1px solid gray;
+}
+
+td:hover
+{
+    color: black;
+    background-color: white;
+}
+
+td:active
+{
+    background-color: gray;
+}
+
+#input
+{
+    color: white;
+    margin: 10px 0 0 0;
+    background-color: black;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
+
+noscript
+{
+    font-style: italic;
+}
+
+footer
+{
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 15px;
+    text-align: center;
+    font-size: 0.72em;
+}
