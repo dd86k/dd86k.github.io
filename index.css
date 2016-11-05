@@ -17,19 +17,22 @@ body
 
 h1 span
 {
-    font-size: 1.8em;
+    font-size: 2em;
 }
 
 h2
 {
-    font-size: 1.4em;
-    margin: 0 0 10% 0;
+    font-size: 1.55em;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    margin: 3% 0 3% 0;
+    padding: 2%;
 }
 
 h3
 {
     font-size: 1.35em;
-    margin: 5% 0 2% 0;
+    margin: 2% 0 2% 0;
 }
 
 p
