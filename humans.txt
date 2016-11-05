@@ -2,17 +2,11 @@
 * Thank you *
 *************
 
-I'd like to thank all my friends who actually likes
-to have me around, because that's how mostly how
-human psychology work, right?
-
-Anyway, let this world inspire you, not sink you into
-an array of void pointers (void[]*).
+I'd like to thank all my friends who actually likes to have me around!
 
 "May the forces of evil become confused on the way to your house."
 - George Carlin
 
-Now yell loud and clear
    _______________
   /               \
   | vim vs. emacs |
@@ -21,3 +15,5 @@ Now yell loud and clear
   \o/
    |
   / \
+
+- D.D., Generic programmer
