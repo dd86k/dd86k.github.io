@@ -36,7 +36,7 @@ var Console = {
 
 var Project = {
     productName: "Windows 98 WebSim",
-    version: "0.3.4.2.2015"
+    version: "0.3.4.3.2016"
 };
 
 var indexWindow = 0;
@@ -104,19 +104,19 @@ function showMenu()
     if (startmenu.style.visibility == 'hidden')
     {
         startmenu.style.visibility = 'visible';
-        startbutton.src = 'win98/images/startmenu/on.png';
+        startbutton.src = 'images/startmenu/on.png';
     }
     else
     {
         startmenu.style.visibility = 'hidden';
-        startbutton.src = 'win98/images/startmenu/off.png';
+        startbutton.src = 'images/startmenu/off.png';
     }
 }
 
 function hideMenu()
 {
     startmenu.style.visibility = 'hidden';
-    startbutton.src = 'win98/images/startmenu/off.png';
+    startbutton.src = 'images/startmenu/off.png';
     //removeFocusAll();
 }
 
@@ -191,8 +191,12 @@ var WindowAPI = {
         var divtitle = document.createElement("div");
         divtitle.id = "title" + indexWindow;
         divtitle.className = "ntitle";
-        divtitle.addEventListener("mousedown", function () { WindowAPI.Drag.startMoving(divwindow, desktop, divwindow.event); });
-        divtitle.addEventListener("mouseup", function () { WindowAPI.Drag.stopMoving(divwindow); });
+        divtitle.addEventListener("mousedown", function (event) {
+            WindowAPI.Drag.startMoving(divwindow, desktop, event);
+        });
+        divtitle.addEventListener("mouseup", function () {
+            WindowAPI.Drag.stopMoving();
+        });
     
         //Titlebar icon
         var divtitleicon = document.createElement("img");
@@ -207,12 +211,12 @@ var WindowAPI = {
             //Close
             var divclose = document.createElement("img");
             divclose.className = "ctrlboxbutton";
-            divclose.src = "win98/images/window/close.png";
+            divclose.src = "images/window/close.png";
             //divclose.addEventListener("click", function () { WindowAPI.deleteWindow(divwindow); });
-            divclose.addEventListener("mousedown", function () { divclose.src = "win98/images/window/closep.png"; });
+            divclose.addEventListener("mousedown", function () { divclose.src = "images/window/closep.png"; });
             divclose.addEventListener("mouseup", function ()
             {
-                divclose.src = "win98/images/window/close.png";
+                divclose.src = "images/window/close.png";
                 WindowAPI.deleteWindow(divwindow);
             });
 
@@ -231,26 +235,26 @@ var WindowAPI = {
             //Minimize
             var divmin = document.createElement("img");
             divmin.className = "ctrlboxbuttonm";
-            divmin.src = "win98/images/window/min.png";
-            divmin.addEventListener("mousedown", function () { divmin.src = "win98/images/window/minp.png"; });
+            divmin.src = "images/window/min.png";
+            divmin.addEventListener("mousedown", function () { divmin.src = "images/window/minp.png"; });
             divmin.addEventListener("mouseup", function ()
             {
-                divmin.src = "win98/images/window/minp.png";
+                divmin.src = "images/window/minp.png";
                 WindowAPI.hideWindow(divwindow);
             });
 
             //Maximize
             var divmax = document.createElement("img");
             divmax.className = "ctrlboxbutton";
-            divmax.src = "win98/images/window/max.png";
+            divmax.src = "images/window/max.png";
             //divmax.addEventListener("mouseup", function () { WindowAPI.maximizeWindow(divwindow); });
 
             //Close
             var divclose = document.createElement("img");
             divclose.className = "ctrlboxbutton";
-            divclose.src = "win98/images/window/close.png";
+            divclose.src = "images/window/close.png";
             divclose.addEventListener("click", function () { WindowAPI.deleteWindow(divwindow); });
-            divclose.addEventListener("mousedown", function () { divclose.src = "win98/images/window/closep.png"; });
+            divclose.addEventListener("mousedown", function () { divclose.src = "images/window/closep.png"; });
 
             divtitle.appendChild(divtitleicon);
             divtitle.appendChild(divtitletext);
@@ -272,12 +276,12 @@ var WindowAPI = {
         switch (pType)
         {
             case "notepad":
-                divtitleicon.src = "win98/images/notepad/titleleft.png";
+                divtitleicon.src = "images/notepad/titleleft.png";
                 //divwindow.className = "window";
             
                 var divmenu = document.createElement("img");
                 divmenu.className = "notepadmenu";
-                divmenu.src = "win98/images/notepad/menu.png";
+                divmenu.src = "images/notepad/menu.png";
             
                 var divinput = document.createElement("textarea");
                 divinput.className = "notepadinput";
@@ -288,13 +292,13 @@ var WindowAPI = {
                 divwindowarea.appendChild(divinput);
                 break;
             case "cmd":
-                divtitleicon.src = "win98/images/cmd/titleleft.png";
+                divtitleicon.src = "images/cmd/titleleft.png";
                 divwindow.className = "window";
                 divwindow.style.width = pWidth + "px";
                 divwindow.style.height = pHeight + "px";
             
                 var divcmdmenu = document.createElement("img");
-                divcmdmenu.src = "win98/images/cmd/menu.png";
+                divcmdmenu.src = "images/cmd/menu.png";
                 divcmdmenu.style.marginTop = "2px";
             
                 var divcmd = document.createElement("div");
@@ -331,7 +335,7 @@ var WindowAPI = {
             
                 var divmsgicon = document.createElement("img");
                 divmsgicon.className = "msgboxIcon";
-                divmsgicon.src = "win98/images/msgbox/infoicon.png";
+                divmsgicon.src = "images/msgbox/infoicon.png";
             
                 var divbutton = WindowAPI.makeButton("OK", 0, 0);
                 divbutton.addEventListener("click", function () { WindowAPI.deleteWindow(divwindow); });
@@ -351,7 +355,7 @@ var WindowAPI = {
             
                 var divmsgicon = document.createElement("img");
                 divmsgicon.className = "msgboxIcon";
-                divmsgicon.src = "win98/images/msgbox/warningicon.png";
+                divmsgicon.src = "images/msgbox/warningicon.png";
             
                 var divbutton = WindowAPI.makeButton("OK", 0, 0);
                 divbutton.addEventListener("click", function () { WindowAPI.deleteWindow(divwindow); });
@@ -371,7 +375,7 @@ var WindowAPI = {
             
                 var divmsgicon = document.createElement("img");
                 divmsgicon.className = "msgboxIcon";
-                divmsgicon.src = "win98/images/msgbox/erroricon.png";
+                divmsgicon.src = "images/msgbox/erroricon.png";
             
                 var divbutton = WindowAPI.makeButton("OK", 0, 0);
                 divbutton.addEventListener("click", function () { WindowAPI.deleteWindow(divwindow); });
@@ -452,7 +456,7 @@ var WindowAPI = {
                 divwindowarea.appendChild(btnSpinForever);
                 break;
             default:
-                divtitleicon.src = "win98/images/window/titleleft.png";
+                divtitleicon.src = "images/window/titleleft.png";
                 break;
         }
 
@@ -582,9 +586,8 @@ var WindowAPI = {
             divid.style.left = xpos + 'px';
             divid.style.top = ypos + 'px';
         },
-        startMoving: function (divid, container, evt)
+        startMoving: function (divid, container, e)
         {
-            var e = evt || window.event;
             var posX = e.clientX,
                 posY = e.clientY,
                 divTop = divid.style.top,
@@ -597,11 +600,10 @@ var WindowAPI = {
             divLeft = divLeft.replace('px', '');
             var diffX = posX - divLeft,
                 diffY = posY - divTop;
-            document.onmousemove = function (ef)
+            document.onmousemove = function (me)
             {
-                ef = evt || window.event;
-                var posX = ef.clientX,
-                    posY = ef.clientY,
+                var posX = me.clientX,
+                    posY = me.clientY,
                     aX = posX - diffX,
                     aY = posY - diffY;
                 if (aX < 0) aX = 0;
@@ -611,7 +613,7 @@ var WindowAPI = {
                 WindowAPI.Drag.move(divid, aX, aY);
             };
         },
-        stopMoving: function (container)
+        stopMoving: function ()
         {
             document.onmousemove = function () { };
         }
@@ -911,7 +913,6 @@ var trapfunction = function(event)
                 document.getElementById("input").innerHTML += String.fromCharCode(key).toLowerCase();
                 return false;
             }
-            break;
     }
 
     return true;

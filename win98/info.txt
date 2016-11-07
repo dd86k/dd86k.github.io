@@ -36,6 +36,9 @@ There is more of them but I'm too lazy to list them all.
 * * Fix       *
 ***************
 
+0.3.4.3.2016
+Firefox window dragging works.
+
 0.3.4.2.2015
 > Testing stuff, also, that killAllWindows still only removes half of the windows
 

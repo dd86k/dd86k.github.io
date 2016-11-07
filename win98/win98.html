@@ -1,16 +1,15 @@
 ﻿<!DOCTYPE html>
 <!-- Copyrights DD~! (c) 2015 -->
 <!-- Copyrights Microsoft Corp. (c) 1981-1998 (Windows 98) -->
-<!-- Am I doing the copyright thing right? Hello? -->
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Windows 98 Web Environment">
-    <meta name="keywords" content="Windows 98">
+    <meta name="description" content="Windows 98 Web Simulator">
+    <meta name="keywords" content="Windows 98,win98,simulator">
     <meta name="author" content="DD~!">
     <title>Windows 98</title>
-    <link href="win98/styles/win98.min.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="win98/favicon.png" />
+    <link href="styles/win98.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="favicon.png" />
 </head>
 
 <body>
@@ -41,57 +40,60 @@
     <footer>
         <div id="startmenu" style="visibility: hidden;">
             <a href="#" onclick="WindowAPI.createWindow('About',0,0,350,258,'aboutdialog');">
-                <img src="win98/images/startmenu/item11.png"/>
+                <img src="images/startmenu/item11.png"/>
                 <span>About</span>
             </a>
-            <a href="win98/info.txt" target="_blank">
-                <img src="win98/images/startmenu/item10.png"/>
+            <a href="info.txt" target="_blank">
+                <img src="images/startmenu/item10.png"/>
                 <span>Information</span>
             </a>
             <div class="seperator"></div>
             <a href="#" class="StartMenuFolder">
-                <img src="win98/images/startmenu/item09.png"/>
+                <img src="images/startmenu/item09.png"/>
                 <span>Programs</span>
             </a>
             <a href="#" class="StartMenuFolder">
-                <img src="win98/images/startmenu/item08.png"/>
+                <img src="images/startmenu/item08.png"/>
                 <span>Favorites</span>
             </a>
             <a href="#" class="StartMenuFolder">
-                <img src="win98/images/startmenu/item07.png"/>
+                <img src="images/startmenu/item07.png"/>
                 <span>Documents</span>
             </a>
             <a href="#" class="StartMenuFolder">
-                <img src="win98/images/startmenu/item06.png"/>
+                <img src="images/startmenu/item06.png"/>
                 <span>Settings</span>
             </a>
             <a href="#" class="StartMenuFolder">
-                <img src="win98/images/startmenu/item05.png"/>
+                <img src="images/startmenu/item05.png"/>
                 <span>Find</span>
             </a>
             <a href="#">
-                <img src="win98/images/startmenu/item04.png"/>
+                <img src="images/startmenu/item04.png"/>
                 <span>Help</span>
             </a>
             <a href="#">
-                <img src="win98/images/startmenu/item03.png"/>
+                <img src="images/startmenu/item03.png"/>
                 <span>Run...</span>
             </a>
             <div class="seperator"></div>
             <a href="#">
-                <img src="win98/images/startmenu/item02.png"/>
+                <img src="images/startmenu/item02.png"/>
                 <span>Log Off...</span>
             </a>
             <a href="../index.html">
-                <img src="win98/images/startmenu/item01.png"/>
+                <img src="images/startmenu/item01.png"/>
                 <span>Shut Down...</span>
             </a>
         </div>
-        <img id="startbutton" src="win98/images/startmenu/off.png" alt="Start" title="Click here to start."/>
+        <img id="startbutton" src="images/startmenu/off.png" alt="Start" title="Click here to start."/>
         <div class="taskbarbuttonsep"></div>
         <span id="time">#ERROR</span>
     </footer>
 
-    <script src="win98/scripts/win98.js"></script>
+    <script src="scripts/win98.min.js"></script>
+    <!-- Will seprate scripts later on.
+    <script src="scripts/win98-con.js"></script>
+    -->
 </body>
 </html>
