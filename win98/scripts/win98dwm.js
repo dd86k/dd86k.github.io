@@ -50,7 +50,7 @@ function form(title) {
         // Text
         var divtitletext = document.createElement("span");
         divtitletext.innerText = title;
-        divtitletext.style.fontWeight = "bolder";
+        divtitletext.style.fontWeight = "bold";
 
         // Minimize
         var divmin = document.createElement("img");

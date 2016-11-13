@@ -12,12 +12,12 @@ TODO List:
 @font-face
 {
     font-family: 'fft';
-    src: url('fonts/DejaVuSansMono.ttf');
+    src: url('../fonts/Igiari.woff');
 }
 
 body
 {
-    font-family: monospace, 'fft', 'Consolas', 'Segoe UI';
+    font-family: 'fft', monospace;
     margin: 0;
     padding: 0;
     background-color: #008080;
@@ -62,8 +62,8 @@ img
     position: fixed;
     bottom: 20px;
     right: 5px;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 1.2em;
+    /*font-weight: bold;*/
     z-index: -1;
 }
 
