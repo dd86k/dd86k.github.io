@@ -1,3 +1,5 @@
+Note : I plan to move the project to a separate Github repo.
+
 *******************************************************
 *                      Buglist                        *
 *                                                     *
