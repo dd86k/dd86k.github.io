@@ -188,7 +188,7 @@ var WindowManager = {
                 break;
         }
     
-        var divbutton = WindowManager.makeButton("OK", 0, 0);
+        var divbutton = WindowManager.makeButton("OK");
         divbutton.addEventListener("click", function () {
             WindowManager.deleteWindow(f.divObject);
         });
@@ -254,18 +254,18 @@ document, or Internet resource, and Windows will open it for you.";
                 buttons.style.textAlign = "right";
                 buttons.style.margin = "8px 0 14px 0px";
 
-                var okbut = WindowManager.makeButton("OK",0,0);
+                var okbut = WindowManager.makeButton("OK");
                 okbut.style.marginRight = "6px";
                 okbut.addEventListener("click", function() {
                     f.close();
                     Shell.run(input.value);
                 });
-                var canbut = WindowManager.makeButton("Cancel",0,0);
+                var canbut = WindowManager.makeButton("Cancel");
                 canbut.style.marginRight = "6px";
                 canbut.addEventListener("click", function() {
                     f.close();
                 });
-                var brobut = WindowManager.makeButton("Browse...",0,0);
+                var brobut = WindowManager.makeButton("Browse...");
 
                 body.appendChild(img);
                 body.appendChild(desc);
@@ -315,28 +315,46 @@ document, or Internet resource, and Windows will open it for you.";
                 f.addNode(divcmd);
                 break;
             case "test":
-                var testbutton = WindowManager.makeButton("Test me!", 0, 0);
-                testbutton.style.marginTop = "10px";
-                
-                var radcon0 = document.createElement("div");
-                var radtext0 = document.createTextNode("Rad0");
-                var rad0 = document.createElement("input");
-                rad0.type = "radio";
-                rad0.name = "test";
-                radcon0.appendChild(rad0);
-                radcon0.appendChild(radtext0);
-                
-                var radcon1 = document.createElement("div");
-                var radtext1 = document.createTextNode("Rad1");
-                var rad1 = document.createElement("input");
-                rad1.type = "radio";
-                rad1.name = "test";
-                radcon1.appendChild(rad1);
-                radcon1.appendChild(radtext1);
-                
-                f.addNode(radcon0);
-                f.addNode(radcon1);
-                f.addNode(testbutton);
+                var tbut = WindowManager.makeButton("Button");
+                var tc = WindowManager.makeButton("Button");
+                tc.onclick = function () {
+                    f.close();
+                };
+
+                var ff = document.createElement("form");
+
+                var r0 = document.createElement("input");
+                r0.type = "radio";
+                r0.name = "rtest";
+                var rt0 = document.createElement("label");
+                rt0.innerText = "Radio 0";
+                var r1 = document.createElement("input");
+                r1.type = "radio";
+                r1.name = "rtest";
+                var rt1 = document.createElement("label");
+                rt1.innerText = "Radio 1";
+
+                var cb0 = document.createElement("input");
+                cb0.type = "checkbox";
+                var cbt0 = document.createElement("label");
+                cbt0.innerText = "Checkbox 0";
+
+                var cb1 = document.createElement("input");
+                cb1.type = "checkbox";
+                var cbt1 = document.createElement("label");
+                cbt1.innerText = "Checkbox 1";
+
+                ff.appendChild(r0);
+                ff.appendChild(rt0);
+                ff.appendChild(r1);
+                ff.appendChild(rt1);
+                ff.appendChild(cb0);
+                ff.appendChild(cbt0);
+                ff.appendChild(cb1);
+                ff.appendChild(cbt1);
+                f.addNode(ff);
+                f.addNode(tbut);
+                f.addNode(tc);
                 break;
             case "aboutdialog":
                 f.divObject.style.width = "400px";
@@ -359,10 +377,10 @@ monitize it." + dnl +
                 bottomlayout.style.width = "100%";
                 bottomlayout.style.textAlign = "center";
                 
-                var btnOK = WindowManager.makeButton("Close", 0, 0);
+                var btnOK = WindowManager.makeButton("Close");
                 btnOK.onclick = function() { f.close(); };
                 
-                var btnSpin = WindowManager.makeButton("Spin!", 0, 0);
+                var btnSpin = WindowManager.makeButton("Spin!");
                 btnSpin.onclick = function()
                 { 
                     f.divObject.style.animation = "spin 1s";
@@ -374,7 +392,7 @@ monitize it." + dnl +
                     }, 1000);
                 };
                 
-                var btnSpinForever = WindowManager.makeButton("Spin for ever!", 125, 0);
+                var btnSpinForever = WindowManager.makeButton("Spin for ever!");
                 btnSpinForever.onclick = function()
                 { 
                     f.divObject.style.animation = "spin 2s infinite linear";
@@ -413,31 +431,18 @@ monitize it." + dnl +
         taskbar.appendChild();
     },
     */
-    hasIcon: function(type)
-    {
-        switch (type)
-        {
-            case "shutdown":
-            case "error":
-            case "warning":
-            case "info":
-            case "aboutdialog":
-            case "test":
-                return false;
-            default: //Use default icon
-                return true;
-        }
-    },
 
-    makeButton: function(text, width, height)
-    {
-        width = width <= 0 ? 70 : width;
-        height = height <= 0 ? 22 : height;
-    
+    makeButton: function(text, width, height) {
+        // 70x22
+        //TODO: Define better makeButton size rules.
+
         var divbutton = document.createElement("div");
         divbutton.className = "button";
-        divbutton.style.width = width + "px";
-        divbutton.style.height = height + "px";
+        divbutton.style.padding = "3px";
+        if (width != undefined)
+            divbutton.style.width = (width == 0 ? 72 : width) + "px";
+        if (height != undefined)
+            divbutton.style.height = (height == 0 ? 22 : height) + "px";
         divbutton.onmousedown = function () {
             divbutton.className = "buttondown";
         };
@@ -446,22 +451,16 @@ monitize it." + dnl +
         };
     
         var divtext = document.createElement("div");
-        divtext.style.marginTop = "3px";
-        divtext.style.marginLeft = "3px";
         divtext.style.textAlign = "center";
-        divtext.style.width = width - 8 + "px";
         divtext.style.border = "1px dotted black";
-
-        var text = document.createTextNode(text);
-    
-        divtext.appendChild(text);
+        divtext.innerText = text;
+        
         divbutton.appendChild(divtext);
     
         return divbutton;
     },
 
-    deleteWindow: function(div)
-    {
+    deleteWindow: function(div) {
         div.remove();
     },
 

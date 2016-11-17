@@ -1,43 +1,5 @@
 Note : I plan to move the project to a separate Github repo.
 
-*******************************************************
-*                      Buglist                        *
-*                                                     *
-* An actual list of bugs, and not incomplete features *
-*******************************************************
-> No more than one prompt can work.
-Working on it. (Later, lazy)
-
-> Clicking on the desktop doesn't put the last window out of focus.
-I tried that and it bugged out, so I left it as it is, for now.
-
-> "Kill all" works half-way, for a weird reason.
-
-> Sounds aren't working!
-W-what. They were working locally. wth
-
-> "Kill all" doesn't work!
-
-
-There is more of them but I'm too lazy to list them all.
-
-***************
-* Ideas/TODOs *
-***************
-- Group all of the functions in a module called System (e.g. System.WindowAPI, etc.)
-- Optmize code depending on userstring (don't forget default!)
-
-***************
-*  Changelog  *
-*             *
-*   Legend:   *
-* ! Notice    *
-* > Note      *
-* + Addition  *
-* - Removal   *
-* * Fix       *
-***************
-
 0.3.4.3.2016
 Firefox window dragging works.
 
