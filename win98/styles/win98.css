@@ -21,10 +21,10 @@ body
     margin: 0;
     padding: 0;
     background-color: #008080;
-    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: default;
 }
 
 #devmenu
@@ -72,12 +72,12 @@ img
 
 .atitlebar
 {
-    background: linear-gradient(to right, #000080, #1084D0);
+    background: linear-gradient(to right, #00007B, #0884CE);
 }
 
 .ititlebar
 {
-    background: linear-gradient(to right, #808080, #B5B5B5);
+    background: linear-gradient(to right, #7B7B7B, #ADADAD);
 }
 
 .atitlebar, .ititlebar
@@ -145,7 +145,7 @@ img
 
 /* Form controls */
 
-.menubar /* Container */
+.menubar
 {
     width: 100%;
 }
@@ -402,12 +402,6 @@ span#time
 /* Specials/Animations */
 
 @keyframes spin
-{
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-}
-
-@-webkit-keyframes spin
 {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}

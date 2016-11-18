@@ -12,7 +12,7 @@
 - Minimize
 - Start menu new design (HTML) for submenus:
 <div class="smi">
-<img/><span>Test</span>
+  <img/><span>Test</span>
   <div class="smsm">
     <div class="smsi">
       <img/><span>Test</span>
@@ -75,7 +75,7 @@ function updateTime() {
 
 setInterval(updateTime, 10000);
 
-/**
+/*
  * A program.
  */
 
@@ -149,4 +149,12 @@ var Shell = {
         }
         else WindowManager.showError("Shell", "Empty command");
     }
+}
+
+/**
+ * Registry.
+ */
+
+var Registry = {
+
 }

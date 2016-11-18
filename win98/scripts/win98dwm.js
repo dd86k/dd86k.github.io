@@ -10,8 +10,6 @@
  * @param {string} title Title.
  */
 function form(title) {
-    var windowid = indexWindow;
-
     // Form frame
     var obj = this.divObject = // Reference
         document.createElement("div");
@@ -56,10 +54,10 @@ function form(title) {
     var divmin = document.createElement("img");
     divmin.className = "ctrlboxbuttonm";
     divmin.src = "images/window/min.png";
-    divmin.onmousedown = function () {
+    /*divmin.onmousedown = function () {
         divmin.src = "images/window/minp.png";
     };
-    /*divmin.onmouseup = function () {
+    divmin.onmouseup = function () {
         divmin.src = "images/window/minp.png";
         WindowManager.hideWindow(obj);
     };*/
@@ -68,7 +66,7 @@ function form(title) {
     var divmax = document.createElement("img");
     divmax.className = "ctrlboxbutton";
     divmax.src = "images/window/max.png";
-    /*divmax.onmouseup = function () {
+    /*divmax.onclick = function () {
         WindowAPI.maximizeWindow(divwindow);
     };*/
 
@@ -98,7 +96,7 @@ function form(title) {
 }
 
 form.prototype = {
-    divObject: null, // Maybe rename to "window"?
+    divObject: null,
 
     /*setTitle: function (title) {
         this.divObject.childNodes[0].childNodes[ 0 or 1 ..
@@ -143,7 +141,7 @@ form.prototype = {
     }
 }
 
-var indexWindow = 0, WindowzIndex = 0, currentFocusWindow = 0;
+var WindowzIndex = 0, activeDiv = null;
 
 /**
  * Window Manager.
@@ -222,8 +220,7 @@ var WindowManager = {
 
         f.setLocation(x, y);
         
-        switch (type)
-        {
+        switch (type) {
             case "rundialog":
                 f.removeIcon();
 
@@ -418,7 +415,6 @@ monitize it." + dnl +
         desktop.appendChild(form.divObject);
         WindowManager.giveFocus(form.divObject);
         StartMenu.hide();
-        ++indexWindow;
     },
     /*
     addTaskbarButton: function(form)
@@ -428,11 +424,7 @@ monitize it." + dnl +
         taskbar.appendChild();
     },
     */
-
     makeButton: function(text, width, height) {
-        // 70x22
-        //TODO: Define better makeButton size rules.
-
         var divbutton = document.createElement("div");
         divbutton.className = "button";
         divbutton.style.width =
@@ -461,14 +453,17 @@ monitize it." + dnl +
     },
 
     giveFocus: function(div) {
-        WindowManager.removeFocusAll();
-        div.style.zIndex = WindowzIndex++;
-
+        if (activeDiv != null)
+            activeDiv.childNodes[0].className = "ititlebar";
+        activeDiv = div;
         div.childNodes[0].className = "atitlebar";
-
-        currentFocusWindow = div;
+        div.style.zIndex = WindowzIndex++;
     },
 
+    removeFocusLast: function() {
+        if (activeDiv != null)
+            activeDiv.childNodes[0].className = "ititlebar";
+    },
     removeFocusAll: function() {
         var classes = document.getElementsByClassName("atitlebar");
         for (var i = 0; i < classes.length; ++i) {
@@ -482,14 +477,6 @@ monitize it." + dnl +
             ws[i].remove();
         }
     },
-
-    hasWindowFocus: function(div) {
-        return currentFocusWindow == div;
-    },
-
-    /*unfocusLast: function() {
-
-    },*/
 
     // Mofified function from niente00, StackOverflow
     Drag: {
