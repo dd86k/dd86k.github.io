@@ -1,19 +1,38 @@
 "use strict";
 
 /**
- * win98.js, OS, Start menu.
+ * win98.js, Operating System.
  * @author guitarxhero
  */
 
 /* TODOs:
-- Start menu "class"
+- Run textbox auto focus
 - Taskbar buttons
 - Taskbar focus
-- minimize
+- Minimize
+- Start menu new design (HTML) for submenus:
+<div class="smi">
+<img/><span>Test</span>
+  <div class="smsm">
+    <div class="smsi">
+      <img/><span>Test</span>
+    </div>
+  </div>
+</div>
 - win98wsh.js (Windows Scripting Host)
-- IE4 or IE5 (SE)
+- IE4 (iexplore)
 */
 
+/* Bugs:
+- Warning, Run, and Error right bounce
+  - min-width is playing with this, a fixed and specified width fixes this
+    issue.
+- Input buttons styles not working.
+*/
+
+/**
+ * Project properties.
+ */
 var Project = {
     productName: "Windows 98 WebSim",
     version: "0.4.0-dev"
@@ -25,7 +44,7 @@ function start() {
     updateTime();
 }
 
-setInterval(updateTime, 10000);
+onload = start;
 
 /*
  * Time.
@@ -54,39 +73,15 @@ function updateTime() {
     time.innerHTML = hours + ":" + minutes + " " + t;
 }
 
+setInterval(updateTime, 10000);
+
 /**
- * Start menu
+ * A program.
  */
 
-var StartMenu = {
-    show: function () {
-        //TODO: Remove last focus instead
-        WindowManager.removeFocusAll();
-        if (startmenu.style.visibility == 'hidden') {
-            startmenu.style.visibility = 'visible';
-            startbutton.src = 'images/startmenu/on.png';
-        } else {
-            startmenu.style.visibility = 'hidden';
-            startbutton.src = 'images/startmenu/off.png';
-        }
-    },
 
-    hide: function () {
-        startmenu.style.visibility = 'hidden';
-        startbutton.src = 'images/startmenu/off.png';
-        //removeFocusAll();
-    }
-}
 
-/*
- * Events.
- */
-
-startbutton.onmousedown = StartMenu.show;
-desktop.onmousedown = StartMenu.hide;
-onload = start;
-
-/*
+/**
  * Utilities.
  */
 
@@ -124,7 +119,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
 var Shell = {
     /**
      * Run a file.
-     * @param {string} path The fake-path to the file.
+     * @param {string} path The virtual path to the file.
      * @returns {boolean} True if found.
      */
     run: function(command) {

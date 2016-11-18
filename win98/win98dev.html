@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Shell bomb proof. -->
+<!-- Shell bomb proof! -->
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
 <body>
     <div id="desktop" style="cursor: default;">
         <div id="devmenu">
-            MsgBox: 
+            MsgBox:
             <span onclick="WindowManager.showInfo('Info test','I like tacos')">info</span>
             <span onclick="WindowManager.showWarning('Warning test','Oh hi. Since you\'re here, you might as well check the information file.')">warning</span>
             <span onclick="WindowManager.showError('Error test','Something went wrong!')">error</span>
@@ -21,8 +21,9 @@
             <span onclick="WindowManager.showInfo(prompt('Title:'),prompt('Message:'))">custom info</span>
             <span onclick="WindowManager.showWarning(prompt('Title:'),prompt('Message:'))">custom warning</span>
             <span onclick="WindowManager.showError(prompt('Title:'),prompt('Message:'))">custom error</span>
-            <br /><br />
-            Tests: <span onclick="WindowManager.createWindow('Tests',50,50,'test')">Control test</span>
+            <br/><br/>
+            Tests:
+            <span onclick="WindowManager.createWindow('Tests',50,50,'test')">Control test</span>
             <span onclick="WindowManager.killAllWindows()">Close all</span>
         </div>
     </div>
@@ -86,8 +87,6 @@
 
     <script src="scripts/win98.js"></script>
     <script src="scripts/win98dwm.js"></script>
-    <!--
-    <script src="scripts/win98con.js"></script>
-    -->
+    <!--<script src="scripts/win98con.js"></script>-->
 </body>
 </html>

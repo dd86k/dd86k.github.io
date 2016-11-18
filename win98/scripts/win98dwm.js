@@ -10,91 +10,91 @@
  * @param {string} title Title.
  */
 function form(title) {
-        var windowid = indexWindow;
+    var windowid = indexWindow;
 
-        // Form frame
-        var obj = this.divObject = // Reference
-            document.createElement("div");
+    // Form frame
+    var obj = this.divObject = // Reference
+        document.createElement("div");
 
-        //divwindow.id = "form" + windowid;
-        obj.className = "window";
-        obj.style.position = "absolute";
-        obj.style.visibility = "visible";
-        obj.style.left = "100px";
-        obj.style.top = "100px";
-        obj.style.minWidth = "150px";
-        obj.style.minHeight = "50px";
-        obj.style.zIndex = WindowzIndex++;
-        obj.addEventListener("mousedown", function () {
-            WindowManager.giveFocus(obj);
-        });
-    
-        // Titlebar
-        var divtitle = document.createElement("div");
-        //divtitle.id = "title" + indexWindow;
-        divtitle.className = "title";
-        divtitle.onmousedown = function (event) {
-            WindowManager.Drag.startMoving(obj, desktop, event);
-        };
-        divtitle.onmouseup = function () {
-            WindowManager.Drag.stopMoving();
-        };
-    
-        // Titlebar icon
-        var divtitleicon = document.createElement("img");
-        divtitleicon.src = "images/window/titleleft.png";
+    //divwindow.id = "form" + windowid;
+    obj.className = "window";
+    obj.style.position = "absolute";
+    obj.style.visibility = "visible";
+    obj.style.left = "100px";
+    obj.style.top = "100px";
+    obj.style.minWidth = "150px";
+    obj.style.minHeight = "50px";
+    obj.style.zIndex = WindowzIndex++;
+    obj.addEventListener("mousedown", function () {
+        WindowManager.giveFocus(obj);
+    });
 
-        // Icon
-        divtitleicon.className = "windowicon";
+    // Titlebar
+    var divtitle = document.createElement("div");
+    //divtitle.id = "title" + indexWindow;
+    divtitle.className = "atitlebar";
+    divtitle.onmousedown = function (event) {
+        WindowManager.Drag.startMoving(obj, desktop, event);
+    };
+    divtitle.onmouseup = function () {
+        WindowManager.Drag.stopMoving();
+    };
 
-        // Text
-        var divtitletext = document.createElement("span");
-        divtitletext.innerText = title;
-        divtitletext.style.fontWeight = "bold";
+    // Titlebar icon
+    var divtitleicon = document.createElement("img");
+    divtitleicon.src = "images/window/titleleft.png";
 
-        // Minimize
-        var divmin = document.createElement("img");
-        divmin.className = "ctrlboxbuttonm";
-        divmin.src = "images/window/min.png";
-        divmin.onmousedown = function () {
-            divmin.src = "images/window/minp.png";
-        };
-        /*divmin.onmouseup = function () {
-            divmin.src = "images/window/minp.png";
-            WindowManager.hideWindow(obj);
-        };*/
+    // Icon
+    divtitleicon.className = "windowicon";
 
-        // Maximize
-        var divmax = document.createElement("img");
-        divmax.className = "ctrlboxbutton";
-        divmax.src = "images/window/max.png";
-        /*divmax.onmouseup = function () {
-            WindowAPI.maximizeWindow(divwindow);
-        };*/
+    // Text
+    var divtitletext = document.createElement("span");
+    divtitletext.innerText = title;
+    divtitletext.style.fontWeight = "bold";
 
-        // Close
-        var divclose = document.createElement("img");
-        divclose.className = "ctrlboxbutton";
-        divclose.src = "images/window/close.png";
-        divclose.onclick = function () {
-            WindowManager.deleteWindow(obj);
-        };
-        divclose.onmousedown = function () {
-            divclose.src = "images/window/closep.png";
-        };
+    // Minimize
+    var divmin = document.createElement("img");
+    divmin.className = "ctrlboxbuttonm";
+    divmin.src = "images/window/min.png";
+    divmin.onmousedown = function () {
+        divmin.src = "images/window/minp.png";
+    };
+    /*divmin.onmouseup = function () {
+        divmin.src = "images/window/minp.png";
+        WindowManager.hideWindow(obj);
+    };*/
 
-        divtitle.appendChild(divtitleicon);
-        divtitle.appendChild(divtitletext);
-        divtitle.appendChild(divclose);
-        divtitle.appendChild(divmax);
-        divtitle.appendChild(divmin);
+    // Maximize
+    var divmax = document.createElement("img");
+    divmax.className = "ctrlboxbutton";
+    divmax.src = "images/window/max.png";
+    /*divmax.onmouseup = function () {
+        WindowAPI.maximizeWindow(divwindow);
+    };*/
 
-        obj.appendChild(divtitle);
-    
-        // Form client area
-        var divwindowarea = document.createElement("div");
-        divwindowarea.className = "windowarea";
-        obj.appendChild(divwindowarea);
+    // Close
+    var divclose = document.createElement("img");
+    divclose.className = "ctrlboxbutton";
+    divclose.src = "images/window/close.png";
+    divclose.onclick = function () {
+        WindowManager.deleteWindow(obj);
+    };
+    divclose.onmousedown = function () {
+        divclose.src = "images/window/closep.png";
+    };
+
+    divtitle.appendChild(divtitleicon);
+    divtitle.appendChild(divtitletext);
+    divtitle.appendChild(divclose);
+    divtitle.appendChild(divmax);
+    divtitle.appendChild(divmin);
+
+    obj.appendChild(divtitle);
+
+    // Form client area
+    var divwindowarea = document.createElement("div");
+    divwindowarea.className = "windowarea";
+    obj.appendChild(divwindowarea);
 }
 
 form.prototype = {
@@ -108,10 +108,21 @@ form.prototype = {
         this.divObject.style.width = w + "px";
         this.divObject.style.height = h + "px";
     },
+    
+    setWidth: function (w) {
+        this.divObject.style.width = w + "px";
+    },
+    
+    setHeight: function (h) {
+        this.divObject.style.height = h + "px";
+    },
 
     setIcon: function (path) {
         //TODO: Checking for tag first.
         this.divObject.childNodes[0].childNodes[0].src = path;
+    },
+    hideIcon: function () {
+        this.divObject.childNodes[0].childNodes[0].style.display = "none";
     },
     removeIcon: function () {
         this.divObject.childNodes[0].childNodes[0].remove();
@@ -123,7 +134,7 @@ form.prototype = {
     },
 
     addNode: function (node) {
-        // After titlebar
+        // Main window area.
         this.divObject.childNodes[1].appendChild(node);
     },
 
@@ -132,32 +143,32 @@ form.prototype = {
     }
 }
 
-/*
+var indexWindow = 0, WindowzIndex = 0, currentFocusWindow = 0;
+
+/**
  * Window Manager.
  */
-
-var indexWindow = 0, WindowzIndex = 0, currentFocusWindow = 0;
 
 var WindowManager = {
     showInfo: function(title, msg) {
         var f = new form(title);
         f.removeIcon();
-        this.makeMsgBox(f, msg, 0);
-        this.addFormToDesktop(f);
+        WindowManager.makeMsgBox(f, msg, 0);
+        WindowManager.addFormToDesktop(f);
     },
 
     showWarning: function(title, msg) {
         var f = new form(title);
         f.removeIcon();
-        this.makeMsgBox(f, msg, 1);
-        this.addFormToDesktop(f);
+        WindowManager.makeMsgBox(f, msg, 1);
+        WindowManager.addFormToDesktop(f);
     },
 
     showError: function(title, msg) {
         var f = new form(title);
         f.removeIcon();
-        this.makeMsgBox(f, msg, 2);
-        this.addFormToDesktop(f);
+        WindowManager.makeMsgBox(f, msg, 2);
+        WindowManager.addFormToDesktop(f);
     },
 
     /**
@@ -187,22 +198,22 @@ var WindowManager = {
                 divmsgicon.src = "images/msgbox/erroricon.png";
                 break;
         }
-    
+
         var divbutton = WindowManager.makeButton("OK");
         divbutton.addEventListener("click", function () {
             WindowManager.deleteWindow(f.divObject);
         });
 
-        var divbuttoncontainer = document.createElement("div");
-        divbuttoncontainer.style.margin = "12px 0 8px 0";
-        divbuttoncontainer.style.width = "100%";
-        divbuttoncontainer.style.textAlign = "center";
+        var divcont = document.createElement("div");
+        divcont.style.margin = "12px 0 8px 0";
+        divcont.style.width = "100%";
+        divcont.style.textAlign = "center";
 
-        divbuttoncontainer.appendChild(divbutton);
+        divcont.appendChild(divbutton);
 
         f.addNode(divmsgicon);
         f.addNode(divmsg);
-        f.addNode(divbuttoncontainer);
+        f.addNode(divcont);
     },
 
     // For compability.
@@ -316,7 +327,9 @@ document, or Internet resource, and Windows will open it for you.";
                 break;
             case "test":
                 var tbut = WindowManager.makeButton("Button");
-                var tc = WindowManager.makeButton("Button");
+                tbut.style.marginRight = "6px";
+
+                var tc = WindowManager.makeButton("Close");
                 tc.onclick = function () {
                     f.close();
                 };
@@ -357,7 +370,7 @@ document, or Internet resource, and Windows will open it for you.";
                 f.addNode(tc);
                 break;
             case "aboutdialog":
-                f.divObject.style.width = "400px";
+                f.setWidth(400);
             
                 var dnl = "<br/><br/>";
 
@@ -381,40 +394,24 @@ monitize it." + dnl +
                 btnOK.onclick = function() { f.close(); };
                 
                 var btnSpin = WindowManager.makeButton("Spin!");
-                btnSpin.onclick = function()
-                { 
+                btnSpin.onclick = function() {
                     f.divObject.style.animation = "spin 1s";
-                    f.divObject.style.WebkitAnimation = "spin 1s";
-                    setTimeout(function()
-                    {
+                    setTimeout(function() {
                         f.divObject.style.animation = "";
-                        f.divObject.style.WebkitAnimation = "";
                     }, 1000);
                 };
                 
-                var btnSpinForever = WindowManager.makeButton("Spin for ever!");
-                btnSpinForever.onclick = function()
-                { 
-                    f.divObject.style.animation = "spin 2s infinite linear";
-                    f.divObject.style.WebkitAnimation = "spin 2s infinite linear";
-                };
-                
-                btnOK.style.marginLeft = 
-                    btnSpin.style.marginLeft = 
-                    btnSpinForever.style.marginLeft = "18px";
-                
-                bottomlayout.appendChild(btnOK);
                 bottomlayout.appendChild(btnSpin);
-                bottomlayout.appendChild(btnSpinForever);
+                bottomlayout.appendChild(btnOK);
                 f.addNode(lblAbout);
                 f.addNode(bottomlayout);
                 break;
-            default:
-                break;
+            default: break;
         }
 
-        this.addFormToDesktop(f);
+        WindowManager.addFormToDesktop(f);
     },
+
     addFormToDesktop: function(form) {
         // Taskbar button .. In Form ctor instead?
         //WindowAPI.addTaskbar();
@@ -438,11 +435,10 @@ monitize it." + dnl +
 
         var divbutton = document.createElement("div");
         divbutton.className = "button";
-        divbutton.style.padding = "3px";
-        if (width != undefined)
-            divbutton.style.width = (width == 0 ? 72 : width) + "px";
-        if (height != undefined)
-            divbutton.style.height = (height == 0 ? 22 : height) + "px";
+        divbutton.style.width =
+            (width === undefined ? 72 : width < 72 ? 72 : width) + "px";
+        //divbutton.style.height =
+            //(height === undefined ? 22 : height < 22 ? 22 : height) + "px";
         divbutton.onmousedown = function () {
             divbutton.className = "buttondown";
         };
@@ -464,65 +460,51 @@ monitize it." + dnl +
         div.remove();
     },
 
-    showWindow: function(div)
-    {
-        div.style.visibility = "visible";
-    
-        StartMenu.hide();
-    },
+    giveFocus: function(div) {
+        WindowManager.removeFocusAll();
+        div.style.zIndex = WindowzIndex++;
 
-    hideWindow: function(id)
-    {
-        id.style.visibility = "hidden";
-    
-        StartMenu.hide();
-    },
+        div.childNodes[0].className = "atitlebar";
 
-    giveFocus: function(div)
-    {
-        this.removeFocusAll();
-        div.style.zIndex = WindowzIndex;
-
-        div.childNodes[0].className = "title";
-
-        WindowzIndex++;
         currentFocusWindow = div;
     },
 
-    removeFocusAll: function()
-    {
-        var classes = document.getElementsByClassName("title");
-        for (var i = 0; i < classes.length; i++)
-        {
-            classes[i].className = "ntitle";
+    removeFocusAll: function() {
+        var classes = document.getElementsByClassName("atitlebar");
+        for (var i = 0; i < classes.length; ++i) {
+            classes[i].className = "ititlebar";
         }
     },
     
-    killAllWindows: function()
-    {
-        var windows = document.getElementsByClassName("window");
-        for(var i = 0; i < windows.length; i++)
-        {
-            windows[i].remove();
+    killAllWindows: function() {
+        var ws = document.getElementsByClassName("window");
+        for(var i = 0; i < ws.length; ++i) {
+            ws[i].remove();
         }
     },
 
-    hasWindowFocus: function(div)
-    {
+    hasWindowFocus: function(div) {
         return currentFocusWindow == div;
     },
 
+    /*unfocusLast: function() {
+
+    },*/
+
     // Mofified function from niente00, StackOverflow
-    Drag:
-    {
-        move: function (divid, x, y)
-        {
+    Drag: {
+        move: function (divid, x, y) {
             divid.style.left = x + 'px';
             divid.style.top = y + 'px';
         },
 
-        startMoving: function (div, c, e)
-        {
+        /**
+         * Event start moving a window.
+         * @param {Node} div Window div.
+         * @param {Node} c Parent container.
+         * @param {Event} e Event parameter.
+         */
+        startMoving: function (div, c, e) {
             var posX = e.clientX, posY = e.clientY,
                 divTop = div.style.top, divLeft = div.style.left,
                 eWi = parseInt(div.style.width),
@@ -533,8 +515,7 @@ monitize it." + dnl +
             divLeft = divLeft.replace('px', '');
             var diffX = posX - divLeft,
                 diffY = posY - divTop;
-            document.onmousemove = function (me)
-            {
+            document.onmousemove = function (me) {
                 var posX = me.clientX,
                     posY = me.clientY,
                     aX = posX - diffX,
@@ -548,9 +529,36 @@ monitize it." + dnl +
             };
         },
 
-        stopMoving: function ()
-        {
+        stopMoving: function () {
             document.onmousemove = function () {};
         }
     }
 };
+
+/**
+ * Start menu.
+ */
+
+var StartMenu = {
+    show: function () {
+        //TODO: Remove last focus instead
+        WindowManager.removeFocusAll();
+        if (startmenu.style.visibility == 'hidden') {
+            startmenu.style.visibility = 'visible';
+            startbutton.src = 'images/startmenu/on.png';
+        } else {
+            startmenu.style.visibility = 'hidden';
+            startbutton.src = 'images/startmenu/off.png';
+        }
+    },
+
+    hide: function () {
+        startmenu.style.visibility = 'hidden';
+        startbutton.src = 'images/startmenu/off.png';
+        //WindowManager.unfocusLast();
+    }
+}
+
+
+startbutton.onmousedown = StartMenu.show;
+desktop.onmousedown = StartMenu.hide;
