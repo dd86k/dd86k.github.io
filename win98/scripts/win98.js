@@ -123,29 +123,29 @@ var Shell = {
      * @returns {boolean} True if found.
      */
     run: function(command) {
-        var s = command.split(" ", 128);
-
-        if (command != null && command.length > 0)
-        switch (s[0].toLowerCase()) {
-            case "command":
-                WindowManager.createWindow('MS-DOS Prompt',Utils.r(200),Utils.r(200),'cmd');
-                return true;
-            case "notepad": case "notepad.exe":
-                WindowManager.createWindow(
-                    'Untitled - Notepad',Utils.r(200),Utils.r(200),'notepad');
-                return true;
-            case "rundialog":
-                WindowManager.createWindow('Run',150,50,'rundialog');
-                return true;
-            case "aboutdialog": case "aboutdialog.exe":
-                WindowManager.createWindow('About',150,50,'aboutdialog');
-                return true;
-            default:
-                WindowManager.showError(command,
-                    "The file \"" + command + "\" (or one of its components) cannot \
-                    be found. Verify the path and the filename are correct, \
-                    and all the libraries required are available.");
-                return false;
+        if (command != null && command.length > 0) {
+            var s = command.split(" ", 128);
+            switch (s[0].toLowerCase()) {
+                case "command":
+                    WindowManager.createWindow('MS-DOS Prompt',Utils.r(200),Utils.r(200),'cmd');
+                    return true;
+                case "notepad": case "notepad.exe":
+                    WindowManager.createWindow(
+                        'Untitled - Notepad',Utils.r(200),Utils.r(200),'notepad');
+                    return true;
+                case "rundialog":
+                    WindowManager.createWindow('Run',150,50,'rundialog');
+                    return true;
+                case "aboutdialog": case "aboutdialog.exe":
+                    WindowManager.createWindow('About',150,50,'aboutdialog');
+                    return true;
+                default:
+                    WindowManager.showError(command,
+                        "The file \"" + command + "\" (or one of its components) cannot \
+                        be found. Verify the path and the filename are correct, \
+                        and all the libraries required are available.");
+                    return false;
+            }
         }
         else WindowManager.showError("Shell", "Empty command");
     }
