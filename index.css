@@ -9,6 +9,59 @@ body
     font-size: 1.25em;
 }
 
+/* Tags */
+
+.d-green, .d-yellow, .d-red,
+.l-cs, .l-d, .l-asm,
+.t-wpf, .t-web
+{
+    display: inline-block;
+    padding: .65%;
+    border-radius: 4px;
+}
+
+.d-green
+{
+    background-color: green;
+}
+
+.d-yellow
+{
+    background-color: goldenrod;
+}
+
+.d-red
+{
+    background-color: red;
+}
+
+.l-cs
+{
+    background-color: green;
+}
+
+.l-d
+{
+    background-color: #FF868D;
+}
+
+.l-asm
+{
+    background-color: #A5721D;
+}
+
+.t-web
+{
+    background-color: orangered;
+}
+
+.t-wpf
+{
+    background-color: plum;
+}
+
+/* Content */
+
 .container
 {
     width: 90%;
