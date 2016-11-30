@@ -1,5 +1,5 @@
-# DD's website
+# DD~!'s Github Portfolio
 
-Work in progress, will be available [here](https://guitarxhero.github.io/).
+This is my [Github Portfolio](https://guitarxhero.github.io/), which includes links to my projects, my contributions, my online bots, and possibly some other silly things.
 
-If you're looking for the old website, it's still available [here](http://didi.wcantin.ca/).
+If you're looking for my old website, it's still [online](http://didi.wcantin.ca/).
