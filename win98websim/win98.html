@@ -13,10 +13,22 @@
 </head>
 
 <body>
-    <div id="desktoparea"></div>
-    <p id="websimversion"></p>
+    <div id="desktop">
+        <div id="desktoparea"></div>
+        <p id="websimversion"></p>
+        <div id="taskbar">
+            <img id="startbutton" src="images/startmenu/off.png" alt="Start" title="Click here to start." />
+            <table id="maintoolbar">
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+            <div id="systray"><time id="ostime">...</time></div>
+            <div class="sep"></div>
+        </div>
+    </div>
 
-    <div id="startmenu" style="visibility: hidden;">
+    <div id="win98menu" style="display: none;">
         <div onclick="Shell.run('shell:about')">
             <img src="images/startmenu/item11.png" />
             <span>About</span>
@@ -29,6 +41,46 @@
         <div class="folder">
             <img src="images/startmenu/item09.png" />
             <span>Programs</span>
+            <div class="submenu">
+                <div class="subfolder">
+                    <img src="images/startmenu/subapps.png" />
+                    <span>Accessories</span>
+                    <div class=submenu>
+                        <div onclick="Shell.run('notepad.exe')">
+                            <img src="images/notepad/icon.png" />
+                            <span>Notepad</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="subfolder">
+                    <img src="images/startmenu/subapps.png" />
+                    <span>Debug</span>
+                    <div class=submenu>
+                        <div onclick="Shell.run('shell:tests')">
+                            <img src="images/window/icon.png" />
+                            <span>Form Playground</span>
+                        </div>
+                        <div onclick="Shell.run('shell:contests')">
+                            <img src="images/window/icon.png" />
+                            <span>Console Playground</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="subfolder">
+                    <img src="images/startmenu/subapps.png" />
+                    <span>StartUp</span>
+                    <div class=submenu>
+                        <div class="empty">
+                            <img />
+                            <span>(Empty)</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="Shell.run('command.com')">
+                    <img src="images/command/icon.png" />
+                    <span>MS-DOS Prompt</span>
+                </div>
+            </div>
         </div>
         <div class="folder">
             <img src="images/startmenu/item08.png" />
@@ -55,7 +107,7 @@
             <span>Run...</span>
         </div>
         <div class="sep"></div>
-        <div>
+        <div onclick="Shell.run('shell:logoff')">
             <img src="images/startmenu/item02.png" />
             <span>Log Off...</span>
         </div>
@@ -65,20 +117,9 @@
         </div>
     </div>
 
-    <div id="taskbar">
-        <img id="startbutton" src="images/startmenu/off.png" alt="Start" title="Click here to start." />
-        <table id="maintoolbar">
-            <tbody>
-                <tr></tr>
-            </tbody>
-        </table>
-        <div id="systray"><span id="ostime">...</span></div>
-        <div class="sep"></div>
-    </div>
-
     <script src="scripts/win98.min.js"></script>
     <script src="scripts/win98dwm.min.js"></script>
-    <!--<script src="scripts/win98con.js"></script>-->
+    <script src="scripts/win98con.min.js"></script>
 </body>
 
 </html>
