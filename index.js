@@ -22,7 +22,7 @@ function s()
 function cl()
 {
     var c = n[l - 1].style.color;
-    for (var i = l - 2; i >= 0; --i)
+    for (var i = l - 1; i >= 0; --i)
         n[i + 1].style.color = n[i].style.color;
     n[0].style.color = c;
 }
