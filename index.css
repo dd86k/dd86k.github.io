@@ -11,13 +11,11 @@ body
 
 /* Tags */
 
-.d-green, .d-yellow, .d-red,
-.l-cs, .l-d, .l-asm,
-.t-wpf, .t-web
+.d-green, .d-yellow, .d-red, .l-cs, .l-d, .l-asm, .t-wpf, .t-web
 {
-    display: inline-block;
-    padding: .25% 1.45%;
+    padding: .25% 1%;
     border-radius: 4px;
+    text-align: center;
 }
 
 .d-green
@@ -68,14 +66,14 @@ body
     margin: auto;
 }
 
-h1 span
+#t
 {
-    font-size: 3em;
+    font-size: 5em;
+    margin: 0;
 }
 
 h2
 {
-    font-size: 1.55em;
     border-top: 2px solid gray;
     border-bottom: 2px solid gray;
     margin: 3% 0 3% 0;
