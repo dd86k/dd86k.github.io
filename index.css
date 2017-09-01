@@ -11,7 +11,8 @@ body
 
 /* Tags */
 
-.d-green, .d-yellow, .d-red, .l-cs, .l-d, .l-asm, .t-wpf, .t-web
+.d-green, .d-yellow, .d-red,
+.l-cs, .l-d, .l-asm, .t-wpf, .t-web
 {
     padding: .25% 1%;
     border-radius: 4px;
@@ -25,7 +26,7 @@ body
 
 .d-yellow
 {
-    background-color: goldenrod;
+    background-color: #aa0;
 }
 
 .d-red
@@ -35,12 +36,12 @@ body
 
 .l-cs
 {
-    background-color: green;
+    background-color: #842;
 }
 
 .l-d
 {
-    background-color: #DD868D;
+    background-color: #B39;
 }
 
 .l-asm
