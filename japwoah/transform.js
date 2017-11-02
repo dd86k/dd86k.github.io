@@ -19,23 +19,28 @@ function tFullwidth(_in)
     for (var i = 0; i < len; i++)
     {
         c = _in[i].charCodeAt();
-        
-        if (c != 32 && c != 0x0A && c != 0x0D && c < _MIN)
-        {
-            // Exceptions
-            switch(c)
-            {
+
+        if (c != 0x0A && c != 0x0D && c < _MIN)
+        { // '　' 3000
+        // 'ｒ'
+            switch(c) {
+                case 32:
+                    //_out += String.fromCharCode(12288);
+                    _out += String.fromCharCode(0x3000);
+                    break; // space
                 case 163: c += 94; break; // £
                 case 162: c += 92; break; // ¢
+                default:
+                    _out += String.fromCharCode(c + OFFSET);
+                    break;
             }
-            _out += String.fromCharCode(c + OFFSET);
         }
         else
         {
             _out += String.fromCharCode(c);
         }
     }
-    return _out;
+    return _out.toString();
 }
 
 /**
