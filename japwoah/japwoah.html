@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Ｓｏｕｌ ｏｆ Ｃｉｎｄｅｒ -->
+<html>
+	<head>
+<title>JapWoah</title>
+<meta charset="utf-8"/>
+<link href="style.min.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="icon.png" />
+	</head>
+	<body>
+<a id="home" href="../index.html"></a>
+<h1>JapWoah</h1>
+<h3>Unicode Text Transformer</h3>
+<noscript>This website needs Javascript on!</noscript>
+    <table>
+<caption>Insert a character</caption>
+    <tr>
+<th>Vertical enclosure</th>
+<td>｢</td><td>｣</td><td>［</td><td>］</td><td>﹛</td><td>﹜</td><td>｛</td><td>｝</td><td>﹙</td><td>﹚</td><td>﹝</td><td>﹞</td><td>｟</td><td>｠</td>
+    </tr>
+    <tr>
+<th>Horizontal enclosure</th>
+<td>﹁</td><td>﹂</td><td>︷</td><td>︸</td><td>︵</td><td>︶</td><td>︿</td><td>﹀</td><td>︹</td><td>︺</td><td>︽</td><td>︾</td><td>︗</td><td>︘</td><td>︻</td><td>︼</td><td>﹃</td><td>﹄</td>
+    </tr>
+    <tr>
+<th>Punctuaction</th>
+<td>︐</td><td>︑</td><td>︒</td><td>｡</td><td>︓</td><td>︔</td><td>﹗</td><td>﹖</td><td>︕</td><td>︖</td>
+    </tr>
+    <tr>
+<th>Mathematics</th>
+<td>﹢</td><td>﹣</td><td>﹡</td><td>﹨</td><td>﹤</td><td>﹥</td><td>﹦</td>
+    </tr>
+    <tr>
+<th>Symbols</th>
+<td>﹟</td><td>＃</td><td>﹠</td><td>＆</td><td>﹩</td><td>＄</td><td>﹪</td><td>％</td><td>﹫</td><td>＠</td><td>￠</td><td>￩</td><td>￪</td><td>￬</td><td>￫</td>
+    </tr>
+    <tr>
+<th>Misc.</th>
+<td>＼</td><td>～</td><td>｜</td><td>￤</td><td>︙</td><td>︰</td><td>︳</td><td>︴</td><td>￢</td><td>﹉</td><td>﹊</td><td>﹋</td><td>﹌</td><td>﹍</td><td>﹎</td><td>﹏</td>
+    </tr>
+    </table>
+<textarea id="input" placeholder="Type here and click a transformation!" rows="3" autofocus></textarea>
+    <div>
+<p style="margin: 0;">Transform:</p>
+<button onclick="input.value=tFullwidth(input.value);sa();">Ｆｕｌｌｗｉｄｔｈ</button>
+<button onclick="input.value=tBox(input.value);sa();">▄█▀ █▬█ █ ▀█▀ (WIP)</button>
+<button onclick="input.value=tSmallcaps(input.value);sa();">Sᴍᴀʟʟᴄᴀᴘs</button>
+<button onclick="input.value=tCircled(input.value);sa();">Ⓒⓘⓡⓒⓛⓔⓢ</button>
+<button onclick="input.value=tPara(input.value);sa();">⒫⒜⒭⒜⒯⒣⒠⒮⒠⒮</button>
+<button onclick="input.value=tDotted(input.value);sa();">Under-Ḍọṭṭẹḍ</button>
+    </div>
+    <div>
+<button onclick="input.value=tNormal(input.value);sa();">Normalize (Incomplete)</button>
+<button onclick="sa();">Select</button>
+<button onclick="input.value='';input.focus();">Clear</button>
+    </div>
+<footer>Version 1.4.4<br/>Copyright &copy; dd86k 2016-2017</footer>
+<script src="transform.min.js"></script>
+	</body>
+</html>
