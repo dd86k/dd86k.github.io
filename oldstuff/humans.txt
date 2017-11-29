@@ -1,0 +1,17 @@
+╔═══════════════════╗
+║                   ║
+║  Written by DD~!  ║
+║                   ║
+╚═══════════════════╝
+
+This entire website was built from scratch with my
+limited knowledge of HTML5, CSS3, and Javascript.
+
+   ______
+  /      \
+  | Yay! |
+  \  ____/
+   \/
+  \o/
+   |
+  / \

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body
+{
+    font-family: "Mono", "Consolas";
+    color: white;
+    background-color: black;
+}
+
+#container
+{
+    width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+a
+{
+    color: white;
+}
+
+a:visited
+{
+    color: white;
+}
+
+a:hover
+{
+    color: coral;
+}

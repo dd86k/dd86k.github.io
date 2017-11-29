@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DDBlog - Locales in C#</title>
+    <link href="../entry.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+</head>
+
+<body>
+    <div id="container">
+        <a id="home" href="../../blog.html">↩️</a>
+        <h1 id="title">Locales in C# - 20/09/2015</h1>
+        <p>"<em>Parles-tu le français?</em>" -- Localization and Globalizaton are important, all kinds of people speak different languages, and adapting your application to those languages is quite a nice feature.</p>
+        <p>Implementing such a system is really easy!</p>
+        
+        <h2>1. The RessourceManager</h2>
+        <p>We need a <code>RessourceManager</code>, only one. You can place it in your form's code if you wish, like so:</p>
+<pre>
+using System.Ressources; // We need this!
+
+namespace WinYourDesktop
+{
+    internal partial class FormMain : Form
+    {
+        RessourceManager RM; // Our ressource manager!
+</pre>
+
+        <h2>2. Ressource files (*.resx)</h2>
+        <p>This is where the translations are stored. By default, ressource files (*.resx) are embedded.</p>
+        <p>Let's say we want to translate our button in French, so let's make a ressource file called fr-FR.resx.</p>
+        <p>I recommend to name value by the name of the controls.</p>
+        <table border="1" style="width: 100%;">
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Comment</th>
+        </tr>
+        <tr>
+            <td>btnDoIt</td>
+            <td>Fait-le!</td>
+            <td>Translating is fun!</td>
+        </tr>
+        </table>
+        
+        <h2>3. Changing the control texts</h2>
+        <p>Straight-forward, load a new <code>ResourceManager</code> with our new translation!</p>
+<pre>
+// Create new ResourceManager
+RM = new ResourceManager("AssemblyBoys.fr-FR",
+         typeof(FormMain).Assembly);
+
+// Change the text of the button
+// depending on our RessourceManager
+btnExemple.Text = RM.GetString("btnDoIt");
+</pre>
+        <p><code>AssemblyBoys</code> is our namespace, our assembly name, and <code>fr-FR</code> is our fr-FR.resx file.</p>
+        <p>If your ressource file is in a folder, the entire string would be <code>"AssemblyBoys.FolderName.fr-FR"</code>.</p>
+        
+        <h2>4. Getting the current culture</h2>
+        <p>Want to know what is the locale for the user's OS? Well here you go!</p>
+        <p>PS: You will need <code>System.Globalization</code> and <code>System.Threading</code>.</p>
+<pre>
+// Get current culture used by the current process.
+CultureInfo ci = Thread.CurrentThread.CurrentCulture;
+
+// Get the name of the culture
+string name = ci.Name;
+
+// This can be shortered to this
+string nameci = Thread.CurrentThread.CurrentCulture.Name;
+</pre>
+        <p>Both <code>name</code> and <code>nameci</code> will give fr-CA from my system.</p>
+        
+        <h3>Have fun translating (and coding)!</h3>
+    </div>
+</body>
+</html>

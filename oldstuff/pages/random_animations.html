@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- Wacky huh -->
+<html>
+<head>
+<title>Random animations</title>
+<link rel="stylesheet" type="text/css" href="animation.css"/>
+<style>
+#vFace
+{
+    font-family: "Segoe UI";
+    font-size: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:rotate(90deg);
+    animation: vFaceAnimation 1s infinite;
+    -webkit-animation: vFaceAnimation 1s infinite;
+}
+
+@keyframes vFaceAnimation
+{
+    10% {top: 80%; left: 80%;}
+    20% {top: 10%; left: 11%;}
+    25% {transform:rotate(45deg);}
+    30% {top: 40%; left: 80%;}
+    40% {top: 80%; left: 20%;}
+    50% {top: 40%; left: 20%; transform:rotate(180deg);}
+    60% {top: 20%; left: 40%;}
+    70% {top: 55%; left: 23%;}
+    75% {transform:rotate(69deg);}
+    80% {top: 85%; left: 89%;}
+    90% {top: 10%; left: 42%:}
+}
+
+@-webkit-keyframes vFaceAnimation
+{
+    10% {top: 80%; left: 80%;}
+    20% {top: 10%; left: 11%;}
+    25% {transform:rotate(45deg);}
+    30% {top: 40%; left: 80%;}
+    40% {top: 80%; left: 20%;}
+    50% {top: 40%; left: 20%; transform:rotate(180deg);}
+    60% {top: 20%; left: 40%;}
+    70% {top: 55%; left: 23%;}
+    75% {transform:rotate(69deg);}
+    80% {top: 85%; left: 89%;}
+    90% {top: 10%; left: 42%:}
+}
+
+#Fast
+{
+    font-family: "Segoe UI";
+    font-size: 40px;
+    position: fixed;
+    top: 10px;
+    left: 35%;
+    animation: FastAnimation 2s infinite;
+    -webkit-animation: FastAnimation 2s infinite;
+}
+
+@keyframes FastAnimation
+{
+    0% {transform:rotate(-15deg); color: black;}
+    25% {transform:rotate(15deg); color: red;}
+    50% {transform:rotate(-15deg); color: blue;}
+    75% {transform:rotate(15deg); color: yellow;}
+    100% {transform:rotate(-15deg);}
+}
+
+@-webkit-keyframes FastAnimation
+{
+    0% {transform:rotate(-15deg); color: black;}
+    25% {transform:rotate(15deg); color: red;}
+    50% {transform:rotate(-15deg); color: blue;}
+    75% {transform:rotate(15deg); color: yellow;}
+    100% {transform:rotate(-15deg); color: purple;}
+}
+
+#Woah
+{
+    font-family: "Segoe UI";
+    font-size: 60px;
+    position: fixed;
+    bottom: 5px;
+    left: 5%;
+    animation: WoahAnimation 0.5s infinite;
+    -webkit-animation: WoahAnimation 0.5s infinite;
+}
+
+@keyframes WoahAnimation
+{
+    50% {left: 2%; font-size: 5px;}
+}
+
+@-webkit-keyframes WoahAnimation
+{
+    50% {left: 2%; font-size: 5px;}
+}
+
+/* I'm sorry */
+#blink
+{
+    visibility: hidden;
+    font-family: "Segoe UI";
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    animation: blinkAnimation 1s infinite;
+    -webkit-animation: blinkAnimation 1s infinite;
+}
+
+@keyframes blinkAnimation
+{
+    50% {visibility: hidden;}
+    100% {visibility: visible;}
+}
+
+@-webkit-keyframes blinkAnimation
+{
+    50% {visibility: hidden;}
+    100% {visibility: visible;}
+}
+
+a
+{
+    width: 42px;
+    display: block;
+    border: 3px solid gray;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    background-color: #D200CD;
+}
+
+a:hover
+{
+    background-color: #F200CD;
+}
+</style>
+</head>
+
+<body>
+    <a href="../index.html">Home</a>
+    <p id="Fast">Got to go fast!</p>
+    <p id="vFace">:V</p>
+    <p id="Woah">2fast!</p>
+    <p id="blink">OH SHIT</p>
+</body>
+</html>

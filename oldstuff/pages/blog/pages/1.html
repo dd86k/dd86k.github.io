@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DDBlog - Terminal Tests</title>
+    <link href="../entry.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+</head>
+
+<body>
+    <div id="container">
+        <a id="home" href="../../blog.html">↩️</a>
+        <h1 id="title">Terminal tests - 06/08/2015</h1>
+        
+        <p>Quick post.</p>
+        
+        <p>I did a few more "speed tests" between some terminals/command prompts.</p>
+        <p>The test, written in C# (no optimization), consists with rendering a bubble over a character 25000 times.</p>
+        <p>So it mostly tests the movement of the [terminal] cursor.</p>
+        <p>So here are the results! (Best to worst)</p>
+
+        <ol>
+            <li>(Linux/Mono) Konsole 2.13.2: 02.3641668 s<sup>1</sup></li>
+            <li>(Linux/Mono) xterm: 03.4504130 s<sup>1</sup></li>
+            <li>(Linux/Mono) uxterm: 03.5664656 s<sup>1</sup></li>
+            <li>(Linux/Mono) urxvt: 03.9672895 s<sup>1</sup></li>
+            <li>(Linux/Mono) Konsole 2.14.2: 04.1437416 s<sup>2</sup></li>
+            <li>(Linux/Mono) GNOME Terminal 3.16.2: 4.2443079 s<sup>2</sup></li>
+            <li>(Linux/Mono) Terminator: 16.5972909 s<sup>1</sup></li>
+            <li>(Linux/Mono) ROXTerm: 16.7358349 s<sup>1</sup></li>
+            <li>(Linux/Mono) LXTerminal 0.1.11: 17.0153037 s<sup>1</sup></li>
+            <li>(Linux/Mono) Sakura: 18.6030827 s<sup>1</sup></li>
+            <li>(Linux/Mono) GNOME Terminal 3.6.2: 19.0511343 s<sup>1</sup></li>
+            <li>(Windows/.NET) Powershell (64-bit): 24.7752110 s</li>
+            <li>(Windows/.NET) Powershell (32-bit): 26.6243609 s</li>
+            <li>(Windows/.NET) cmd 6.3.9600: 28.3270536 s</li>
+            <li>(Windows/.NET) Console2: 04:44.0419435 m</li>
+            <li>(Windows/.NET) ConEmu Alpha: 08:25.9422453 m</li>
+        </ol>
+        
+        <p><sup>1</sup>: Backbox 4.3, linux-image-3.16</p>
+        <p><sup>2</sup>: Korora GNOME 22, linux-image-4.1.3</p>
+        
+        <p>Terminals that fwod.exe could not run on and why.</p>
+        
+        <ul>
+            <li>(Linux/Mono) Guake - System.ArgumentOutOfRange (Display buffer too small)</li>
+            <li>(Linux/Mono) Tilda - System.ArgumentOutOfRange (Display buffer too small)</li>
+            <li>(Linux/Mono) rxvt - System.ArgumentOutOfRange (Display buffer too small)</li>
+            <li>(Linux/Mono) Yakuake - System.ArgumentOutOfRange (Display buffer too small)</li>
+            <li>(Windows/.NET) ColorConsole - System.IO.IOException</li>
+        </ul>
+        
+        <p>If you want to test it yourself, you can download the exectutable with:</p>
+        <pre>wget http://didi.wilomgfx.net/fwod.exe</pre>
+        <p>Then run the test with the mono-runtime with:</p>
+        <pre>~$ mono fwod.exe --speedtalktest</pre>
+        <p>Or on Windows:</p>
+        <pre>C:\> fwod.exe --speedtalktest</pre>
+        
+        <p>EDIT: Corrections and added date - 06/08/2015</p>
+        <p>EDIT2: Added more terminal tests - 07/08/2015</p>
+        <p>EDIT3: Tiny corrections, was in a hurry earlier - 07/08/2015</p>
+        <p>EDIT4: Additions - 09/08/2015</p>
+    </div>
+</body>
+</html>

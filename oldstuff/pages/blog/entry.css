@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+
+body
+{
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+}
+
+#container
+{
+    margin: auto;
+    width: 900px;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+a#home
+{
+    border: 2px solid gray;
+    border-radius: 10px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    padding: 4px 6px 8px 6px;
+    color: white;
+    text-decoration: none;
+}
+
+a#home:visited
+{
+    color: white;
+}
+
+a#home:hover
+{
+    color: black;
+    background-color: white;
+}
+
+a, a:visited
+{
+    color: white;
+}
+
+code, pre
+{
+    background-color: #2A2A2A;
+    border-radius: 5px;
+    padding: 3px;
+}

@@ -1,0 +1,71 @@
+﻿@charset "utf-8";
+
+body
+{
+    font-family: "Lucida Console";
+    background: url('brbg.png') no-repeat bottom right;
+    background-color: black;
+    color: white;
+}
+
+#container
+{
+    width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+#home
+{
+    border: 2px solid gray;
+    border-radius: 10px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 1.35em;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+#index>a
+{
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+#index>a:hover, #home:hover
+{
+    background-color: gray;
+}
+
+#home
+{
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    padding: 4px 6px 8px 6px;
+}
+
+h1
+{
+    margin-bottom: 20px;
+}
+
+a
+{
+    color: white;
+}
+
+figcaption
+{
+    margin-bottom: 20px;
+}

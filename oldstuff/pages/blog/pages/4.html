@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DDBlog - Why a higher language?</title>
+    <link href="../entry.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+</head>
+
+<body>
+    <div id="container">
+        <a id="home" href="../../blog.html">↩️</a>
+        <h1 id="title">Why a higher language? - 16/08/2015</h1>
+        <p>It's very likely that you have heard about .NET, Mono, or even the Java Platform, which all have their own <a href="https://en.wikipedia.org/wiki/Computing_platform">computing platform</a>. Basically, instead of generating machine code for a specific operating system, the compiler generates intermediate code for its interpreter (often referred as a Virtual Machine).</p>
+        
+        <p>So, why do some developers prefer those instead of lower languages?</p>
+        <ul>
+            <li><h2>One function, all platforms. (Availability)</h2></li>
+            <p>If you write <code>Console.WriteLine("Hi world!");</code> (C#), it will work on where ever the .NET framework or the Mono runtime can be installed on (also if you have access to a terminal or cmd). You don't need another compiler, then fill your code with preprocessor functions (#if) to establish OS specific code. Usually those language are meant to be multi-platform. Just look at Java: Phones, Smartphones, Windows, GNU/Linux, Mac OS X, Solaris, and the list goes on.</p>
+            
+            <li><h2>Oops! (Debugging)</h2></li>
+            <p>If something goes wrong in your code, you can get the stack-trace really easily. Heck, the debugger shows what went wrong on your face. Debugging with an ease with IDEs, you get what went wrong on the spot. No longer have to deal with pointers (you can still use them in C#, both in safe (ref, IntPtr) and unsafe (unsafe {}, *) contexts) or segmentation faults (unspecific errors).</p>
+            
+            <li><h2>That was easy! (Flexibility)</h2></li>
+            <p>C and C++ are considered a lot harder to learn. Robert Griesemer, at the GopherCon 2015 said that "<em>It was clear what was wrong with C++ - it was very complex, hard to understand, missing concurrency support, didn’t scale, and had really long build times.</em>". If you want, <a href="https://en.wikipedia.org/wiki/Go_(programming_language)#History">Go's history (Wikipedia)</a> is a fun little read.</p>
+        </ul>
+        
+        <p>Although of having quite a few neat tricks, there are some downfalls here and there.</p>
+        <ul>
+            <li><h2>Hello World? (Frameworks)</h2></li>
+            <p>"You need to install a framework!" -- Yes, you <em>need</em> the platform in order to compile and execute your code. Installing the a runtime (e.g. Java) <em>may</em> increase potential security risks (mostly looking at you, Flash). It is true, though the same can be achieved in just any language. Also while most would say that C#, or say, Java, isn't suitable for embedded devices -- I usually say this: There are smaller versions of the runtime specifically for embedded devices. I remember playing a Java Uno game on a flip phone, quite a few years ago.</p>
+            
+            <li><h2>zZz.. (Slower execution time)</h2></li>
+            <p>"Waste of CPU cycles!" -- Yes, they do run a bit slower than C and C++. It's not a big difference too. Fortunately, managed languages do not need manual memory management. (Most of the time!)</p>
+            
+            <li><h2>Big, for you. (Memory consumption)</h2></li>
+            <p>"Bloated!" -- Yes, they do consume more memory. Although, times have changed, most computers come with at least 2 GB of RAM, most Smartphones with 512 MB at a minimum.</p> 
+        </ul>
+        
+        <h2>Any "in between"?</h2>
+        <p>There are some up-to-date languages that also compiles into machine code.</p>
+        <ul>
+            <li><h2>D</h2></li>
+            <p>First appeared in 2001, D is like C#'s younger cousin. The syntax is almost the same. It's also available for .NET (compiles into IL instead of machine code). Personally (as myself, a C# dev), if I <em>really</em> worried about performance, I'd try out D.</p>
+            <p>Hello World! example:</p>
+<pre>
+import std.stdio;
+
+int main(string[] argv)
+{
+    writeln("Hello World!");
+    return 0;
+}
+</pre>
+            <p>D is available on:</p>
+            <ul>
+                <li>Ubuntu/Debian</li>
+                <li>Fedora/CentOS</li>
+                <li>openSUSE</li>
+                <li>FreeBSD</li>
+                <li>OS X</li>
+                <li>Windows</li>
+            </ul>
+            <p>Here is the <a href="https://en.wikipedia.org/wiki/D_(programming_language)">Wikipedia page</a> and their <a href="http://dlang.org/">homepage</a>.</p>
+            
+            <li><h2>Go</h2></li>
+            <p>First appeared in 2009, Go is a language that was developed at Google. Syntax <em>can</em> look alike Javascript.</p>
+            <p>Hello World! example:</p>
+<pre>
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World!")
+}
+</pre>
+            <p>Go is available on:</p>
+            <ul>
+                <li>GNU/Linux</li>
+                <li>OS X</li>
+                <li>FreeBSD</li>
+                <li>OpenBSD</li>
+                <li>NetBSD</li>
+                <li>DragonFly BSD</li>
+                <li>Plan 9</li>
+                <li>Solaris</li>
+                <li>Windows</li>
+            </ul>
+            <p>Here is the <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Wikipedia page</a> and their <a href="https://golang.org/">homepage</a>.</p>
+        </ul>
+        
+        <p>There are a lot more out there of which escapes my mind.</p>
+        
+        <p>Some languages and their appearance time!</p>
+        <ul>
+            <li>Go: 2009</li>
+            <li>D: 2001</li>
+            <li>C#: 2000</li>
+            <li>ECMAScript: 1997</li>
+            <li>Javascript: 1995</li>
+            <li>Java: 1995</li>
+            <li>Objective-C: 1983</li>
+            <li>C++: 1983</li>
+            <li>C: 1972</li>
+        </ul>
+        
+        <p>C and C++ are still great languages. I never mentioned that you should avoid C, or C++. In the contrary, if you're willing to learn about C or C++, go ahead!</p>
+        
+        <p>At the end of the day, it's all a matter of choosing your own language, and learning as much as you can. Learning a language and becoming the master of it. Don't be shy to explore other languages!</p>
+        
+        <p>Programming languages are just like spoken languages, having more than one is always useful and fun.</p>
+        
+        <p>"Learning something is never a mistake, the worst possible choice would be to <em>not learn</em>." -<a href="http://programmers.stackexchange.com/questions/100488/is-learning-c-as-a-first-language-a-mistake#comment-182216">SK-logic</a></p>
+        
+        <p>Ｇｏ ｏｎ， ｂｕｉｌｄ！</p>
+    </div>
+</body>
+</html>

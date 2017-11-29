@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="ASCII box generator">
+        <meta name="author" content="DD~!">
+        <title>ASCII Box Generator</title>
+        <link rel="stylesheet" type="text/css" href="boxgen/style.css">
+        <link rel="icon" href="boxgen/icon.png">
+    </head>
+    <body>
+        <div id="container">
+            <h1>ASCII Box Generator</h1>
+            <a id="home" href="../index.html">↩️</a>
+            <fieldset>
+                <legend>Manual</legend>
+                <p>Width:<p>
+                <textarea rows="1">80</textarea>
+                <p>Height:</p>
+                <textarea rows="1">24</textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Automatic</legend>
+                <p>Text width:</p>
+                <textarea rows="1">3</textarea>
+            </fieldset>
+            
+            <p>Padding:</p>
+            <textarea rows="1" placeholder="Optional. Default=0"></textarea>
+            
+            <p>Text:</p>
+            <textarea rows="3" placeholder="Optional. Default=''"></textarea>
+            
+            
+            <div style="margin: 10px;">
+            <span>Manual</span>
+            <input type="radio" name="sex" value="Manual"/>
+            <span>Automatic</span>
+            <input type="radio" name="sex" value="Automatic"/>
+            <button>Generate!</button>
+            </div>
+            
+            <p>Output</p>
+            <pre id="boxout"></pre>
+        </div>
+        
+        <script src="boxgen/boxgen.js"></script>
+    </body>
+</html>
