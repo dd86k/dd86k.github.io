@@ -1,7 +1,6 @@
 @charset "utf-8";
 
-body
-{
+body {
     color: white;
     background-color: #222;
     font-family: monospace;
@@ -11,120 +10,104 @@ body
 
 /* Tags */
 
-.d-green, .d-yellow, .d-red,
-.l-cs, .l-d, .l-asm, .t-wpf, .t-web
-{
+.d-green, .d-yellow, .d-red, .l-c,
+.l-cs, .l-d, .l-asm, .t-wpf, .t-web {
     padding: .25% 1%;
     border-radius: 4px;
     text-align: center;
 }
 
-.d-green
-{
+.d-green {
     background-color: green;
 }
 
-.d-yellow
-{
+.d-yellow {
     background-color: #aa0;
 }
 
-.d-red
-{
+.d-red {
     background-color: red;
 }
 
-.l-cs
-{
+.l-cs {
     background-color: #842;
 }
 
-.l-d
-{
+.l-d {
     background-color: #B39;
 }
 
-.l-asm
-{
+.l-c {
+    background-color: #666;
+}
+
+.l-asm {
     background-color: #A5721D;
 }
 
-.t-web
-{
+.t-web {
     background-color: orangered;
 }
 
-.t-wpf
-{
+.t-wpf {
     background-color: blueviolet;
 }
 
 /* Content */
 
-.container
-{
+.container {
     width: 90%;
     margin: auto;
 }
 
-#t
-{
+#t {
     font-size: 5em;
     margin: 0;
 }
 
-h2
-{
+h2 {
     border-top: 2px solid gray;
     border-bottom: 2px solid gray;
     margin: 3% 0 3% 0;
     padding: 2%;
 }
 
-h3
-{
+h3 {
     font-size: 1.35em;
     margin: 2% 0 2% 0;
 }
 
-p
-{
+p {
     text-align: justify;
 }
 
-ul, ol
-{
+ul, ol {
     text-align: left;
     font-size: 1.09em;
 }
 
-li
-{
+li {
     margin: 1% 0 0 0;
 }
 
-table
-{
+table {
     margin: 4% 0 0 0;
     width: 100%;
 }
 
 /* lazyness */
 p>a, li>a, footer>a,
-p>a:visited, li>a:visited, footer>a:visited
-{
+p>a:visited, li>a:visited, footer>a:visited {
     color: coral;
     text-decoration: none;
 }
 
 p>a:hover, li>a:hover, footer>a:hover,
-p>a:focus, li>a:focus, footer>a:focus
-{
+p>a:focus, li>a:focus, footer>a:focus {
     text-decoration: underline;
 }
 
-table a, table a:visited
-{
+table a, table a:visited {
     padding: 1.5%;
     color: coral;
     text-decoration: none;
@@ -132,16 +115,14 @@ table a, table a:visited
     display: inline-block;
 }
 
-table a:hover, table a:focus
-{
+table a:hover, table a:focus {
     border-color: gray;
     border-radius: 12px;
 }
 
 p { color: white; }
 
-footer
-{
+footer {
     margin: 8% 0 0 0;
     font-size: 0.8em;
 }
