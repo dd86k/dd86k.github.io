@@ -75,6 +75,7 @@ h2 {
 h3 {
     font-size: 1.35em;
     margin: 2% 0 2% 0;
+	text-decoration: underline;
 }
 
 p {
