@@ -2,7 +2,7 @@
 
 body {
     color: white;
-    background-color: #222;
+    background-color: #333;
     font-family: monospace;
     text-align: center;
     font-size: 1.25em;
@@ -12,7 +12,7 @@ body {
 
 .d-green, .d-yellow, .d-red, .l-c,
 .l-cs, .l-d, .l-asm, .t-wpf, .t-web {
-    padding: .25% 1%;
+    padding: .35% 1%;
     border-radius: 4px;
     text-align: center;
 }
@@ -75,55 +75,46 @@ h2 {
 h3 {
     font-size: 1.35em;
     margin: 2% 0 2% 0;
-	text-decoration: underline;
+    text-align: left;
+    border-left: 5px solid white;
+    padding: 2%;
+}
+
+h4 {
+    margin: 0;
 }
 
 p {
     text-align: justify;
+    color: white;
+}
+
+a {
+    color: coral;
+}
+a:visited {
+    color: coral;
+}
+
+.cc > a {
+    display: inline-block;
+    margin: 1%;
+    border-radius: 50%;
 }
 
 ul, ol {
     text-align: left;
-    font-size: 1.09em;
 }
 
 li {
     margin: 1% 0 0 0;
 }
 
-table {
-    margin: 4% 0 0 0;
-    width: 100%;
+.pl > li {
+    font-size: 1.15em;
 }
-
-/* lazyness */
-p>a, li>a, footer>a,
-p>a:visited, li>a:visited, footer>a:visited {
-    color: coral;
-    text-decoration: none;
-}
-
-p>a:hover, li>a:hover, footer>a:hover,
-p>a:focus, li>a:focus, footer>a:focus {
-    text-decoration: underline;
-}
-
-table a, table a:visited {
-    padding: 1.5%;
-    color: coral;
-    text-decoration: none;
-    border: 2px solid #222;
-    display: inline-block;
-}
-
-table a:hover, table a:focus {
-    border-color: gray;
-    border-radius: 12px;
-}
-
-p { color: white; }
 
 footer {
-    margin: 8% 0 0 0;
-    font-size: 0.8em;
+    margin: 8%;
+    font-size: 0.9em;
 }
