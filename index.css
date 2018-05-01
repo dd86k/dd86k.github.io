@@ -2,7 +2,7 @@
 
 body {
     color: white;
-    background-color: #333;
+    background: #333;
     font-family: monospace;
     text-align: center;
     font-size: 1.25em;
@@ -10,47 +10,45 @@ body {
 
 /* Tags */
 
-.d-green, .d-yellow, .d-red, .l-c,
-.l-cs, .l-d, .l-asm, .t-wpf, .t-web {
+.d,
+.l-c, .l-cs, .l-d, .l-asm,
+.t-wpf, .t-web, .t-s {
     padding: .35% 1%;
     border-radius: 4px;
     text-align: center;
 }
 
-.d-green {
-    background-color: green;
-}
-
-.d-yellow {
-    background-color: #aa0;
-}
-
-.d-red {
-    background-color: red;
+.d {
+    background: green;
 }
 
 .l-cs {
-    background-color: #842;
+    background: #842;
 }
 
 .l-d {
-    background-color: #B39;
+    background: #B39;
 }
 
 .l-c {
-    background-color: #666;
+    background: #666;
 }
 
 .l-asm {
-    background-color: #A5721D;
+    background: #A5721D;
 }
 
 .t-web {
-    background-color: orangered;
+    background: orangered;
 }
 
 .t-wpf {
-    background-color: blueviolet;
+    background: blueviolet;
+}
+
+.t-s {
+    background: #b99e00;
+    color: white;
 }
 
 /* Content */
@@ -94,12 +92,6 @@ a {
 }
 a:visited {
     color: coral;
-}
-
-.cc > a {
-    display: inline-block;
-    margin: 1%;
-    border-radius: 50%;
 }
 
 ul, ol {
