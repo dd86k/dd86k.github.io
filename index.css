@@ -8,6 +8,11 @@ body {
     font-size: 1.25em;
 }
 
+@font-face {
+    font-family: rubik;
+    src: url('fonts/rubik.ttf');
+}
+
 /* Tags */
 
 .d,
@@ -59,8 +64,10 @@ body {
 }
 
 #t {
-    font-size: 5em;
     margin: 0;
+    font-family: rubik, 'Arial', monospace;
+    font-size: 5em;
+    font-weight: normal;
 }
 
 h2 {
