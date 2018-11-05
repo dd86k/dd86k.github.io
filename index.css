@@ -1,121 +1,105 @@
 @charset "utf-8";
 
 body {
-    color: white;
-    background: #333;
-    font-family: monospace;
-    text-align: center;
-    font-size: 1.25em;
+	color: white;
+	background: #333;
+	font-family: monospace;
+	text-align: center;
+	font-size: 1.25em;
 }
 
 @font-face {
-    font-family: rubik;
-    src: url('fonts/rubik.ttf');
+	font-family: rubik;
+	src: url('fonts/rubik.ttf');
 }
 
-/* Tags */
+/* Tags d-date l-language t-techonology */
 
 .d,
 .l-c, .l-cs, .l-d, .l-asm,
 .t-wpf, .t-web, .t-s {
-    padding: .35% 1%;
-    border-radius: 4px;
-    text-align: center;
+	padding: .35% 1%;
+	border-radius: 4px;
+	text-align: center;
 }
 
-.d {
-    background: green;
-}
+.d { background: green; }
 
-.l-cs {
-    background: #842;
-}
+.l-cs { background: #842; }
 
-.l-d {
-    background: #B39;
-}
+.l-d { background: #B39; }
 
-.l-c {
-    background: #666;
-}
+.l-c { background: #666; }
 
-.l-asm {
-    background: #A5721D;
-}
+.l-asm { background: #A5721D; }
 
-.t-web {
-    background: orangered;
-}
+.t-web { background: orangered; }
 
-.t-wpf {
-    background: blueviolet;
-}
+.t-wpf { background: blueviolet; }
 
-.t-s {
-    background: #b99e00;
-    color: white;
-}
+.t-s { background: #b99e00; }
 
 /* Content */
 
 .container {
-    width: 80%;
-    margin: auto;
+	width: 80%;
+	margin: auto;
 }
 
 #t {
-    margin: 0;
-    font-family: rubik, 'Arial', monospace;
-    font-size: 5em;
-    font-weight: normal;
+	margin: 0;
+	font-family: rubik, 'Arial', monospace;
+	font-size: 5em;
 }
 
 h2 {
-    font-size: 1.5em;
-    border-top: 2px solid #afafaf;
-    border-bottom: 2px solid #afafaf;
-    margin: 3% 0 3% 0;
-    padding: 2%;
+	font-size: 1.5em;
+	border-top: 2px solid #afafaf;
+	border-bottom: 2px solid #afafaf;
+	margin: 3% 0 3% 0;
+	padding: 2%;
 }
 
 h3 {
-    font-size: 1.35em;
-    margin: 2% 0 2% 0;
-    text-align: left;
-    border-right: 5px solid #afafaf;
-    padding: 2%;
-    text-align: right;
+	font-size: 1.35em;
+	margin: 2% 0 2% 0;
+	padding: 2%;
+	text-align: center;
 }
 
 h4 {
-    margin: 0;
+	margin: 0;
 }
 
 p {
-    text-align: justify;
-    color: white;
+	text-align: justify;
+	color: white;
 }
 
 a {
-    color: coral;
+	color: coral;
 }
 a:visited {
-    color: coral;
+	color: coral;
 }
 
 ul, ol {
-    text-align: left;
+	text-align: left;
 }
 
 li {
-    margin: 1% 0 0 0;
+	margin: 1% 0 0 0;
 }
 
 .pl > li {
-    font-size: 1.15em;
+	font-size: 1.15em;
+}
+
+.buttons a {
+	text-decoration: none;
 }
 
 footer {
-    margin: 8%;
-    font-size: 0.9em;
+	margin: 8%;
+	font-size: 0.9em;
 }
