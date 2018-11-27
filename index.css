@@ -5,7 +5,7 @@ body {
 	background: #333;
 	font-family: monospace;
 	text-align: center;
-	font-size: 1.25em;
+	font-size: 1.3em;
 }
 
 @font-face {
@@ -13,62 +13,60 @@ body {
 	src: url('fonts/rubik.ttf');
 }
 
-/* Tags d-date l-language t-techonology */
+.intro {
+	width: 80%;
+	margin: auto;
+}
+
+/* d-date l-language t-techonology/stars tags */
 
 .d,
 .l-c, .l-cs, .l-d, .l-asm,
-.t-wpf, .t-web, .t-s {
-	padding: .35% 1%;
-	border-radius: 4px;
-	text-align: center;
+.t-web, .t-s {
+	padding: .2em .5em;
+	border-radius: .3em;
+	font-weight: bold;
 }
 
-.d { background: green; }
-
-.l-cs { background: #842; }
-
-.l-d { background: #B39; }
+.d { border: .1em solid white; }
 
 .l-c { background: #666; }
 
-.l-asm { background: #A5721D; }
+.l-cs { background: #178600; }
 
-.t-web { background: orangered; }
+.l-d { background: #ba595e; }
 
-.t-wpf { background: blueviolet; }
+.l-asm { background: #6E4C13; }
+
+.t-web { background: #e34c26; }
 
 .t-s { background: #b99e00; }
 
 /* Content */
 
 .container {
-	width: 80%;
+	width: 85%;
 	margin: auto;
 }
 
 #t {
-	margin: 0;
 	font-family: rubik, 'Arial', monospace;
 	font-size: 5em;
 }
 
 h2 {
 	font-size: 1.5em;
-	border-top: 2px solid #afafaf;
-	border-bottom: 2px solid #afafaf;
-	margin: 3% 0 3% 0;
+	border-top: .1em solid #afafaf;
+	border-bottom: .1em solid #afafaf;
+	margin: 5% 0;
 	padding: 2%;
 }
 
 h3 {
 	font-size: 1.35em;
-	margin: 2% 0 2% 0;
+	margin: 2%;
 	padding: 2%;
 	text-align: center;
-}
-
-h4 {
-	margin: 0;
 }
 
 p {
@@ -76,10 +74,7 @@ p {
 	color: white;
 }
 
-a {
-	color: coral;
-}
-a:visited {
+a, a:visited {
 	color: coral;
 }
 
@@ -87,12 +82,21 @@ ul, ol {
 	text-align: left;
 }
 
-li {
-	margin: 1% 0 0 0;
+ul .lr {
+	float: right;
 }
 
-.pl > li {
+li {
+	margin: 1% 0 0 0;
 	font-size: 1.15em;
+}
+
+li a {
+	font-weight: bold;
+}
+
+.buttons {
+	margin-top: 1em;
 }
 
 .buttons a {
@@ -100,6 +104,6 @@ li {
 }
 
 footer {
-	margin: 8%;
+	margin: 6%;
 	font-size: 0.9em;
 }
