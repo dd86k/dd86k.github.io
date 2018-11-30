@@ -6,16 +6,12 @@ body {
 	font-family: monospace;
 	text-align: center;
 	font-size: 1.3em;
+	margin: 0;
 }
 
 @font-face {
 	font-family: rubik;
 	src: url('fonts/rubik.ttf');
-}
-
-.intro {
-	width: 80%;
-	margin: auto;
 }
 
 /* d-date l-language t-techonology/stars tags */
@@ -44,12 +40,13 @@ body {
 
 /* Content */
 
-.container {
+main {
 	width: 85%;
 	margin: auto;
 }
 
 #t {
+	margin: 2%;
 	font-family: rubik, 'Arial', monospace;
 	font-size: 5em;
 }
@@ -67,22 +64,27 @@ h3 {
 	margin: 2%;
 	padding: 2%;
 	text-align: center;
+	text-decoration-line: underline;
 }
 
 p {
 	text-align: justify;
-	color: white;
 }
 
-a, a:visited {
-	color: coral;
+ul, p {
+	width: 80%;
+	margin: auto;
 }
 
 ul, ol {
 	text-align: left;
 }
 
-ul .lr {
+a, a:visited {
+	color: coral;
+}
+
+ul.skills span {
 	float: right;
 }
 
@@ -93,6 +95,10 @@ li {
 
 li a {
 	font-weight: bold;
+}
+
+summary {
+	margin: 2% 0;
 }
 
 .buttons {
