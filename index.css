@@ -16,7 +16,8 @@ body {
 
 /* d-date l-language t-techonology/stars tags */
 
-.d,
+.d, .wip, .dead,
+.f-pdf,
 .l-c, .l-cs, .l-d, .l-asm,
 .t-web, .t-s {
 	padding: .2em .5em;
@@ -25,6 +26,12 @@ body {
 }
 
 .d { border: .1em solid white; }
+
+.wip { background: darkred; }
+
+.dead { background: black; }
+
+.f-pdf { background: red; }
 
 .l-c { background: #666; }
 
@@ -36,7 +43,7 @@ body {
 
 .t-web { background: #e34c26; }
 
-.t-s { background: #b99e00; }
+.t-s { background: chocolate; }
 
 /* Content */
 
@@ -46,7 +53,7 @@ main {
 }
 
 #t {
-	margin: 2%;
+	margin: 1% 0;
 	font-family: rubik, 'Arial', monospace;
 	font-size: 5em;
 }
@@ -55,14 +62,14 @@ h2 {
 	font-size: 1.5em;
 	border-top: .1em solid #afafaf;
 	border-bottom: .1em solid #afafaf;
-	margin: 5% 0;
+	margin: 3%;
 	padding: 2%;
 }
 
 h3 {
 	font-size: 1.35em;
-	margin: 2%;
-	padding: 2%;
+	margin: 3%;
+	padding: 0;
 	text-align: center;
 	text-decoration-line: underline;
 }
@@ -72,12 +79,17 @@ p {
 }
 
 ul, p {
-	width: 80%;
+	width: 90%;
 	margin: auto;
 }
 
-ul, ol {
-	text-align: left;
+ul, ol { text-align: left; }
+
+.quote {
+	margin: 2% 0;
+}
+q {
+	font-style: italic;
 }
 
 a, a:visited {
