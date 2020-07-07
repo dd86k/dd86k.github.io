@@ -16,7 +16,7 @@ body {
 
 /* d-date l-language t-techonology/stars tags */
 
-.d, .wip, .dead,
+.d, .wip,
 .f-pdf,
 .l-c, .l-cs, .l-d, .l-asm,
 .t-web, .t-s {
@@ -28,8 +28,6 @@ body {
 .d { border: .1em solid white; }
 
 .wip { background: darkred; }
-
-.dead { background: black; }
 
 .f-pdf { background: red; }
 
@@ -86,7 +84,7 @@ ul, p {
 ul, ol { text-align: left; }
 
 .quote {
-	margin: 2% 0;
+	margin: 4% 0;
 }
 q {
 	font-style: italic;
