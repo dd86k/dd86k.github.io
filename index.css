@@ -16,7 +16,8 @@ body {
 
 /* d-date l-language t-techonology/stars tags */
 
-.d, .wip,
+.d, .d-end,
+.wip,
 .f-pdf,
 .l-c, .l-cs, .l-d, .l-asm,
 .t-web, .t-s {
@@ -25,7 +26,8 @@ body {
 	font-weight: bold;
 }
 
-.d { border: .1em solid white; }
+.d { border: .15em solid green; }
+.d-end { border: .15em solid red; }
 
 .wip { background: darkred; }
 
