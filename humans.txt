@@ -9,7 +9,7 @@ I'd like to thank all my friends who actually likes to have me around!
 
    _________________
   /                 \
-  | vim  vs.  emacs |
+  |  vim vs. emacs  |
   \  _______________/
    \/
   \o/
