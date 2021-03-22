@@ -10,7 +10,7 @@ body {
 }
 
 @font-face {
-	font-family: rubik;
+	font-family: Rubik;
 	src: url('fonts/rubik.ttf');
 }
 
@@ -54,7 +54,7 @@ main {
 
 #t {
 	margin: 1% 0;
-	font-family: rubik, 'Arial', monospace;
+	font-family: Rubik, Colibri, Manjari, Comfortaa, 'Segoe UI', Jamrul, Arial, monospace;
 	font-size: 5em;
 }
 
