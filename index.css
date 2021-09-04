@@ -14,36 +14,21 @@ body {
 	src: url('fonts/rubik.ttf');
 }
 
-/* d-date l-language t-techonology/stars tags */
-
-.d, .d-end,
-.wip,
-.f-pdf,
-.l-c, .l-cs, .l-d, .l-asm,
-.t-web, .t-s {
+li span {
 	padding: .2em .5em;
 	border-radius: .3em;
 	font-weight: bold;
 }
-
-.d { border: .15em solid green; }
-.d-end { border: .15em solid red; }
-
-.wip { background: darkred; }
-
-.f-pdf { background: red; }
-
-.l-c { background: #666; }
-
-.l-cs { background: #178600; }
-
-.l-d { background: #ba595e; }
-
-.l-asm { background: #6E4C13; }
-
-.t-web { background: #e34c26; }
-
-.t-s { background: chocolate; }
+li span[doc]      { background: #acb015; }
+li span[wip]      { background: darkred; }
+li span[fav]      { background: chocolate; }
+li span[lang=asm] { background: #6e4c13; }
+li span[lang=c]   { background: #666; }
+li span[lang=cs]  { background: #178600; }
+li span[lang=d]   { background: #ba595e; }
+li span[lang=web] { background: #e34c26; }
+li span[date=on]  { border: .15em solid green; }
+li span[date=off] { border: .15em solid red; }
 
 /* Content */
 
@@ -52,7 +37,7 @@ main {
 	margin: auto;
 }
 
-#t {
+#title {
 	margin: 1% 0;
 	font-family: Rubik, Colibri, Manjari, Comfortaa, 'Segoe UI', Jamrul, Arial, monospace;
 	font-size: 5em;
