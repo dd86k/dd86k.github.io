@@ -60,16 +60,16 @@ ul[projects] li span {
 	border-radius: .3em;
 	font-weight: bold;
 }
-ul[projects] span[doc]      { background: #acb015; }
+ul[projects] span[doc]      { background: #6d7005; }
 ul[projects] span[wip]      { background: darkred; }
 ul[projects] span[fav]      { background: chocolate; }
 ul[projects] span[theme]    { background: darkorchid; }
-ul[projects] span[lang=asm] { background: #6e4c13; }
-ul[projects] span[lang=c]   { background: #666; }
-ul[projects] span[lang=cs]  { background: #178600; }
-ul[projects] span[lang=d]   { background: #ba595e; }
-ul[projects] span[lang=web] { background: #e34c26; }
-ul[projects] span[lang=js]  { background: #e34c26; }
+ul[projects] span[proj-lang=asm] { background: #6e4c13; }
+ul[projects] span[proj-lang=c]   { background: #666; }
+ul[projects] span[proj-lang=cs]  { background: #178600; }
+ul[projects] span[proj-lang=d]   { background: #ba595e; }
+ul[projects] span[proj-lang=web] { background: #e34c26; }
+ul[projects] span[proj-lang=js]  { background: #e34c26; }
 ul[projects] span[date=on]  { border: .2em solid green; }
 ul[projects] span[date=off] { border: .2em solid red; }
 ul[projects] a {
@@ -91,7 +91,7 @@ p[big] {
 
 a, a:visited { color: coral; }
 
-summary {
+li p {
 	margin: .75em 0 1.5em 0;
 }
 
