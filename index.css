@@ -1,112 +1,101 @@
 @charset "utf-8";
 
-body {
-	color: white;
-	background: #333;
-	font-family: monospace;
-	text-align: center;
-	font-size: 1.4em;
-	margin: 0;
+@font-face {
+	font-family: Rubik;
+	src: url('fonts/Rubik-Regular.ttf');
 }
 
 @font-face {
-	font-family: Rubik;
-	src: url('fonts/rubik.ttf');
+	font-family: 'Source Code Pro';
+	src: url('fonts/SourceCodeVariable-Roman.otf');
 }
 
-li span {
-	padding: .2em .5em;
-	border-radius: .3em;
-	font-weight: bold;
+@media screen and (max-width: 600px) { /* Mobile */
+	body { font-size: 1em; }
+	ul[projects] span { line-height: 2em; }
 }
-li span[doc]      { background: #acb015; }
-li span[wip]      { background: darkred; }
-li span[fav]      { background: chocolate; }
-li span[lang=asm] { background: #6e4c13; }
-li span[lang=c]   { background: #666; }
-li span[lang=cs]  { background: #178600; }
-li span[lang=d]   { background: #ba595e; }
-li span[lang=web] { background: #e34c26; }
-li span[date=on]  { border: .15em solid green; }
-li span[date=off] { border: .15em solid red; }
+@media screen and (min-width: 600px) { /* Desktop */
+	body { font-size: 1.25em; }
+}
 
-/* Content */
-
-main {
-	width: 85%;
+body {
+	color: white;
+	background: #333;
+	text-align: center;
+	width: 90%;
 	margin: auto;
+	font-family: 'Source Code Pro', 'Courier Prime', 'Ubuntu Mono', Consolas, monospace;
 }
 
-#title {
-	margin: 1% 0;
+h1 {
+	margin: 0;
 	font-family: Rubik, Colibri, Manjari, Comfortaa, 'Segoe UI', Jamrul, Arial, monospace;
 	font-size: 5em;
 }
+h1 span[t1] { color: coral; }
+h1 span[t2] { color: cadetblue; }
+h1 span[t3] { color: deepskyblue; }
 
 h2 {
 	font-size: 1.5em;
-	border-top: .1em solid #afafaf;
-	border-bottom: .1em solid #afafaf;
-	margin: 3%;
+	border-top: .15em solid #afafaf;
+	border-bottom: .15em solid #afafaf;
+	margin: 1em 0;
 	padding: 2%;
 }
 
 h3 {
-	font-size: 1.35em;
-	margin: 3%;
-	padding: 0;
-	text-align: center;
-	text-decoration-line: underline;
-}
-
-p {
-	text-align: justify;
-}
-
-ul, p {
-	width: 90%;
-	margin: auto;
+	font-style: italic;
 }
 
 ul, ol { text-align: left; }
 
-.quote {
-	margin: 4% 0;
+ul[skills] span { float: right; }
+ul[urls] {
+	width: 85%;
+	margin: .5em auto;
 }
-q {
-	font-style: italic;
+ul[projects] li span {
+	padding: .2em .5em;
+	border-radius: .3em;
+	font-weight: bold;
 }
-
-a, a:visited {
-	color: coral;
-}
-
-ul.skills span {
-	float: right;
-}
-
-li {
-	margin: 1% 0 0 0;
-	font-size: 1.15em;
-}
-
-li a {
+ul[projects] span[doc]      { background: #acb015; }
+ul[projects] span[wip]      { background: darkred; }
+ul[projects] span[fav]      { background: chocolate; }
+ul[projects] span[theme]    { background: darkorchid; }
+ul[projects] span[lang=asm] { background: #6e4c13; }
+ul[projects] span[lang=c]   { background: #666; }
+ul[projects] span[lang=cs]  { background: #178600; }
+ul[projects] span[lang=d]   { background: #ba595e; }
+ul[projects] span[lang=web] { background: #e34c26; }
+ul[projects] span[lang=js]  { background: #e34c26; }
+ul[projects] span[date=on]  { border: .2em solid green; }
+ul[projects] span[date=off] { border: .2em solid red; }
+ul[projects] a {
 	font-weight: bold;
 }
 
+p {
+	width: 90%;
+	text-align: justify;
+	margin: 1em auto;
+}
+p[big] {
+	font-weight: bold;
+	width: 100%;
+	margin: 1em 0;
+	text-align: center;
+	font-size: 2em;
+}
+
+a, a:visited { color: coral; }
+
 summary {
-	margin: 2% 0;
-}
-
-.buttons {
-	margin-top: 1em;
-}
-
-.buttons a {
-	text-decoration: none;
+	margin: .75em 0 1.5em 0;
 }
 
 footer {
-	margin: 6%;
-	font-size: 0.9em;
+	margin: 3em;
+	font-size: 0.8em;
 }
