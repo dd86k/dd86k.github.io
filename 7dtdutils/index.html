@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>7DTD Utils</title>
+</head>
+<style>
+* {
+	font-size: 18px;
+	font-family: monospace;
+}
+</style>
+<body>
+<fieldset>
+	<legend>Settings</legend>
+	<label for="fferal">Bloodmon interval (days): </label>
+	<input type="number" id="fferal" name="fferal" value="7"/>
+	<br>
+	<label for="ftrader">Trader interface (days): </label>
+	<input type="number" id="ftrader" name="fferal" value="6"/>
+</fieldset>
+<fieldset>
+	<legend>Calendar</legend>
+	<label for="fday">Day:</label>
+	<input type="number" id="fday" name="fday" oninput="refreshCalendar();" min="0"/>
+	<br>
+	<label>Last bloodmoon: </label><label id="fFeralLast"></label><br>
+	<label>Next bloodmoon: </label><label id="fFeralNext"></label><br>
+	<label>Last trader refresh: </label><label id="fTraderLast"></label><br>
+	<label>Next trader refresh: </label><label id="fTraderNext"></label><br>
+</fieldset>
+</body>
+<script>
+"use strict";
+
+var intervalFeral = 7;	// Default
+var intervalTrader = 6;	// Default
+
+function last(current, interval) {
+	return current - (current % interval);
+}
+function next(current, interval) {
+	return current + (interval - (current % interval));
+}
+
+function refreshCalendar() {
+	var day    = fday.valueAsNumber;
+	var feral  = fferal.valueAsNumber;
+	var trader = ftrader.valueAsNumber;
+	fFeralLast.innerText = last(day, feral);
+	fFeralNext.innerText = next(day, feral);
+	fTraderLast.innerText = last(day, trader);
+	fTraderNext.innerText = next(day, trader);
+}
+</script>
+</html>
