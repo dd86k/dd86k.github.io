@@ -15,8 +15,8 @@
 	<label for="fferal">Bloodmon interval (days): </label>
 	<input type="number" id="fferal" name="fferal" value="7"/>
 	<br>
-	<label for="ftrader">Trader interface (days): </label>
-	<input type="number" id="ftrader" name="fferal" value="6"/>
+	<label for="ftrader">Trader interval (days): </label>
+	<input type="number" id="ftrader" name="ftrader" value="3"/>
 </fieldset>
 <fieldset>
 	<legend>Calendar</legend>
@@ -32,9 +32,6 @@
 <script>
 "use strict";
 
-var intervalFeral = 7;	// Default
-var intervalTrader = 6;	// Default
-
 function last(current, interval) {
 	return current - (current % interval);
 }
@@ -44,12 +41,18 @@ function next(current, interval) {
 
 function refreshCalendar() {
 	var day    = fday.valueAsNumber;
+	//
 	var feral  = fferal.valueAsNumber;
-	var trader = ftrader.valueAsNumber;
-	fFeralLast.innerText = last(day, feral);
-	fFeralNext.innerText = next(day, feral);
-	fTraderLast.innerText = last(day, trader);
-	fTraderNext.innerText = next(day, trader);
+	var lastFeral = last(day, feral);
+	var nextFeral = next(day, feral);
+	fFeralLast.innerText = lastFeral;
+	fFeralNext.innerText = nextFeral;
+	// trader: 199-202-205
+	var trader  = ftrader.valueAsNumber;
+	var lastTrader = last(day, trader) + 1;
+	var nextTrader = next(day, trader) + 1;
+	fTraderLast.innerText = lastTrader;
+	fTraderNext.innerText = nextTrader;
 }
 </script>
 </html>
