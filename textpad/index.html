@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>textpad</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+<style>
+body {
+	font-family: monospace;
+	color: white;
+	background: black;
+}
+.content {
+	width: 95%;
+	margin: 1em auto;
+}
+#statsbox {
+	text-align: right;
+}
+textarea {
+	width: 100%;
+	color: white;
+	background: black;
+}
+select {
+	color: white;
+	background: black;
+}
+</style>
+	<div class="content">
+		<noscript>
+			JavaScript disabled. Some features may be unavailable.
+		</noscript>
+		<p>
+			<label>Font-family:</label>
+			<select onchange="fontfamily(this)">
+				<option value='monospace'>Monospace</option>
+				<option value='serif'>Serif</option>
+				<option value='sans-serif'>Sans-serif</option>
+			</select>
+		</p>
+		<textarea rows="25" onkeyup="stats()" id="textbox"></textarea>
+		<p id="statsbox"></p>
+	</div>
+<script>
+var re_lines = /\r\n|\r|\n/g;
+var re_words = /\w+/g;
+
+function stats() {
+	var text = textbox.value;
+	var s_chars = text.length;
+	var r0 = text.match(re_words);
+	var s_words = r0 ? r0.length : 0;
+	    r0 = text.match(re_lines);
+	var s_lines = r0 ? r0.length : 0;
+	
+	statsbox.innerText = fmtstats(s_chars, s_words, s_lines);
+}
+function fmtstats(chars, words, lines) {
+	return chars + ' characters, ' +
+		words + ' words, ' +
+		lines + ' lines';
+}
+
+function fontfamily(select) {
+	var name = select.selectedOptions[0].value;
+	console.log(name);
+	textbox.style.fontFamily = name;
+}
+
+statsbox.innerText = fmtstats(0, 0, 0);
+</script>
+</body>
+</html>
