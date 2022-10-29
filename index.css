@@ -13,25 +13,30 @@
 @media screen and (max-width: 600px) { /* Mobile */
 	body { font-size: 1em; }
 	ul[projects] span { line-height: 2em; }
+	h1 > span { font-size: 2em; }
+	h1 { margin: 3em 0; }
 }
 @media screen and (min-width: 600px) { /* Desktop */
 	body { font-size: 1.25em; }
+	h1 > span { font-size: 4em; }
+	h1 { margin: 5em 0; }
 }
 
 body {
 	color: white;
 	background: #333;
 	text-align: center;
-	width: 90%;
+	width: 80%;
 	margin: auto;
-	font-family: 'Source Code Pro', 'Courier Prime', 'Ubuntu Mono', Consolas, monospace;
+	font-family: 'Source Code Pro', 'Courier Prime', 'Ubuntu Mono', 'Consolas', monospace;
 }
 
-h1 {
-	margin: 0;
-	font-family: Rubik, Colibri, Manjari, Comfortaa, 'Segoe UI', Jamrul, Arial, monospace;
-	font-size: 5em;
+h1 > span {
+	padding: .30em;
+	font-family: 'Rubik', monospace;
+	border: .30em solid #ddd;
 }
+h1 span { margin: 0; }
 h1 span[t1] { color: coral; }
 h1 span[t2] { color: cadetblue; }
 h1 span[t3] { color: deepskyblue; }
@@ -44,17 +49,12 @@ h2 {
 	padding: 2%;
 }
 
-h3 {
-	font-style: italic;
-}
-
 ul, ol { text-align: left; }
 
-ul[skills] span { float: right; }
 ul[urls] {
-	width: 85%;
 	margin: .5em auto;
 }
+
 ul[projects] li span {
 	padding: .2em .5em;
 	border-radius: .3em;
@@ -72,11 +72,9 @@ ul[projects] span[proj-lang=web] { background: #e34c26; }
 ul[projects] span[proj-lang=js]  { background: #e34c26; }
 ul[projects] span[date=on]  { border: .2em solid green; }
 ul[projects] span[date=off] { border: .2em solid red; }
-ul[projects] a {
-	font-weight: bold;
-}
+ul[projects] a { font-weight: bold; }
 
-p {
+p, ul[projects], ul[urls], ul[skills] {
 	width: 90%;
 	text-align: justify;
 	margin: 1em auto;
