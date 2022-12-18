@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>textpad</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-</head>
-<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
 	font-family: monospace;
@@ -28,24 +26,26 @@ select {
 	background: black;
 }
 </style>
-	<div class="content">
-		<noscript>
-			JavaScript disabled. Some features may be unavailable.
-		</noscript>
-		<p>
-			<label>Font-family:</label>
-			<select onchange="fontfamily(this)">
-				<option value='monospace'>Monospace</option>
-				<option value='serif'>Serif</option>
-				<option value='sans-serif'>Sans-serif</option>
-			</select>
-		</p>
-		<textarea rows="25" onkeyup="stats()" id="textbox" autofocus></textarea>
-		<div>
-			<p style="float:left;">Version 1.0.1</p>
-			<p id="statsbox" style="float:right;"></p>
-		</div>
+</head>
+<body>
+<div class="content">
+	<noscript>
+		JavaScript disabled. Some features may be unavailable.
+	</noscript>
+	<p>
+		<label>Font-family:</label>
+		<select onchange="fontfamily(this)">
+			<option value='monospace'>Monospace</option>
+			<option value='serif'>Serif</option>
+			<option value='sans-serif'>Sans-serif</option>
+		</select>
+	</p>
+	<textarea rows="25" onkeyup="stats()" id="textbox" autofocus></textarea>
+	<div>
+		<p style="float:left;">Last updated 2022-10-18</p>
+		<p id="statsbox" style="float:right;"></p>
 	</div>
+</div>
 <script>
 var re_lines = /\r\n|\r|\n/g;
 var re_words = /\w+/g;
