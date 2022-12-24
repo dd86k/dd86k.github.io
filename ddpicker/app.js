@@ -67,8 +67,7 @@ function addResult(emoji)
 
 function clearInputs()
 {
-    input_search.value =
-        input_code.value = '';
+    input_search.value = '';
     stats_results.innerText = '0';
 }
 
