@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- ermmm actuallyyy -->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>DD Emoji Picker</title>
+    <meta name="description" content="dd86k's Portfolio"/>
+    <meta name="keywords" content="dd86k,portfolio,development,programming"/>
+    <link rel="shortcut icon" href="favicon.png"/>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="pop" style="display: none;">
+        <p id="pop_high"></p>
+        <p id="pop_low"></p>
+    </div>
+    <div id="errortag" style="display: none;">
+        <span id="errortext"></span><span onclick="">x</span>
+    </div>
+    <h1>Emoji 15.0 picker</h1>
+    <p>Last updated 2022-12-25, using Google's <a href="https://github.com/googlefonts/emoji-metadata">emoji-metadata</a></p>
+    <div class="inputs">
+        <button onclick="clearAll();">Reset</button>
+        <textarea id="input_search" autofocus rows="1" oninput="searchName(this.value)" placeholder="Emoji name"></textarea>
+        <!--span class="prelabel">or U+</span>
+        <textarea id="input_code" rows="1" oninput="searchCode(this.value)" placeholder="1F600"></textarea-->
+    </div>
+    <p>
+        <span id="stats_loaded">0</span> emojis available, <span id="stats_results">0</span> results
+    </p>
+    <div id="results"></div>
+    <script type="application/javascript" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+body
+{
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+#errortag
+{
+    background-color: crimson;
+    color: white;
+}
+
+.inputs
+{
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+#pop
+{
+    position: fixed;
+    z-index: 80860;
+    background: black;
+    border-radius: .75em;
+    text-align: center;
+    color: white;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 10em;
+    height: 10em;
+    user-select: none;
+}
+
+#pop_high, .emoji
+{
+    font-size: 2em;
+}
+
+#results
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.result
+{
+    flex: 0 1 8em;
+    width: 8em;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid black;
+    padding: .5em;
+    user-select: none;
+}
+
+.result p
+{
+    margin: .5em;
+}
+
+.result:hover
+{
+    cursor: pointer;
+    background-color: lightgray;
+    content: "Copy";
+    /*TODO: Show "Copy"*/
+}
+
+button
+{
+    padding: .5em;
+    vertical-align: middle;
+}
+
+textarea
+{
+    padding: .5em;
+    resize: none;
+    vertical-align: middle;
+}
