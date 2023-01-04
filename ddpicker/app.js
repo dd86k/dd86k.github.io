@@ -3,8 +3,8 @@
 //
 // Settings
 //
+
 var islocal      = location.hostname == "localhost";
-                // remote ? remote_prefix : local_prefix
 var url_prefix   = islocal ? "http://localhost:8080/" : "";
 var url          = url_prefix + "meta.json";
 var meta_timeout = 5000;
@@ -161,7 +161,9 @@ var x = new XMLHttpRequest();
 x.timeout = meta_timeout;
 x.ontimeout = function()
 {
-    console.error("Timed out");
+    var text = "Time out attempting to fetch meta.json";
+    console.error(text);
+    showError(text);
 }
 x.onreadystatechange = function()
 {

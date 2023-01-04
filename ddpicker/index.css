@@ -9,11 +9,14 @@ body
 
 #messages div, noscript
 {
-    background-color: crimson;
     font-weight: bold;
-    color: white;
     padding: 1em;
     display: block;
+}
+noscript, #messages div.error
+{
+    background-color: crimson;
+    color: white;
 }
 #messages div.warning
 {
