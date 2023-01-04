@@ -21,6 +21,7 @@ if (!islocal && location.protocol == "http:")
 
 // Example: data[0].emoji[0].shortcodes[0] -> ":smile:"
 var data;
+var totalCount = 0;
 
 //
 // Functions
@@ -68,6 +69,28 @@ function addResult(emoji)
     mainNode.appendChild(nameNode);
     
     results.appendChild(mainNode);
+}
+
+function showAll()
+{
+    clearAll();
+    
+    for (var index_group = 0; index_group < data.length; ++index_group)
+    {
+        var group = data[index_group];
+        
+        for (var index_emoji = 0; index_emoji < group.emoji.length; ++index_emoji)
+        {
+            var emoji = group.emoji[index_emoji];
+            
+            // ASCII is not exactly an emoji
+            if (emoji.base[0] <= 0xff) continue;
+            
+            addResult(emoji);
+        }
+    }
+    
+    stats_results.innerText = totalCount;
 }
 
 function clearInputs()
@@ -185,10 +208,9 @@ x.onreadystatechange = function()
         data = JSON.parse(x.responseText);
         console.info("Loaded " + data.length + " groups");
         
-        var count = 0;
-        data.forEach(function (group) { count += group.emoji.length; });
+        data.forEach(function (group) { totalCount += group.emoji.length; });
         
-        stats_loaded.innerText = count;
+        stats_loaded.innerText = totalCount;
     }
     catch (ex)
     {

@@ -33,6 +33,7 @@ noscript, #messages div.error
 {
     line-height: 1em;
     vertical-align: middle;
+    margin-top: .5em;
 }
 
 #pop
