@@ -4,12 +4,26 @@ body
 {
     font-family: monospace;
     box-sizing: border-box;
+    margin: 0;
 }
 
-#errortag
+#messages div, noscript
 {
     background-color: crimson;
+    font-weight: bold;
     color: white;
+    padding: 1em;
+    display: block;
+}
+#messages div.warning
+{
+    background-color: #ffb500;
+    color: black;
+}
+
+.main
+{
+    margin: .5em;
 }
 
 .inputs

@@ -3,16 +3,21 @@
 //
 // Settings
 //
+var islocal      = location.hostname == "localhost";
                 // remote ? remote_prefix : local_prefix
-var url_prefix   = location.hostname ? "" : "http://localhost:8080/";
+var url_prefix   = islocal ? "" : "http://localhost:8080/";
 var url          = url_prefix + "meta.json";
 var meta_timeout = 5000;
-var search_limit = 20;
 var pop_timeout  = 2000;
 
 //
 // Globals
 //
+
+if (!islocal && location.protocol == "http:")
+{
+    showError("Copying an Emoji won't work in HTTP, reload page in HTTPS.");
+}
 
 // Example: data[0].emoji[0].shortcodes[0] -> ":smile:"
 var data;
@@ -87,9 +92,7 @@ function searchName(text)
     clearResults();
     
     if (text.length <= 1)
-    {
         return;
-    }
     
     var rg = new RegExp(text, 'i');
     
@@ -124,15 +127,22 @@ function searchName(text)
     stats_results.innerText = resultCount;
 }
 
-function searchCode(text)
-{
-    
-}
-
 function showError(text)
 {
-    errortag.style.display = "block";
-    errortag.innerText = text;
+    var div = document.createElement("div");
+    div.classList.add("error");
+    div.innerText = "Error: " + text;
+    
+    messages.appendChild(div);
+}
+
+function showWarning(text)
+{
+    var div = document.createElement("div");
+    div.classList.add("warning");
+    div.innerText = "Warning: " + text;
+    
+    messages.appendChild(div);
 }
 
 function showPop(upper, lower)
@@ -161,7 +171,9 @@ x.onreadystatechange = function()
     
     if (this.status >= 400)
     {
-        console.error("HTTP error code " + this.status);
+        var text = "Failed to load meta.json: HTTP " + this.status;
+        console.error(text);
+        showError(text);
         return;
     }
     
@@ -178,7 +190,9 @@ x.onreadystatechange = function()
     }
     catch (ex)
     {
-        console.error("Could not process text");
+        var text = "Could not process text. " + ex;
+        console.error(text);
+        showError(text);
     }
 }
 x.open("GET", url, true);
