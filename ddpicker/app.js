@@ -71,13 +71,25 @@ function addResult(emoji)
     results.appendChild(mainNode);
 }
 
-function showAll()
+function addGroup(text)
+{
+    var groupNode = document.createElement("div");
+    groupNode.classList.add("group");
+    groupNode.innerText = text;
+    
+    results.appendChild(groupNode);
+}
+
+function showAll(wgroup)
 {
     clearAll();
     
     for (var index_group = 0; index_group < data.length; ++index_group)
     {
         var group = data[index_group];
+        
+        if (wgroup)
+            addGroup(group.group);
         
         for (var index_emoji = 0; index_emoji < group.emoji.length; ++index_emoji)
         {
@@ -118,6 +130,8 @@ function searchName(text)
         return;
     
     var rg = new RegExp(text, 'i');
+    var wgroup = input_group.checked;
+    var gonce  = true;
     
     //TODO: Should it be better to make a list of emoji items first?
     // NOTE: Array.forEach sucks
@@ -137,17 +151,28 @@ function searchName(text)
             {
                 var shortcode = emoji.shortcodes[short_index];
                 
-                //if (shortcode.includes(text))
                 if (rg.test(shortcode))
                 {
+                    if (wgroup && gonce)
+                        addGroup(group.group);
+                    
+                    gonce = false;
                     addResult(emoji);
                     ++resultCount;
                 }
             }
         }
+        
+        gonce = true;
     }
     
     stats_results.innerText = resultCount;
+}
+
+function toggleInputGroup()
+{
+    //TODO: Return/reuse results
+    searchName(input_search.value);
 }
 
 function showError(text)

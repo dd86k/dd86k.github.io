@@ -65,6 +65,17 @@ noscript, #messages div.error
     flex-wrap: wrap;
 }
 
+.group
+{
+    flex: 0 1 100%;
+    width: 8em;
+    text-align: center;
+    display: inline-block;
+    padding: 1em;
+    user-select: none;
+    font-size: 3em;
+}
+
 .result
 {
     flex: 0 1 8em;
