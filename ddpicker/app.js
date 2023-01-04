@@ -5,7 +5,7 @@
 //
 var islocal      = location.hostname == "localhost";
                 // remote ? remote_prefix : local_prefix
-var url_prefix   = islocal ? "" : "http://localhost:8080/";
+var url_prefix   = islocal ? "http://localhost:8080/" : "";
 var url          = url_prefix + "meta.json";
 var meta_timeout = 5000;
 var pop_timeout  = 2000;
@@ -16,7 +16,7 @@ var pop_timeout  = 2000;
 
 if (!islocal && location.protocol == "http:")
 {
-    showError("Copying an Emoji won't work in HTTP, reload page in HTTPS.");
+    showWarning("Copying an Emoji won't work in HTTP, reload page in HTTPS.");
 }
 
 // Example: data[0].emoji[0].shortcodes[0] -> ":smile:"
