@@ -106,7 +106,7 @@ button
     vertical-align: middle;
 }
 
-textarea
+input[type="text"]
 {
     padding: .5em;
     resize: none;
