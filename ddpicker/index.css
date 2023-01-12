@@ -106,6 +106,10 @@ button
     vertical-align: middle;
 }
 
+input, button
+{
+    font-family: monospace;
+}
 input[type="text"]
 {
     padding: .5em;
