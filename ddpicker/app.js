@@ -16,7 +16,9 @@ var pop_timeout  = 2000;
 
 if (!islocal && location.protocol == "http:")
 {
-    showWarning("Copying an Emoji won't work in HTTP, reload page in HTTPS.");
+    showWarning("Copying an Emoji won't work in HTTP, reload page in HTTPS.",
+        "Reload",
+        function() { location.href = "https://" + location.hostname + location.pathname });
 }
 
 // Example: data[0].emoji[0].shortcodes[0] -> ":smile:"
@@ -175,22 +177,38 @@ function toggleInputGroup()
     searchName(input_search.value);
 }
 
-function showError(text)
+function showMessage(type, text, btext, bfunc)
 {
     var div = document.createElement("div");
-    div.classList.add("error");
-    div.innerText = "Error: " + text;
+    div.classList.add(type);
+    
+    var span = document.createElement("span");
+    span.innerText = type.toUpperCase() + ": " + text + " ";
+    
+    div.appendChild(span);
+    
+    if (btext)
+    {
+        var button = document.createElement("button");
+        
+        button.classList.add("show-button");
+        button.innerText = btext;
+        button.onclick = bfunc;
+        
+        div.appendChild(button);
+    }
     
     messages.appendChild(div);
 }
 
-function showWarning(text)
+function showError(text, btext, bfunc)
 {
-    var div = document.createElement("div");
-    div.classList.add("warning");
-    div.innerText = "Warning: " + text;
-    
-    messages.appendChild(div);
+    showMessage("warning", text, btext, bfunc);
+}
+
+function showWarning(text, btext, bfunc)
+{
+    showMessage("error", text, btext, bfunc);
 }
 
 function showPop(upper, lower)
