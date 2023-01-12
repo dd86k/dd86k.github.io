@@ -90,6 +90,7 @@ noscript, #messages div.error
 .result p
 {
     margin: .5em;
+    word-break: break-all;
 }
 
 .result:hover
