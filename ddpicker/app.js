@@ -203,12 +203,12 @@ function showMessage(type, text, btext, bfunc)
 
 function showError(text, btext, bfunc)
 {
-    showMessage("warning", text, btext, bfunc);
+    showMessage("error", text, btext, bfunc);
 }
 
 function showWarning(text, btext, bfunc)
 {
-    showMessage("error", text, btext, bfunc);
+    showMessage("warning", text, btext, bfunc);
 }
 
 function showPop(upper, lower)
