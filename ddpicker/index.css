@@ -5,6 +5,12 @@ body
     font-family: monospace;
     box-sizing: border-box;
     margin: 0;
+    background-color: #222;
+    color: #eee;
+}
+
+a {
+    color: coral;
 }
 
 #messages div, noscript
@@ -96,7 +102,7 @@ noscript, #messages div.error
 .result:hover
 {
     cursor: pointer;
-    background-color: lightgray;
+    background-color: #333;
     content: "Copy";
     /*TODO: Show "Copy"*/
 }
@@ -110,10 +116,15 @@ button
 input, button
 {
     font-family: monospace;
+    background-color: #222;
+    color: #eee;
+    font-weight: bold;
 }
 input[type="text"]
 {
     padding: .5em;
     resize: none;
     vertical-align: middle;
+    background-color: #222;
+    color: #eee;
 }

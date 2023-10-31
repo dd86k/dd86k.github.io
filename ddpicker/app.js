@@ -6,7 +6,7 @@
 
 var islocal      = location.hostname == "localhost";
 var url_prefix   = islocal ? "http://localhost:8080/" : "";
-var url          = url_prefix + "meta.json";
+var url          = url_prefix + "emoji_15_0_ordering.json";
 var meta_timeout = 5000;
 var pop_timeout  = 2000;
 
