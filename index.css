@@ -16,7 +16,7 @@ body {
 	text-align: center;
 	margin: auto;
 	font-family: 'Source Code Pro', 'Courier Prime', 'Ubuntu Mono', 'Consolas', monospace;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 h1 {
@@ -59,18 +59,24 @@ ul { text-align: left; }
 	flex-wrap: wrap;
 	width: 80%;
 	margin: 0 auto;
+	border: solid white;
+	border-width: 1px 0 0 1px;
 }
 .cards article {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: left;
-	border: 1px solid white;
+	border: solid white;
+	border-width: 0 1px 1px 0;
 	flex: 1;
-	flex-basis: 49%;
+	flex-basis: 350px;
 }
-.cards header, .cards summary {
+.cards header {
 	padding: 1em;
+}
+.cards summary {
+	padding: 0 1em 1em 1em;
 }
 .cards header {
 	font-weight: bold;
@@ -102,22 +108,23 @@ ul { text-align: left; }
 
 .cards .tag {
 	display: contents;
-	display: inline;
-	margin: .8em 0 0 .8em;
+	display: inline-block;
+	/*margin: .8em 0 0 .8em;*/
+	margin: 0 0 0 .75em;
 	padding: .2em .5em;
 	border-radius: .3em;
 	font-weight: bold;
 }
-.cards .tag-doc   { background: #6d7005; }
-.cards .tag-wip   { background: darkred; }
-.cards .tag-fav   { background: chocolate; }
-.cards .tag-theme { background: darkorchid; }
-.cards .tag-asm   { background: #6e4c13; }
-.cards .tag-c     { background: #666; }
-.cards .tag-cs    { background: #178600; }
-.cards .tag-d     { background: #ba595e; }
-.cards .tag-web   { background: #e34c26; }
-.cards .tag-js    { background: yellow; color: black; }
+.cards .tag-doc     { background: #6d7005; }
+.cards .tag-wip     { background: darkred; }
+.cards .tag-fav     { background: chocolate; }
+.cards .tag-theme   { background: darkorchid; }
+.cards .tag-x86-asm { background: #6e4c13; }
+.cards .tag-c       { background: #666; }
+.cards .tag-cs      { background: #178600; }
+.cards .tag-d       { background: #ba595e; }
+.cards .tag-web     { background: #e34c26; }
+.cards .tag-js      { background: yellow; color: black; }
 
 .subbody {
 	width: 80%;
@@ -141,10 +148,10 @@ ul.links a {
 	padding: 1em;
 	border: 1px solid white;
 	color: white;
-	background: #040453;
+	background: black;
 }
 ul.links a:hover {
-	background: #111168;
+	background: #111;
 }
 ul.links a::after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
