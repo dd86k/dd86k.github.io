@@ -58,7 +58,7 @@ ul { text-align: left; }
 	display: flex;
 	flex-wrap: wrap;
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 3em;
 	border: solid white;
 	border-width: 1px 0 0 1px;
 }
