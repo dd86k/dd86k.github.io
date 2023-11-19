@@ -18,19 +18,22 @@
     <div id="messages"></div>
     <div class="main">
         <h1>Emoji 15.0 picker</h1>
-        <p>Last updated 2023-10-30, using Google's <a href="https://github.com/googlefonts/emoji-metadata">emoji-metadata (April 25 2023)</a></p>
-        <div class="inputs">
-            <button onclick="clearAll();">Clear</button>
+        <p>Last updated 2023-11-19, using Google's <a href="https://github.com/googlefonts/emoji-metadata">emoji-metadata (April 25 2023)</a></p>
+        <fieldset>
+            <legend>Search</legend>
             <input id="input_search" type="text" autofocus oninput="searchName(this.value)" placeholder="Emoji name">
             <input id="input_group" type="checkbox" onchange="toggleInputGroup();">
             <label for="input_group">Show by group</label>
             <!--span class="prelabel">or U+</span>
             <textarea id="input_code" rows="1" oninput="searchCode(this.value)" placeholder="1F600"></textarea-->
-        </div>
-        <div class="inputs">
-            <button onclick="showAll(false);">Show all</button>
-            <button onclick="showAll(true);">Show by group</button>
-        </div>
+        </fieldset>
+        <fieldset>
+            <legend>Show</legend>
+            <button onclick="clearAll();">Clear</button>
+            <button onclick="showRandom();">Random</button>
+            <button onclick="showAll(false);">All</button>
+            <button onclick="showAll(true);">By group</button>
+        </fieldset>
         <p>Click an Emoji to copy it into the clipboard.</p>
         <p><span id="stats_loaded">0</span> emojis available, <span id="stats_results">0</span> results</p>
         <div id="results"></div>

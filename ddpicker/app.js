@@ -107,6 +107,16 @@ function showAll(wgroup)
     stats_results.innerText = totalCount;
 }
 
+function showRandom()
+{
+    clearAll();
+    
+    var groupIndex = Math.floor(Math.random() * data.length);
+    var group = data[groupIndex];
+    var emojiIndex = Math.floor(Math.random() * group.emoji.length);
+    addResult(group.emoji[emojiIndex]);
+}
+
 function clearInputs()
 {
     input_search.value = '';
