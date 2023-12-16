@@ -22,9 +22,10 @@ textarea {
 	color: white;
 	background: black;
 }
-select {
+select, input {
 	color: white;
 	background: black;
+	padding: .5em;
 }
 </style>
 </head>
@@ -39,7 +40,9 @@ select {
 			<option value='monospace'>Monospace</option>
 			<option value='serif'>Serif</option>
 			<option value='sans-serif'>Sans-serif</option>
+			<option value='custom'>Custom</option>
 		</select>
+		<input id="custom_font" style="display:none" oninput="change_font(this)"/>
 	</p>
 	<textarea rows="25" onkeyup="stats()" id="textbox" autofocus></textarea>
 	<div>
@@ -83,9 +86,18 @@ function formatstats(chars, printabe, words, lines) {
 }
 
 function fontfamily(select) {
-	var name = select.selectedOptions[0].value;
-	console.log(name);
-	textbox.style.fontFamily = name;
+	var custom_font_node = document.getElementById('custom_font');
+	var font_family = select.selectedOptions[0].value
+	if (font_family == "custom") {
+		custom_font_node.style.display = 'initial';
+		return;
+	}
+	custom_font_node.style.display = 'none';
+	textbox.style.fontFamily = font_family;
+}
+
+function change_font(node) {
+	textbox.style.fontFamily = node.value;
 }
 
 statsbox.innerText = formatstats(0, 0, 0, 0);
