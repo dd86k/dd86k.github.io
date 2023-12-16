@@ -11,7 +11,7 @@
 }
 
 body {
-	color: white;
+	color: #eee;
 	background: #333;
 	text-align: center;
 	margin: auto;
@@ -30,6 +30,7 @@ h1 span.t2 { color: cadetblue; }
 h1 span.t3 { color: deepskyblue; }
 
 h2 {
+	color: white;
 	font-size: 3em;
 	font-weight: lighter;
 	text-align: left;
@@ -59,7 +60,7 @@ ul { text-align: left; }
 	flex-wrap: wrap;
 	width: 80%;
 	margin: 0 auto 3em;
-	border: solid white;
+	border: solid #ddd;
 	border-width: 1px 0 0 1px;
 }
 .cards article {
@@ -67,7 +68,7 @@ ul { text-align: left; }
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: left;
-	border: solid white;
+	border: solid #ddd;
 	border-width: 0 1px 1px 0;
 	flex: 1;
 	flex-basis: 350px;
@@ -79,7 +80,7 @@ ul { text-align: left; }
 	padding: 0 1em 1em 1em;
 }
 .skills header {
-	background-color: #eee;
+	background-color: #ddd;
 	color: #111;
 }
 .skills summary {
@@ -95,9 +96,9 @@ ul { text-align: left; }
 	font-weight: bold;
 }
 .cards .visit {
-	border: solid white;
+	border: solid #ddd;
 	border-width: 1px 0 0 1px;
-	color: white;
+	color: #ddd;
 	text-decoration: none;
 	background: black;
 	padding: 1em;
