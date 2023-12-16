@@ -48,22 +48,37 @@ select {
 	</div>
 </div>
 <script>
-var re_lines = /\r\n|\r|\n/g;
-var re_words = /\w+/g;
+var regex_chars = /./g;
+var regex_lines = /\r\n|\r|\n/g;
+var regex_words = /\w+/g;
 
+function testcount(text, expr) {
+	var res = text.match(regex_chars);
+	return res ? res.length : 0;
+}
 function stats() {
 	var text = textbox.value;
+	
+	// get total character count
 	var s_chars = text.length;
-	var r0 = text.match(re_words);
+	
+	// get printable character count
+	var s_pchars = testcount(text, regex_chars);
+	
+	// get word count
+	var r0 = text.match(regex_words);
 	var s_words = r0 ? r0.length : 0;
-	    r0 = text.match(re_lines);
+	
+	// get line count
+	r0 = text.match(regex_lines);
 	var s_lines = (r0 ? r0.length : 0) + 1;
 	
-	statsbox.innerText = fmtstats(s_chars, s_words, s_lines);
+	statsbox.innerText = formatstats(s_chars, s_pchars, s_words, s_lines);
 }
-function fmtstats(chars, words, lines) {
-	return chars + ' characters, ' +
-		words + ' words, ' +
+function formatstats(chars, printabe, words, lines) {
+	return chars + ' characters total\n' +
+		printabe + ' characters printable\n' +
+		words + ' words\n' +
 		lines + ' lines';
 }
 
@@ -73,7 +88,7 @@ function fontfamily(select) {
 	textbox.style.fontFamily = name;
 }
 
-statsbox.innerText = fmtstats(0, 0, 0);
+statsbox.innerText = formatstats(0, 0, 0, 0);
 </script>
 </body>
 </html>
