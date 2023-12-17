@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ETA download calculator</title>
+</head>
+<body>
+  <form>
+    <div>
+      <label>Data remaining</label>
+      <input id="input_left" oninput="updateAll()" type="number" />
+      <select id="left_mode">
+        <option value="gb">GiB</option>
+        <option value="mb">MiB</option>
+      </select>
+    </div>
+    <div>
+      <label>Speed</label>
+      <input id="input_speed" online="updateAll()" type="number" />
+      <select id="speed_mode">
+        <option value="gb">GiB/s</option>
+        <option value="mb">MiB/s</option>
+      </select>
+    </div>
+  </form>
+  <div>
+  </div>
+  <div>
+    <div id="out_total"></div>
+    <div id="out_time"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
