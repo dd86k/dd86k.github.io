@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Aaaaaaaaaaaaaaaaaaa -->
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>ASCII table</title>
+<style>
+body {
+	font-family: monospace;
+}
+nav {
+	margin: .5em;
+}
+table {
+	border: 1px solid black;
+}
+noscript {
+	background-color: crimson;
+	color: white;
+}
+.result {
+	text-align: center;
+	padding: .5em;
+}
+.result:hover {
+	background-color: #eee;
+}
+.rowheader {
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<noscript>Error: Sorry, you need Javascript enabled for this site.</noscript>
+
+<!-- Upper bar -->
+<nav>
+<label>Offset</label>
+<select onchange="makeTable(event.target.value, ncp.value)" id="noffset">
+	<option value="uni">Unicode</option>
+	<option value="dec">Dec</option>
+	<option value="hex">Hex</option>
+	<option value="oct">Oct</option>
+	<option value="html">HTML</option>
+</select>
+<label>Codepage</label>
+<select onchange="makeTable(noffset.value, event.target.value)" id="ncp">
+	<option value="uni">Unicode</option>
+	<option value="cp437">CP437</option>
+	<option value="ebcdic">EBCDIC</option>
+</select>
+</nav>
+
+<p>Warning: Unicode offset only applies to the Unicode character set!</p>
+
+<!-- Table -->
+<table>
+<thead><tr id="header"></tr></thead>
+<tbody id="table"></tbody>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>
