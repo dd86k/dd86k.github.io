@@ -2,33 +2,57 @@
 <html>
 <head>
   <title>ETA download calculator</title>
+<style>
+#error {
+  color: red;
+}
+.timer {
+  border: 1px solid black;
+}
+.timer_close_button {
+  padding: .5em;
+}
+</style>
 </head>
 <body>
+  <noscript>
+    Unfortunately, JavaScript features are required to use this.
+  </noscript>
   <form>
     <div>
       <label>Data remaining</label>
-      <input id="input_left" oninput="updateAll()" type="number" />
-      <select id="left_mode">
+      <input id="input_remaining" type="number" />
+      <select id="select_remaining">
         <option value="gb">GiB</option>
         <option value="mb">MiB</option>
+        <option value="kb">KiB</option>
+        <option value="b">Bytes</option>
+        <!--option value="gbit">Gb</option>
+        <option value="mbit">Mb</option>
+        <option value="kbit">Kb</option>
+        <option value="bit">Bits</option-->
       </select>
     </div>
     <div>
       <label>Speed</label>
-      <input id="input_speed" online="updateAll()" type="number" />
-      <select id="speed_mode">
+      <input id="input_speed" type="number" />
+      <select id="select_speed">
         <option value="gb">GiB/s</option>
         <option value="mb">MiB/s</option>
+        <option value="kb">KiB/s</option>
+        <option value="b">Bytes/s</option>
+        <!--option value="gbit">Gb/s</option>
+        <option value="mbit">Mb/s</option>
+        <option value="kbit">Kb/s</option>
+        <option value="bit">Bits/s</option-->
       </select>
     </div>
   </form>
+  <div id="error"></div>
   <div>
+    <button onclick="createTimer()">Make Timer</button>
   </div>
-  <div>
-    <div id="out_total"></div>
-    <div id="out_time"></div>
-  </div>
+  <div id="timers"></div>
   <script src="app.js"></script>
 </body>
-
 </html>

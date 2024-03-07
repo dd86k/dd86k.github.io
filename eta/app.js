@@ -1,74 +1,112 @@
 "use strict";
 
-//TODO: Create Timer
-
 var MINUTE = 60;
 var HOUR = MINUTE * 60;
 var DAY = HOUR * 24;
 
-function format(days, hours, minutes, seconds) {
-	var base = '';
-	if (days > 0)
-		base += days + (days > 1 ? " days, " : " day, ");
-	if (hours > 0)
-		base += hours + (hours > 1 ? " hours, " : " hour, ");
-	if (minutes > 0)
-		base += minutes + (minutes > 1 ? " minutes, " : " minute, ");
-	return base + (Math.round(seconds) + " seconds");
+var K = 1024;
+var M = K * 1024;
+var G = M * 1024;
+
+function seterror(msg) {
+	error.innerText = 'error: ' + msg;
 }
-function count_days(seconds) {
-	return Math.floor(seconds / DAY);
-}
-function count_hours(seconds) {
-	return Math.floor(seconds / HOUR);
-}
-function count_minutes(seconds) {
-	return Math.floor(seconds / MINUTE);
+function clearerror() {
+	error.innerText = '';
 }
 
-function updateAll() {
-	var remaining = parseFloat(input_left.value);
-	var rate = parseFloat(input_speed.value);
+function getData(node_input, node_select) {
+	var val  = parseFloat(document.getElementById(node_input).value);
+	if (isNaN(val))
+		return NaN;
+	var mode = document.getElementById(node_select).value;
+	switch (mode) {
+	case "gb": val *= G; break;
+	case "mb": val *= M; break;
+	case "kb": val *= K; break;
+	case "b":  break;
+	default:
+		console.trace("Unimplemented select for " + node_select + ": " + mode);
+		console.assert(false);
+	}
+	return val;
+}
 
-	if (isNaN(remaining) || isNaN(rate)) {
-		clearEta();
+function formatTime(seconds) {
+	var str = '';
+	
+	var days = Math.floor(seconds / DAY);
+	if (days) {
+		str += days + 'd ';
+		seconds -= days * DAY;
+	}
+	
+	var hours = Math.floor(seconds / HOUR);
+	if (hours) {
+		str += hours + 'h ';
+		seconds -= hours * HOUR;
+	}
+	
+	var minutes = Math.floor(seconds / MINUTE);
+	if (minutes) {
+		str += minutes + 'm ';
+		seconds -= minutes * MINUTE;
+	}
+	
+	return str + seconds + 's';
+}
+
+function createTimer() {
+	clearerror();
+	
+	var remaining = getData('input_remaining', 'select_remaining');
+	if (isNaN(remaining)) {
+		seterror('remaining is NaN');
 		return;
 	}
-
-	// Transform data
-	switch (document.getElementById('left_mode').value) {
-	case "gb": remaining *= 1024 * 1024; break;
-	case "mb": remaining *= 1024; break;
+	
+	var speed = getData('input_speed', 'select_speed');
+	if (isNaN(speed)) {
+		seterror('speed is NaN');
+		return;
 	}
-	switch (document.getElementById('speed_mode').value) {
-	case "gb": rate *= 1024 * 1024; break;
-	case "mb": rate *= 1024; break;
+	
+	// In seconds
+	var est = Math.round(remaining / speed);
+	
+	// Make timer element
+	var timer_node_root = document.createElement('div');
+	timer_node_root.className = 'timer';
+	timer_node_root.time = est;
+	var timer_node_time = document.createElement('span');
+	timer_node_time.innerText = formatTime(est); // Initial
+	var timer_node_close = document.createElement('span');
+	timer_node_close.className = 'timer_close_button';
+	timer_node_close.innerText = 'x';
+	
+	// Delegate
+	function deleteTimer() {
+		timer_node_root.removeChild(timer_node_time);
+		timer_node_root.removeChild(timer_node_close);
+		timers.removeChild(timer_node_root);
+		clearInterval(timerId);
 	}
-
-	var seconds = estimate(remaining, rate); // seconds
-
-	var time_end = new Date();
-	time_end.setTime(time_end.getTime() + (seconds * 1000));
-
-	var days = count_days(seconds);
-	var hours = count_hours(seconds);
-	var minutes = count_minutes(seconds);
-	seconds -= ((days * DAY) + (hours * HOUR) + (minutes * MINUTE));
-
-	out_total.innerText = "Remaining: " + format(days, hours, minutes, seconds);
-	out_time.innerText = "At: " + time_end.toLocaleTimeString();
-}
-
-function clearEta() {
-	out_total.innerText = out_time.innerText = '';
-}
-
-/**
- * Estmate time remaining.
- * @param {number} size - In Bytes
- * @param {number} speed - In Bytes/Second
- * @return {Date} Estimated time in seconds
- */
-function estimate(size, speed) {
-	return size / speed;
+	
+	timer_node_close.onclick = function () {
+		deleteTimer();
+	};
+	
+	var timerId = setInterval(function() {
+		timer_node_root.time = timer_node_root.time - 1;
+		if (timer_node_root.time <= 0) {
+			deleteTimer();
+			return;
+		}
+		timer_node_time.innerText = formatTime(timer_node_root.time);
+	}, 1000);
+	
+	timer_node_root.appendChild(timer_node_time);
+	timer_node_root.appendChild(timer_node_close);
+	
+	timers.appendChild(timer_node_root);
 }
