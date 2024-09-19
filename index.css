@@ -137,6 +137,7 @@ ul { text-align: left; }
 }
 
 .cards .date-alive { border: .2em solid green; }
+.cards .date-warn  { border: .2em solid darkorange; }
 .cards .date-dead  { border: .2em solid red; }
 
 .cards .tag {
