@@ -12,15 +12,28 @@
 
 body {
 	color: #eee;
-	background: #333;
+	background-color: #000;
 	text-align: center;
 	margin: auto;
 	font-family: 'Source Code Pro', 'Ubuntu Mono', 'Andalé Mono', 'Consolas', monospace;
-	font-size: 18px;
+	font-size: 12.5pt;
+}
+
+.preface {
+	width: 80%;
+	margin: 0 auto;
+}
+.subbody {
+	width: 80%;
+	margin: 0 auto;
+	text-align: left;
+}
+.subbody p a, .subbody p a:visited, footer a {
+	color: coral;
 }
 
 h1 {
-	margin: 0;
+	margin: 0 auto;
 	font-size: 6em;
 	font-family: 'Rubik', monospace;
 }
@@ -39,12 +52,48 @@ h2 {
 	padding: 1em;
 }
 
-ul { text-align: left; }
+.bg-7 { margin: 0; padding: 0 0 2em 0; background-color: #2b2b2b; }
+.bg-6 { margin: 0; padding: 0 0 2em 0; background-color: #262626; }
+.bg-5 { margin: 0; padding: 0 0 2em 0; background-color: #222; }
+.bg-4 { margin: 0; padding: 0 0 2em 0; background-color: #1b1b1b; }
+.bg-3 { margin: 0; padding: 0 0 2em 0; background-color: #161616; }
+.bg-2 { margin: 0; padding: 0 0 2em 0; background-color: #111; }
+.bg-1 { margin: 0; padding: 0 0 2em 0; background-color: #0b0b0b; }
+.bg-0 { margin: 0; padding: 0 0 2em 0; background-color: #060606; }
 
-.bg-3 { margin: 0; padding: 0 0 2em 0; background-color: #222; }
-.bg-2 { margin: 0; padding: 0 0 2em 0; background-color: #181818; }
-.bg-1 { margin: 0; padding: 0 0 2em 0; background-color: #111; }
-.bg-0 { margin: 0; padding: 0 0 2em 0; background-color: #000; }
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+	margin: 0 auto 3em;
+	border: 1px solid #ddd;
+	border-width: 1px 1px 1px 0;
+}
+.skills header {
+	background-color: #ddd;
+	color: #111;
+	padding: 1em;
+	font-weight: bold;
+}
+.skills article {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ddd;
+	border-width: 0 0 0 1px;
+	flex: 1;
+	flex-basis: 350px;
+}
+.skills summary {
+	margin: auto 0;
+}
+.skills ul {
+	margin: .75em;
+	padding: 0;
+	text-align: center;
+}
+.skills li {
+	margin: .1em;
+}
 
 .spaced {
 	display: flex;
@@ -79,38 +128,55 @@ ul { text-align: left; }
 .cards summary {
 	padding: 0 1em 1em 1em;
 }
-.skills header {
-	background-color: #ddd;
-	color: #111;
-}
-.skills summary {
-	padding: 1em;
-	margin: auto 0;
-}
 .cards header {
 	font-weight: bold;
+}
+.cards ul {
+	margin: 0;
+	padding: 0;
 }
 .cards .date {
 	padding: .2em .5em;
 	border-radius: .3em;
 	font-weight: bold;
 }
-.cards .visit {
+.visits {
+	margin-top: 1em;
+	display: flex;
+}
+.visits a {
+	width: 100%;
+	text-align: center;
 	border: solid #ddd;
-	border-width: 1px 0 0 1px;
+	border-width: 1px 1px 0 0;
 	color: #ddd;
 	text-decoration: none;
 	background: black;
 	padding: 1em;
+	
+	background-color: black;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
+	background-position: right 10% center;
+	background-repeat: no-repeat;
 }
-.cards .visit:hover, .cards .visit:active {
-	background: #222;
+.visits a:first {
+	border: solid #ddd;
+	border-width: 1px 0 0 0;
 }
-.cards .visit::after {
+.visits a:last-child {
+	border: solid #ddd;
+	border-width: 1px 0 0 0;
+}
+.visits a:hover, .cards .visit:active {
+	background-color: #222;
+}
+/*.visits a::after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
-	vertical-align: top;
-	margin-left: .1em;
-}
+	vertical-align: middle;
+	margin-left: .25em;
+	position: relative;
+	top: .1em;
+}*/
 .i::before {
 	vertical-align: middle;
 	position: relative;
@@ -136,37 +202,34 @@ ul { text-align: left; }
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
 }
 
-.cards .date-alive { border: .2em solid green; }
-.cards .date-warn  { border: .2em solid darkorange; }
-.cards .date-dead  { border: .2em solid red; }
+.date-alive { border: .2em solid green; }
+.date-warn  { border: .2em solid darkorange; }
+.date-dead  { border: .2em solid red; }
 
-.cards .tag {
-	display: contents;
+.tags * {
 	display: inline-block;
 	margin: 0 0 0 .75em;
 	padding: .2em .5em;
-	border-radius: .3em;
-	font-weight: bold;
+	border-radius: .25em;
 }
-.cards .tag-doc     { background: #6d7005; }
-.cards .tag-wip     { background: darkred; }
-.cards .tag-fav     { background: chocolate; }
-.cards .tag-theme   { background: darkorchid; }
-.cards .tag-x86-asm { background: #6e4c13; }
-.cards .tag-c       { background: #666; }
-.cards .tag-cs      { background: #178600; }
-.cards .tag-d       { background: #ba595e; }
-.cards .tag-web     { background: #e34c26; }
-.cards .tag-js      { background: yellow; color: black; }
-
-.subbody {
-	width: 80%;
-	margin: 0 auto;
-	text-align: left;
-}
-.subbody p a, .subbody p a:visited, footer a {
-	color: coral;
-}
+.tag-other    { border: 1px solid white; }
+.tag-doc      { background: #6d7005; }
+.tag-wip      { background: darkred; }
+.tag-fav      { background: chocolate; }
+.tag-theme    { background: darkorchid; }
+.tag-asm      { background: #6e4c13; }
+.tag-c        { background: #555555; }
+.tag-cpp      { background: #f34b7d; }
+.tag-cs       { background: #178600; }
+.tag-d        { background: #ba595e; }
+.tag-web      { background: #e34c26; }
+.tag-html     { background: #e34c26; }
+.tag-css      { background: #563d7c; }
+.tag-js       { background: yellow; color: #111; }
+.tag-gdscript { background: #355570; }
+.tag-pascal   { background: #E3F171; color: #111; }
+.tag-php      { background: #4F5D95; }
+.tag-sql      { background: #e38c00; color: #111; }
 
 ul.links {
 	list-style: none;
