@@ -19,17 +19,10 @@ body {
 	font-size: 12.5pt;
 }
 
-.preface {
-	width: 80%;
-	margin: 0 auto;
-}
-.subbody {
+.content {
 	width: 80%;
 	margin: 0 auto;
 	text-align: left;
-}
-.subbody p a, .subbody p a:visited, footer a {
-	color: coral;
 }
 
 h1 {
@@ -142,41 +135,24 @@ h2 {
 }
 .visits {
 	margin-top: 1em;
-	display: flex;
 }
 .visits a {
-	width: 100%;
+	display: block;
 	text-align: center;
-	border: solid #ddd;
-	border-width: 1px 1px 0 0;
+	border-top: 1px solid #ddd;
 	color: #ddd;
 	text-decoration: none;
 	background: black;
-	padding: 1em;
+	padding: .75em;
 	
 	background-color: black;
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
-	background-position: right 10% center;
+	background-position: right .75em center;
 	background-repeat: no-repeat;
-}
-.visits a:first {
-	border: solid #ddd;
-	border-width: 1px 0 0 0;
-}
-.visits a:last-child {
-	border: solid #ddd;
-	border-width: 1px 0 0 0;
 }
 .visits a:hover, .cards .visit:active {
 	background-color: #222;
 }
-/*.visits a::after {
-	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
-	vertical-align: middle;
-	margin-left: .25em;
-	position: relative;
-	top: .1em;
-}*/
 .i::before {
 	vertical-align: middle;
 	position: relative;
@@ -258,4 +234,7 @@ footer {
 	background-color: black;
 	padding: 3em;
 	font-size: 0.8em;
+}
+footer a {
+	color: coral;
 }
