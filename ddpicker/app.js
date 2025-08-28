@@ -5,8 +5,7 @@
 //
 
 var islocal      = location.hostname == "localhost";
-var url_prefix   = islocal ? "http://localhost:8080/" : "";
-var url          = url_prefix + "emoji_15_0_ordering.json";
+var url          = "emoji_17_0_ordering.json";
 var meta_timeout = 5000;
 var pop_timeout  = 2000;
 
@@ -233,45 +232,53 @@ function showPop(upper, lower)
     }, pop_timeout);
 }
 
-var x = new XMLHttpRequest();
-x.timeout = meta_timeout;
-x.ontimeout = function()
+try
 {
-    var text = "Time out attempting to fetch meta.json";
+    var x = new XMLHttpRequest();
+    x.timeout = meta_timeout;
+    x.ontimeout = function()
+    {
+        var text = "Timed out attempting to fetch Emoji list";
+        console.error(text);
+        showError(text);
+    }
+    x.onreadystatechange = function()
+    {
+        // NOTE: readyState==2 has HTTP code ready
+        if (this.readyState < 4)
+            return;
+        
+        if (this.status >= 400)
+        {
+            var text = "Failed to load Emoji list: HTTP " + this.status;
+            console.error(text);
+            showError(text);
+            return;
+        }
+        
+        try
+        {
+            data = JSON.parse(x.responseText);
+            console.info("Loaded " + data.length + " groups");
+            
+            data.forEach(function (group) { totalCount += group.emoji.length; });
+            
+            stats_loaded.innerText = totalCount;
+        }
+        catch (ex)
+        {
+            var text = "Could not process Emoji list. " + ex;
+            console.error(text);
+            showError(text);
+        }
+    }
+    x.open("GET", url, true);
+    x.overrideMimeType("application/json");
+    x.send();
+}
+catch (ex)
+{
+    var text = "Could not get Emoji list. " + ex;
     console.error(text);
     showError(text);
 }
-x.onreadystatechange = function()
-{
-    // NOTE: readyState==2 has HTTP code ready
-    if (this.readyState < 4)
-        return;
-    
-    if (this.status >= 400)
-    {
-        var text = "Failed to load meta.json: HTTP " + this.status;
-        console.error(text);
-        showError(text);
-        return;
-    }
-    
-    try
-    {
-        //document.getElementById("test").innerText = x.responseText;
-        data = JSON.parse(x.responseText);
-        console.info("Loaded " + data.length + " groups");
-        
-        data.forEach(function (group) { totalCount += group.emoji.length; });
-        
-        stats_loaded.innerText = totalCount;
-    }
-    catch (ex)
-    {
-        var text = "Could not process text. " + ex;
-        console.error(text);
-        showError(text);
-    }
-}
-x.open("GET", url, true);
-x.overrideMimeType("application/json");
-x.send();
