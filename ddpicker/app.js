@@ -4,17 +4,17 @@
 // Settings
 //
 
-var islocal      = location.hostname == "localhost";
-var url          = "emoji_17_0_ordering.json";
-var meta_timeout = 5000;
-var pop_timeout  = 2000;
-var RESULT_LIMIT = 20;
+var LOCAL_SERVER   = location.hostname == "localhost";
+var EMOJI_FILENAME = "emoji_17_0_ordering.json";
+var FETCH_TIMEOUT  = 5000;
+var POPUP_TIMEOUT  = 2000;
+var RESULT_LIMIT   = 20;
 
 //
 // Globals
 //
 
-if (!islocal && location.protocol == "http:")
+if (!LOCAL_SERVER && location.protocol == "http:")
 {
     showWarning("Copying an Emoji won't work in HTTP, reload page in HTTPS.",
         "Reload",
@@ -90,7 +90,7 @@ function showAll(wgroup)
     {
         var group = data[index_group];
         
-        if (wgroup)
+        if (wgroup) // wants groups
             addGroup(group.group);
         
         for (var index_emoji = 0; index_emoji < group.emoji.length; ++index_emoji)
@@ -125,7 +125,7 @@ function clearInputs()
 
 function clearResults()
 {
-    document.getElementById("results").innerHTML = '';
+    results.innerHTML = '';
 }
 
 function clearAll()
@@ -139,13 +139,13 @@ function clearAll()
 // Search Emoji by name
 function searchName(text)
 {
-    clearResults();
-    
     if (text.length == 0)
     {
         clearAll();
         return;
     }
+    
+    clearResults();
     
     var rg = new RegExp(text, 'i');
     var wgroup = input_group.checked; // wants groups
@@ -169,20 +169,20 @@ function searchName(text)
             {
                 var shortcode = emoji.shortcodes[short_index];
                 
-                if (rg.test(shortcode))
+                if (rg.test(shortcode) == false)
+                    continue;
+                
+                if (wgroup && gonce)
+                    addGroup(group.group);
+                
+                gonce = false;
+                addResult(emoji);
+                ++resultCount;
+                
+                if (resultCount >= RESULT_LIMIT)
                 {
-                    if (wgroup && gonce)
-                        addGroup(group.group);
-                    
-                    gonce = false;
-                    addResult(emoji);
-                    ++resultCount;
-                    
-                    if (resultCount >= RESULT_LIMIT)
-                    {
-                        toomany = true;
-                        break Lmain;
-                    }
+                    toomany = true;
+                    break Lmain;
                 }
             }
         }
@@ -241,13 +241,13 @@ function showPop(upper, lower)
     setTimeout(function()
     {
         pop.style.display = "none";
-    }, pop_timeout);
+    }, POPUP_TIMEOUT);
 }
 
 try
 {
     var x = new XMLHttpRequest();
-    x.timeout = meta_timeout;
+    x.timeout = FETCH_TIMEOUT;
     x.ontimeout = function()
     {
         var text = "Timed out attempting to fetch Emoji list";
@@ -284,7 +284,7 @@ try
             showError(text);
         }
     }
-    x.open("GET", url, true);
+    x.open("GET", EMOJI_FILENAME, true);
     x.overrideMimeType("application/json");
     x.send();
 }
