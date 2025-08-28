@@ -8,6 +8,7 @@ var islocal      = location.hostname == "localhost";
 var url          = "emoji_17_0_ordering.json";
 var meta_timeout = 5000;
 var pop_timeout  = 2000;
+var RESULT_LIMIT = 20;
 
 //
 // Globals
@@ -133,21 +134,27 @@ function clearAll()
     clearInputs();
 }
 
+// Called by #input_search
+//
+// Search Emoji by name
 function searchName(text)
 {
     clearResults();
     
-    if (text.length <= 1)
+    if (text.length == 0)
+    {
+        clearAll();
         return;
+    }
     
     var rg = new RegExp(text, 'i');
-    var wgroup = input_group.checked;
-    var gonce  = true;
+    var wgroup = input_group.checked; // wants groups
+    var gonce  = true; // group once
     
-    //TODO: Should it be better to make a list of emoji items first?
     // NOTE: Array.forEach sucks
+    var toomany = false;
     var resultCount = 0;
-    for (var index_group = 0; index_group < data.length; ++index_group)
+    Lmain: for (var index_group = 0; index_group < data.length; ++index_group)
     {
         var group = data[index_group];
         
@@ -170,6 +177,12 @@ function searchName(text)
                     gonce = false;
                     addResult(emoji);
                     ++resultCount;
+                    
+                    if (resultCount >= RESULT_LIMIT)
+                    {
+                        toomany = true;
+                        break Lmain;
+                    }
                 }
             }
         }
@@ -177,12 +190,11 @@ function searchName(text)
         gonce = true;
     }
     
-    stats_results.innerText = resultCount;
+    stats_results.innerText = resultCount + (toomany ? "+" : "");
 }
 
 function toggleInputGroup()
 {
-    //TODO: Return/reuse results
     searchName(input_search.value);
 }
 
