@@ -29,6 +29,36 @@ var totalCount = 0;
 // Functions
 //
 
+function createResult(unicode, display, name, alternate)
+{
+    // Has unicode points that makes up the emoji
+    var unicodeNode = document.createElement("p");
+    unicodeNode.classList.add("emoji");
+    unicodeNode.innerText = unicode;
+    
+    // Display text (U+...)
+    var displayNode = document.createElement("p");
+    displayNode.innerText = display;
+    
+    // Shortname(s)
+    var shortnameNode = document.createElement("p");
+    shortnameNode.innerText = name;
+    
+    var resultNode = document.createElement("div");
+    resultNode.classList.add(alternate ? "alternate" : "result");
+    resultNode.onclick = function()
+    {
+        navigator.clipboard.writeText(unicode);
+        
+        showPop(unicode, "Copied!");
+    }
+    resultNode.appendChild(unicodeNode);
+    resultNode.appendChild(displayNode);
+    resultNode.appendChild(shortnameNode);
+    
+    return resultNode;
+}
+
 function addResult(emoji)
 {
     // parseInt("1F600",16)
@@ -39,38 +69,41 @@ function addResult(emoji)
     
     for (var i = 0; i < emoji.base.length; ++i)
     {
+        if (i > 0)
+        {
+            emojiUnicode += ", ";
+        }
+        
         var code = emoji.base[i];
         
         emojiString += String.fromCodePoint(code);
         emojiUnicode += "U+" + code.toString(16).toUpperCase();
-        
-        if (i + 1 < emoji.base.length)
-        {
-            emojiUnicode += ", ";
-        }
     }
     
-    var emojiNode = document.createElement("p");
-    emojiNode.classList.add("emoji");
-    emojiNode.innerText = emojiString;
-    var unicodeNode = document.createElement("p");
-    unicodeNode.innerText = emojiUnicode;
-    var nameNode = document.createElement("p");
-    nameNode.innerText = emojiName;
+    results.appendChild( createResult(emojiString, emojiUnicode, emojiName, false) );
     
-    var mainNode = document.createElement("div");
-    mainNode.classList.add("result");
-    mainNode.onclick = function()
+    // Add alternates, first one is just main one
+    for (var i = 1; i < emoji.alternates.length; ++i)
     {
-        navigator.clipboard.writeText(emojiString);
+        var alternate = emoji.alternates[i];
         
-        showPop(emojiString, "Copied!");
+        emojiString = "";
+        emojiUnicode = "";
+        for (var u = 0; u < alternate.length; ++u)
+        {
+            if (u > 0)
+            {
+                emojiUnicode += ", ";
+            }
+            
+            var code = alternate[u];
+            
+            emojiString += String.fromCodePoint(code);
+            emojiUnicode += "U+" + code.toString(16).toUpperCase();
+        }
+        
+        results.appendChild( createResult(emojiString, emojiUnicode, "", true) );
     }
-    mainNode.appendChild(emojiNode);
-    mainNode.appendChild(unicodeNode);
-    mainNode.appendChild(nameNode);
-    
-    results.appendChild(mainNode);
 }
 
 function addGroup(text)
@@ -177,7 +210,8 @@ function searchName(text)
                 
                 gonce = false;
                 addResult(emoji);
-                ++resultCount;
+                //++resultCount;
+                resultCount += emoji.alternates.length;
                 
                 if (resultCount >= RESULT_LIMIT)
                 {
@@ -244,6 +278,7 @@ function showPop(upper, lower)
     }, POPUP_TIMEOUT);
 }
 
+// Load Emoji list
 try
 {
     var x = new XMLHttpRequest();

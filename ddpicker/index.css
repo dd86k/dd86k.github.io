@@ -62,7 +62,7 @@ noscript, #messages div.error
 
 #pop_high, .emoji
 {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 #results
@@ -92,19 +92,39 @@ noscript, #messages div.error
     padding: .5em;
     user-select: none;
 }
-
 .result p
 {
     margin: .5em;
     word-break: break-all;
 }
-
 .result:hover
 {
     cursor: pointer;
     background-color: #333;
     content: "Copy";
-    /*TODO: Show "Copy"*/
+}
+
+.alternate
+{
+    flex: 0 1 8em;
+    width: 8em;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid white;
+    border-style: dashed;
+    padding: .5em;
+    user-select: none;
+}
+.alternate p
+{
+    margin: .5em;
+    word-break: break-all;
+}
+.alternate:hover
+{
+    cursor: pointer;
+    background-color: #333;
+    content: "Copy";
 }
 
 button
