@@ -55,11 +55,10 @@ noscript, #messages div.error
     bottom: 0;
     right: 0;
     margin: auto;
-    width: 10vw;
-    height: 18vh;
+    width: 30vw;
+    height: 40vh;
     user-select: none;
 }
-
 #pop_high, .emoji
 {
     font-size: 3em;
@@ -82,7 +81,7 @@ noscript, #messages div.error
     font-size: 3em;
 }
 
-.result
+.result, .alternate
 {
     flex: 0 1 8em;
     width: 8em;
@@ -92,12 +91,23 @@ noscript, #messages div.error
     padding: .5em;
     user-select: none;
 }
-.result p
+.result .emoji, .alternate .emoji
 {
-    margin: .5em;
+    margin: 0 auto;
+    padding: .5em;
     word-break: break-all;
 }
-.result:hover
+.result .code, .alternate .code
+{
+    padding: .5em;
+    word-break: break-all;
+}
+.result .name, .alternate .name
+{
+    padding: .5em;
+    word-break: break-all;
+}
+.result *:hover, .alternate *:hover
 {
     cursor: pointer;
     background-color: #333;
@@ -106,25 +116,7 @@ noscript, #messages div.error
 
 .alternate
 {
-    flex: 0 1 8em;
-    width: 8em;
-    text-align: center;
-    display: inline-block;
-    border: 1px solid white;
     border-style: dashed;
-    padding: .5em;
-    user-select: none;
-}
-.alternate p
-{
-    margin: .5em;
-    word-break: break-all;
-}
-.alternate:hover
-{
-    cursor: pointer;
-    background-color: #333;
-    content: "Copy";
 }
 
 button

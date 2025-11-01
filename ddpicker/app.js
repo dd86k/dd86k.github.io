@@ -30,32 +30,58 @@ var totalCount = 0;
 // Functions
 //
 
-function createResult(unicode, display, name, alternate)
+// emoji: Emoji codes
+// codeText: U+....
+// name: Shortname
+// alternate: boolean if this Emoji is an alternate
+function createResult(emoji, codeText, name, alternate)
 {
-    // Has unicode points that makes up the emoji
-    var unicodeNode = document.createElement("p");
-    unicodeNode.classList.add("emoji");
-    unicodeNode.innerText = unicode;
-    
-    // Display text (U+...)
-    var displayNode = document.createElement("p");
-    displayNode.innerText = display;
-    
-    // Shortname(s)
-    var shortnameNode = document.createElement("p");
-    shortnameNode.innerText = name;
-    
+    // Result container
     var resultNode = document.createElement("div");
     resultNode.classList.add(alternate ? "alternate" : "result");
-    resultNode.onclick = function()
+    
+    // Has unicode points that makes up the emoji
+    var emojiNode = document.createElement("p");
+    emojiNode.classList.add("emoji");
+    emojiNode.innerText = emoji;
+    emojiNode.onclick = function()
     {
-        navigator.clipboard.writeText(unicode);
+        navigator.clipboard.writeText(emoji);
         
-        showPop(unicode, "Copied!");
+        showPop(emoji, "Copied!");
     }
-    resultNode.appendChild(unicodeNode);
-    resultNode.appendChild(displayNode);
-    resultNode.appendChild(shortnameNode);
+    resultNode.appendChild(emojiNode);
+    
+    // Shortname(s)
+    // NOTE: Moved shortname higher becuse some codes are just so damn long
+    // NOTE: Some Emojis (like U+1F9D1, U+1F3FF, U+200D, U+1FAEF, U+200D, U+1F9D1, U+1F3FB)
+    //       just have NO NAMES, so don't bother adding NOTHING when it happens
+    //       Bug?
+    if (name)
+    {
+        var shortnameNode = document.createElement("div");
+        shortnameNode.classList.add("name");
+        shortnameNode.innerText = name;
+        shortnameNode.onclick = function()
+        {
+            navigator.clipboard.writeText(name);
+            
+            showPop(name, "Copied!");
+        }
+        resultNode.appendChild(shortnameNode);
+    }
+    
+    // Display text (U+...)
+    var codesNode = document.createElement("div");
+    codesNode.classList.add("code");
+    codesNode.innerText = codeText;
+    codesNode.onclick = function()
+    {
+        navigator.clipboard.writeText(codeText);
+        
+        showPop(codeText, "Copied!");
+    }
+    resultNode.appendChild(codesNode);
     
     return resultNode;
 }
