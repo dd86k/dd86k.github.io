@@ -9,6 +9,7 @@ var EMOJI_FILENAME = "emoji_17_0_ordering.json";
 var FETCH_TIMEOUT  = 5000;
 var POPUP_TIMEOUT  = 2000;
 var RESULT_LIMIT   = 30;
+var RANDOM_COUNT   = 10;
 
 //
 // Globals
@@ -149,11 +150,16 @@ function showRandom()
 {
     clearAll();
     
-    var walt       = input_alts.checked; // wants alternate codes
-    var groupIndex = Math.floor(Math.random() * data.length);
-    var group      = data[groupIndex];
-    var emojiIndex = Math.floor(Math.random() * group.emoji.length);
-    addResult(group.emoji[emojiIndex], walt);
+    var walt = input_alts.checked; // wants alternate codes
+    for (var i = 0; i < RANDOM_COUNT; i++)
+    {
+        // select group
+        var groupIndex = Math.floor(Math.random() * data.length);
+        var group      = data[groupIndex];
+        // select emoji and show
+        var emojiIndex = Math.floor(Math.random() * group.emoji.length);
+        addResult(group.emoji[emojiIndex], walt);
+    }
 }
 
 function clearInputs()
