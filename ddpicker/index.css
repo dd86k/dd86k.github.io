@@ -55,8 +55,8 @@ noscript, #messages div.error
     bottom: 0;
     right: 0;
     margin: auto;
-    width: 10em;
-    height: 10em;
+    width: 10vw;
+    height: 18vh;
     user-select: none;
 }
 
