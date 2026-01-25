@@ -218,14 +218,57 @@ function searchName(text)
     
     clearResults();
     
-    var rg = new RegExp(text, 'i');
+    // NOTE: Array.forEach sucks
+    
+    var toomany = false; // result list limit reached
+    var resultCount = 0;
     var wgroup = input_group.checked; // wants groups
     var walt   = input_alts.checked; // wants alternate codes
     var gonce  = true; // group once
     
-    // NOTE: Array.forEach sucks
-    var toomany = false;
-    var resultCount = 0;
+    var check;
+    
+    // Search by Unicode
+    if (text.length > 2 &&
+            (text[0] == 'u' || text[0] == 'U') &&
+            text[1] == '+')
+    {
+        var val = parseInt(text.slice(2), 16);
+        check = function (emoji) {
+            for (var i = 0; i < emoji.base.length; i++)
+            {
+                if (emoji.base[i] == val)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+    }
+    else // Search by name
+    {
+        // Search by name
+        var rg = new RegExp(text, 'i');
+        check = function (emoji) {
+            // There are ASCII emotes in this set... filter those
+            if (emoji.base[0] <= 0xff) return false;
+            
+            // Test names (shortcodes) that emoji has
+            for (var i = 0; i < emoji.shortcodes.length; i++)
+            {
+                var shortcode = emoji.shortcodes[i];
+                
+                if (rg.test(shortcode) == false)
+                    continue;
+                
+                return true;
+            }
+            
+            return false;
+        }
+    }
+    
     Lmain: for (var index_group = 0; index_group < data.length; ++index_group)
     {
         var group = data[index_group];
@@ -234,30 +277,22 @@ function searchName(text)
         {
             var emoji = group.emoji[index_emoji];
             
-            // ASCII is not exactly an emoji
-            if (emoji.base[0] <= 0xff) continue;
+            if (check(emoji) == false)
+                continue;
             
-            for (var short_index = 0; short_index < emoji.shortcodes.length; ++short_index)
+            if (wgroup && gonce)
+                addGroup(group.group);
+            
+            gonce = false;
+            addResult(emoji, walt);
+            // NOTE: Exclude emoji.alternates.length
+            //       because to Google, they are not a "main" Emoji
+            resultCount++;
+            
+            if (resultCount >= RESULT_LIMIT)
             {
-                var shortcode = emoji.shortcodes[short_index];
-                
-                if (rg.test(shortcode) == false)
-                    continue;
-                
-                if (wgroup && gonce)
-                    addGroup(group.group);
-                
-                gonce = false;
-                addResult(emoji, walt);
-                // NOTE: Exclude emoji.alternates.length
-                //       because to Google, they are not a "main" Emoji
-                resultCount++;
-                
-                if (resultCount >= RESULT_LIMIT)
-                {
-                    toomany = true;
-                    break Lmain;
-                }
+                toomany = true;
+                break Lmain;
             }
         }
         
