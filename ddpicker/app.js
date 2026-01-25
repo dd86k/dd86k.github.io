@@ -230,8 +230,8 @@ function searchName(text)
     
     // Search by Unicode
     if (text.length > 2 &&
-            (text[0] == 'u' || text[0] == 'U') &&
-            text[1] == '+')
+        (text[0] == 'u' || text[0] == 'U') &&
+        text[1] == '+')
     {
         var val = parseInt(text.slice(2), 16);
         check = function (emoji) {
@@ -244,6 +244,24 @@ function searchName(text)
             }
             
             return false;
+        }
+    }
+    else if (text.codePointAt(0) > 0xff) // Search by Emoji
+    {
+        // NOTE: String.prototype.codePointAt()
+        //       Index is based on UTF-16 code units, not Unicode code points.
+        check = function (emoji) {
+            for (var i = 0; i < emoji.base.length; i++)
+            {
+                var point = text.codePointAt(i);
+                if (point === undefined)
+                    return false;
+                
+                if (emoji.base[i] != point)
+                    return false;
+            }
+            
+            return true;
         }
     }
     else // Search by name
