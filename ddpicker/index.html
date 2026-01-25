@@ -10,7 +10,7 @@
     <link rel="icon" href="fav.png">
 </head>
 <body onkeydown="input_search.focus();">
-    <div id="pop" style="display: none;">
+    <div id="pop" style="display:none;">
         <p id="pop_high"></p>
         <p id="pop_low"></p>
     </div>
@@ -18,7 +18,7 @@
     <div id="messages"></div>
     <div class="main">
         <h1>Emoji 17.0 picker</h1>
-        <p>Last updated 2025-11-01, using Google's <a href="https://github.com/googlefonts/emoji-metadata">emoji-metadata (2025-08-26)</a></p>
+        <p>Last updated 2026-01-25, using Google's <a href="https://github.com/googlefonts/emoji-metadata">emoji-metadata (2025-08-26)</a></p>
         <fieldset>
             <legend>Search</legend>
             <input id="input_search" type="text" autofocus oninput="searchName(this.value)" placeholder="Emoji name">
@@ -38,6 +38,7 @@
         </fieldset>
         <p>Click an Emoji, Name, or Code to copy its value into the clipboard.</p>
         <p><span id="stats_loaded">0</span> emojis available, <span id="stats_results">0</span> result(s)</p>
+        <p id="loading" style="display:block;">Loading...</p>
         <div id="results"></div>
     </div>
     <script src="app.js"></script>

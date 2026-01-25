@@ -277,6 +277,7 @@ function toggleInputAlts()
     searchName(input_search.value);
 }
 
+// NOTE: Poor function name, this adds a banner
 function showMessage(type, text, btext, bfunc)
 {
     var div = document.createElement("div");
@@ -323,6 +324,11 @@ function showPop(upper, lower)
     }, POPUP_TIMEOUT);
 }
 
+function showLoading(boolean)
+{
+    loading.style.display = boolean ? "block" : "none";
+}
+
 // Load Emoji list
 try
 {
@@ -345,6 +351,7 @@ try
             var text = "Failed to load Emoji list: HTTP " + this.status;
             console.error(text);
             showError(text);
+            showLoading(false);
             return;
         }
         
@@ -363,6 +370,8 @@ try
             console.error(text);
             showError(text);
         }
+        
+        showLoading(false);
     }
     x.open("GET", EMOJI_FILENAME, true);
     x.overrideMimeType("application/json");
