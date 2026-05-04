@@ -9,7 +9,7 @@
     <link href="index.css" rel="stylesheet">
     <link rel="icon" href="fav.png">
 </head>
-<body onkeydown="input_search.focus();">
+<body>
     <div id="pop" style="display:none;">
         <p id="pop_high"></p>
         <p id="pop_low"></p>
@@ -34,7 +34,9 @@
             <button onclick="clearAll();">Clear</button>
             <button onclick="showRandom();">Random</button>
             <button onclick="showAll(false);">All</button>
-            <button onclick="showAll(true);">By group</button>
+            <button onclick="showAll(true);">All by group</button>
+            <label>Max results:</label>
+            <input type="number" id="search_limit" value="30" min="1" max="99" style="width:3em;text-align:right;padding:.25em" onchange="searchLimitChanged(this);"/>
         </fieldset>
         <p>Click an Emoji, Name, or Code to copy its value into the clipboard.</p>
         <p><span id="stats_loaded">0</span> emojis available, <span id="stats_results">0</span> result(s)</p>

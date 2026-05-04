@@ -8,7 +8,6 @@ var LOCAL_SERVER   = location.hostname == "localhost";
 var EMOJI_FILENAME = "emoji_17_0_ordering.json";
 var FETCH_TIMEOUT  = 5000;
 var POPUP_TIMEOUT  = 2000;
-var RESULT_LIMIT   = 30;
 var RANDOM_COUNT   = 10;
 
 //
@@ -205,6 +204,18 @@ function clearAll()
     clearInputs();
 }
 
+var result_limit = 20;
+function searchLimitChanged(elem)
+{
+    result_limit = parseInt( elem.value );
+    if (isNaN( result_limit ) || result_limit <= 0) result_limit = 20;
+    
+    // re-trigger search if it has text
+    var searchbox = document.getElementById("input_search");
+    if (searchbox.value.length > 0)
+        searchName(searchbox.value);
+}
+
 // Called by #input_search
 //
 // Search Emoji by name
@@ -307,7 +318,7 @@ function searchName(text)
             //       because to Google, they are not a "main" Emoji
             resultCount++;
             
-            if (resultCount >= RESULT_LIMIT)
+            if (resultCount >= result_limit)
             {
                 toomany = true;
                 break Lmain;
