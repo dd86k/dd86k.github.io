@@ -1,5 +1,7 @@
 "use strict";
 
+// WARNING: No good code here, just until someone makes something else better
+
 //
 // Settings
 //
@@ -136,6 +138,7 @@ function addResult(emoji, alts = false)
     }
 }
 
+// Add group name. I know, bad naming.
 function addGroup(text)
 {
     var groupNode = document.createElement("div");
@@ -150,6 +153,8 @@ function showAll(wgroup)
     clearAll();
     
     var walt   = input_alts.checked; // wants alternate codes
+    
+    var t = 0;
     
     for (var index_group = 0; index_group < data.length; ++index_group)
     {
@@ -166,10 +171,45 @@ function showAll(wgroup)
             if (emoji.base[0] <= 0xff) continue;
             
             addResult(emoji, walt);
+            t++;
         }
     }
     
-    stats_results.innerText = totalCount;
+    stats_results.innerText = t;
+}
+
+function showGroup(event)
+{
+    clearAll();
+    
+    var groupName = event.target.innerText; // button
+    var walt      = input_alts.checked; // wants alternate codes
+    var t         = 0; // total count
+    
+    for (var index_group = 0; index_group < data.length; ++index_group)
+    {
+        var group = data[index_group];
+        
+        if (groupName != group.group)
+            continue;
+        
+        addGroup(group.group);
+        
+        for (var index_emoji = 0; index_emoji < group.emoji.length; ++index_emoji)
+        {
+            var emoji = group.emoji[index_emoji];
+            
+            // ASCII is not exactly an emoji
+            if (emoji.base[0] <= 0xff) continue;
+            
+            addResult(emoji, walt);
+            t++;
+        }
+        
+        break;
+    }
+    
+    stats_results.innerText = t;
 }
 
 function showRandom()
@@ -425,7 +465,18 @@ try
             data = JSON.parse(x.responseText);
             console.info("Loaded " + data.length + " groups");
             
-            data.forEach(function (group) { totalCount += group.emoji.length; });
+            var nodeGroups = document.getElementById("groups");
+            
+            data.forEach(function (group) {
+                // Add show group button
+                var nodeGroupButton = document.createElement("button");
+                nodeGroupButton.onclick = showGroup;
+                nodeGroupButton.innerText = group.group;
+                nodeGroups.appendChild( nodeGroupButton );
+                
+                // Update total count
+                totalCount += group.emoji.length;
+            });
             
             stats_loaded.innerText = totalCount;
         }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- wow, thanks Unicode Consortium -->
+<!-- No GRILL Emoji? Thanks, Unicode Consortium... -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,21 +22,19 @@
         <fieldset>
             <legend>Search</legend>
             <input id="input_search" type="text" autofocus oninput="searchName(this.value)" placeholder="Name, Unicode, or Emoji">
+            <button onclick="clearAll();">Clear</button>
+            <button onclick="showRandom();">Random</button>
+            <label>Max results:</label>
+            <input type="number" id="search_limit" value="30" min="1" max="99" style="width:3em;text-align:right;padding:.25em" onchange="searchLimitChanged(this);"/>
             <input id="input_group" type="checkbox" onchange="toggleInputGroup();">
             <label for="input_group">Show by group</label>
             <input id="input_alts" type="checkbox" onchange="toggleInputAlts();">
             <label for="input_alts">Show alternates</label>
-            <!--span class="prelabel">or U+</span>
-            <textarea id="input_code" rows="1" oninput="searchCode(this.value)" placeholder="1F600"></textarea-->
         </fieldset>
-        <fieldset>
-            <legend>Show</legend>
-            <button onclick="clearAll();">Clear</button>
-            <button onclick="showRandom();">Random</button>
+        <fieldset id="groups">
+            <legend>Groups</legend>
             <button onclick="showAll(false);">All</button>
             <button onclick="showAll(true);">All by group</button>
-            <label>Max results:</label>
-            <input type="number" id="search_limit" value="30" min="1" max="99" style="width:3em;text-align:right;padding:.25em" onchange="searchLimitChanged(this);"/>
         </fieldset>
         <p>Click an Emoji, Name, or Code to copy its value into the clipboard.</p>
         <p><span id="stats_loaded">0</span> emojis available, <span id="stats_results">0</span> result(s)</p>
