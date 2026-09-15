@@ -9,6 +9,7 @@ var EMOJI_FILENAME = "emoji_17_0_ordering.json";
 var FETCH_TIMEOUT  = 5000;
 var POPUP_TIMEOUT  = 2000;
 var RANDOM_COUNT   = 10;
+var DEFAULT_MAX    = 30;
 
 //
 // Globals
@@ -204,11 +205,11 @@ function clearAll()
     clearInputs();
 }
 
-var result_limit = 20;
+var result_limit = DEFAULT_MAX;
 function searchLimitChanged(elem)
 {
     result_limit = parseInt( elem.value );
-    if (isNaN( result_limit ) || result_limit <= 0) result_limit = 20;
+    if (isNaN( result_limit ) || result_limit <= 0) result_limit = DEFAULT_MAX;
     
     // re-trigger search if it has text
     var searchbox = document.getElementById("input_search");
