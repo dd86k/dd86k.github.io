@@ -5,7 +5,7 @@
 //
 
 var LOCAL_SERVER   = location.hostname == "localhost";
-var EMOJI_FILENAME = "emoji_17_0_ordering.json";
+var EMOJI_FILENAME = "emoji_18_0_ordering.json";
 var FETCH_TIMEOUT  = 5000;
 var POPUP_TIMEOUT  = 2000;
 var RANDOM_COUNT   = 10;
