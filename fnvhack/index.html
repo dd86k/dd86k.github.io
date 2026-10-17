@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal Hacking</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.terminal {
+  width: 90vw;
+  max-width: 1200px;
+  height: 80vh;
+  border: 2px solid #0f0;
+  padding: 20px;
+  background: #000;
+  box-shadow: 0 0 20px #0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  border-bottom: 1px solid #0f0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.code-column {
+  flex: 1;
+  overflow-y: auto;
+  line-height: 1.4;
+}
+
+.code-line {
+  display: flex;
+  gap: 10px;
+}
+
+.address {
+  color: #0f0;
+  user-select: none;
+}
+
+.code {
+  cursor: pointer;
+  letter-spacing: 0;
+}
+
+.code span {
+  display: inline-block;
+}
+
+.code span:hover {
+  background: #0f0;
+  color: #000;
+}
+
+.word {
+  background: #0a0;
+  color: #000;
+}
+
+.bracket-group {
+  cursor: pointer;
+}
+
+.bracket-group:hover {
+  background: #0f0;
+  color: #000;
+}
+
+.info-panel {
+  width: 300px;
+  border-left: 1px solid #0f0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.attempts {
+  font-size: 16px;
+}
+
+.attempt-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #0f0;
+  margin-right: 5px;
+}
+
+.attempt-box.used {
+  background: #000;
+  border: 1px solid #0f0;
+}
+
+.log {
+  flex: 1;
+  border: 1px solid #0f0;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.log-entry {
+  margin-bottom: 5px;
+}
+
+.success {
+  color: #0f0;
+  animation: blink 0.5s;
+}
+
+.error {
+  color: #f00;
+}
+
+@keyframes blink {
+
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+.game-over {
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+}
+
+button {
+  background: #000;
+  color: #0f0;
+  border: 2px solid #0f0;
+  padding: 10px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0f0;
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f0;
+}
+</style>
+</head>
+
+<body>
+<div class="terminal">
+  <div class="header">
+    <div>ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL</div>
+    <div>ENTER PASSWORD NOW</div>
+  </div>
+  <div class="content">
+    <div class="code-column" id="column1"></div>
+    <div class="code-column" id="column2"></div>
+    <div class="info-panel">
+      <div class="attempts">
+        <div>ATTEMPTS REMAINING:</div>
+        <div id="attempts-display"></div>
+      </div>
+      <div class="log" id="log"></div>
+      <button onclick="resetGame()" style="margin-top: auto;">RESET</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORDS = [
+  'ABOUT', 'ABOVE', 'ABUSE', 'ACTOR', 'ACUTE', 'ADMIT', 'ADOPT', 'ADULT', 'AFTER', 'AGAIN',
+  'AGENT', 'AGREE', 'AHEAD', 'ALARM', 'ALBUM', 'ALERT', 'ALIGN', 'ALIKE', 'ALIVE', 'ALLOW',
+  'ALONE', 'ALONG', 'ALTER', 'ANGEL', 'ANGER', 'ANGLE', 'ANGRY', 'APART', 'APPLE', 'APPLY',
+  'ARENA', 'ARGUE', 'ARISE', 'ARRAY', 'ASIDE', 'ASSET', 'AUDIO', 'AUDIT', 'AVOID', 'AWARD',
+  'AWARE', 'BADLY', 'BAKER', 'BASES', 'BASIC', 'BASIS', 'BEACH', 'BEGAN', 'BEGIN', 'BEING'
+];
+
+const SYMBOLS = [
+  '!', '@', '#', '$', '%', '^', '-', '+', '=', '&',
+  '*', '<', '>', '?', '/', '\\','|', '~', '`',
+  '(', ')', '[', ']', '{', '}', 
+];
+const BRACKETS = [ '()', '[]', '{}', '<>' ];
+
+let password = '';
+let attempts = 4;
+let screenCount = 10;
+let words = [];
+let gameActive = true;
+
+function randomWord(list)
+{
+  return list[ Math.floor(Math.random() * list.length) ];
+}
+
+function initGame() {
+  gameActive = true;
+  attempts = 4;
+  words = [];
+  
+  // Select random words
+  for (let i = 0; i < screenCount; i++) {
+    words.push( randomWord(WORDS) );
+  }
+  // Select password through it
+  password = randomWord( words );
+
+  generateDisplay();
+  updateAttempts();
+  addLog('> TERMINAL LOCKED');
+  addLog('> PLEASE ENTER PASSWORD');
+}
+
+function generateDisplay() {
+  const col1 = document.getElementById('column1');
+  const col2 = document.getElementById('column2');
+  col1.innerHTML = '';
+  col2.innerHTML = '';
+
+  const columns = [col1, col2];
+  let wordIndex = 0;
+  const linesPerColumn = 17;
+  const charsPerLine = 12;
+  const baseAddress = 0xF000 + Math.floor(Math.random() * 0x1000);
+
+  for (let colIdx = 0; colIdx < columns.length; colIdx++) {
+    for (let line = 0; line < linesPerColumn; line++) {
+      const address = '0x' + (baseAddress + line * 12).toString(16).toUpperCase();
+      const column = columns[colIdx];
+
+      const lineDiv = document.createElement('div');
+      lineDiv.className = 'code-line';
+
+      const addrSpan = document.createElement('span');
+      addrSpan.className = 'address';
+      addrSpan.textContent = address;
+
+      const codeSpan = document.createElement('span');
+      codeSpan.className = 'code';
+
+      let charCount = 0;
+
+      while (charCount < charsPerLine) {
+        const remaining = charsPerLine - charCount;
+
+        // Try to place a word
+        if (wordIndex < words.length && remaining >= 5 && Math.random() <= 0.15) {
+          const word = words[wordIndex];
+          const wordSpan = document.createElement('span');
+          wordSpan.className = 'word';
+          wordSpan.textContent = word;
+          wordSpan.onclick = () => selectWord(word);
+          codeSpan.appendChild(wordSpan);
+          charCount += word.length;
+          wordIndex++;
+        }
+        // Try to place bracket pairs (much reduced probability)
+        else if (remaining >= 2 && Math.random() <= 0.03) {
+          const bracket = BRACKETS[Math.floor(Math.random() * BRACKETS.length)];
+          const length = Math.min(Math.floor(Math.random() * 4) + 2, remaining);
+          let bracketContent = bracket[0];
+          for (let i = 1; i < length - 1; i++) {
+            bracketContent += SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+          }
+          bracketContent += bracket[1];
+
+          const bracketSpan = document.createElement('span');
+          bracketSpan.className = 'bracket-group';
+          bracketSpan.textContent = bracketContent;
+          bracketSpan.onclick = () => useDud(bracketSpan);
+          codeSpan.appendChild(bracketSpan);
+
+          charCount += length;
+        }
+        // Place random symbol
+        else {
+          const symbol = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+          const symbolSpan = document.createElement('span');
+          symbolSpan.textContent = symbol;
+          codeSpan.appendChild(symbolSpan);
+          charCount++;
+        }
+      }
+
+      lineDiv.appendChild(addrSpan);
+      lineDiv.appendChild(codeSpan);
+      column.appendChild(lineDiv);
+    }
+  }
+}
+
+function selectWord(word) {
+  if (!gameActive) return;
+
+  addLog('>' + word);
+
+  if (word === password) {
+    addLog('>ACCESS GRANTED', 'success');
+    addLog('>TERMINAL UNLOCKED');
+    gameActive = false;
+    highlightAllWords();
+  } else {
+    const likeness = calculateLikeness(word, password);
+    addLog('>ENTRY DENIED', 'error');
+    addLog('>LIKENESS=' + likeness);
+    attempts--;
+    updateAttempts();
+
+    if (attempts === 0) {
+      addLog('>TERMINAL LOCKED', 'error');
+      addLog('>PLEASE CONTACT ADMINISTRATOR');
+      gameActive = false;
+      highlightAllWords();
+    }
+  }
+}
+
+function useDud(element) {
+  if (!gameActive) return;
+
+  element.style.background = '#000';
+  element.style.color = '#0f0';
+  element.onclick = null;
+
+  if (Math.random() <= 0.5 && attempts < 4) {
+    addLog('>TRIES RESET', 'success');
+    attempts = 4;
+    updateAttempts();
+  } else {
+    addLog('>DUD REMOVED', 'success');
+    removeDud();
+  }
+}
+
+function removeDud() {
+  // Collect words on screen (shouldn't this be from current list?)
+  const allWords = document.querySelectorAll('.word');
+  const wrongWords = Array.from(allWords).filter(el =>
+    el.textContent !== password && el.style.background !== '#000'
+  );
+  
+  // Make dud (should be list kept in memory
+  if (wrongWords.length > 0) {
+    const dud = wrongWords[Math.floor(Math.random() * wrongWords.length)];
+    dud.style.background = '#000';
+    dud.style.color = '#050';
+    dud.onclick = null;
+  }
+}
+
+function calculateLikeness(word1, word2) {
+  let count = 0;
+  for (let i = 0; i < word1.length; i++) {
+    if (word1[i] === word2[i]) count++;
+  }
+  return count;
+}
+
+function updateAttempts() {
+  const display = document.getElementById('attempts-display');
+  display.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const box = document.createElement('div');
+    box.className = 'attempt-box' + (i < attempts ? '' : ' used');
+    display.appendChild(box);
+  }
+}
+
+function addLog(text, className = '') {
+  const log = document.getElementById('log');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry ' + className;
+  entry.textContent = text;
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+}
+
+function highlightAllWords() {
+  const allWords = document.querySelectorAll('.word');
+  allWords.forEach(word => {
+    word.onclick = null;
+    if (word.textContent === password) {
+      word.style.background = '#0f0';
+      word.style.color = '#000';
+    }
+  });
+}
+
+function resetGame() {
+  document.getElementById('log').innerHTML = '';
+  initGame();
+}
+
+initGame();
+</script>
+</body>
+</html>
